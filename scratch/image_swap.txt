@@ -1,0 +1,5 @@
+// I will save the image provided by the user. 
+// Since I cannot "see" the image as a file path directly from the tool unless I save it, 
+// I will assume the user wants me to use the image they just uploaded.
+// I'll use the existing glassdoor-award.png if it's the same, 
+// but I will REMOVE the text overlays as requested.
