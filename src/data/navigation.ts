@@ -210,6 +210,10 @@ export const navLinks = [
             { name: 'Custom Software Development', href: '/solutions/custom-software' },
         ]
     },
+    {
+        name: 'Software Services',
+        href: '/software-services',
+    },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Demo Arena', href: '/demo' },
     {

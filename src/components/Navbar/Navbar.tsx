@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Rocket, ChevronDown, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
-import { Button } from './Button'
+import { Button } from '../Button'
 import { navLinks, generateSlug } from '@/data/navigation'
 import dynamic from 'next/dynamic'
+import './Navbar.css'
 
 // Lazy Load Mobile Menu
-const MobileMenu = dynamic(() => import('./MobileMenu').then(mod => mod.MobileMenu), {
+const MobileMenu = dynamic(() => import('../MobileMenu').then(mod => mod.MobileMenu), {
     ssr: false
 })
 
@@ -28,6 +29,8 @@ export const Navbar = () => {
     const [subMenuTop, setSubMenuTop] = useState(0)
     const [maxSubMenuWidth, setMaxSubMenuWidth] = useState(280)
     const pathname = usePathname()
+
+    // Dashboard check moved to bottom before return to avoid violating React Hook rules
 
     useEffect(() => {
         let ticking = false;
@@ -107,6 +110,10 @@ export const Navbar = () => {
         }
     };
 
+    // Hide global navbar on Dashboard product pages to prevent overlapping with Dashboard headers
+    const isDashboardPage = pathname.startsWith('/products/') && pathname !== '/products';
+    if (isDashboardPage) return null;
+
     return (
         <>
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5 h-[52px]' : 'bg-transparent border-transparent h-[70px]'}`}>
@@ -130,7 +137,7 @@ export const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden xl:flex items-stretch h-full flex-1 ml-4 2xl:ml-12 gap-1 2xl:gap-2">
+                    <div className="hidden xl:flex items-stretch h-full flex-1 ml-4 xl:ml-8 gap-0.5 xl:gap-1">
                         {navLinks.map((link) => (
                             <div
                                 key={link.name}
@@ -145,17 +152,17 @@ export const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         prefetch={false}
-                                        className={`relative h-full px-2 2xl:px-4 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`relative h-full px-1.5 xl:px-2.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.15em] flex items-center gap-1 xl:gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <ChevronDown size={11} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100' : 'opacity-50'}`} />
+                                        <ChevronDown size={10} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100' : 'opacity-50'}`} />
                                         <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 ) : (
                                     <Link
                                         href={link.href}
                                         prefetch={false}
-                                        className={`relative h-full px-2 2xl:px-4 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`relative h-full px-1.5 xl:px-2.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.15em] flex items-center gap-1 xl:gap-1.5 transition-all duration-300 ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
                                         <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
@@ -287,19 +294,19 @@ export const Navbar = () => {
                             </div>
                         ))}
 
-                        <div className="ml-auto flex items-center gap-6">
+                        <div className="ml-auto flex items-center gap-3 xl:gap-4">
                             <Link
                                 href="/contact"
-                                className={`relative px-2 2xl:px-4 py-1.5 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] flex items-center transition-colors duration-300 ${pathname === '/contact' ? 'text-black' : 'text-zinc-500 hover:text-white'}`}
+                                className={`relative px-1.5 xl:px-2.5 py-1.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.15em] flex items-center transition-colors duration-300 ${pathname === '/contact' ? 'text-black' : 'text-zinc-500 hover:text-white'}`}
                             >
                                 <span className="relative z-10">Contact</span>
                                 <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === '/contact' ? 'scale-y-100' : 'scale-y-0'}`}></span>
                             </Link>
 
                             <Link href="/start-project">
-                                <Button variant="primary" className="bg-red-600 hover:bg-red-500 border-none text-white rounded-none skew-x-[-10deg] px-3 2xl:px-5 h-9 2xl:h-10 text-[8px] 2xl:text-[9px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
-                                    <span className="skew-x-[10deg] flex items-center gap-1.5 2xl:gap-2 whitespace-nowrap">
-                                        Launch Your Software <Rocket size={13} />
+                                <Button variant="primary" className="bg-red-600 hover:bg-red-500 border-none text-white rounded-none skew-x-[-10deg] px-2.5 xl:px-4 h-8 xl:h-9 text-[8px] xl:text-[9px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.15em] shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
+                                    <span className="skew-x-[10deg] flex items-center gap-1.5 whitespace-nowrap">
+                                        Launch Your Software <Rocket size={12} />
                                     </span>
                                 </Button>
                             </Link>

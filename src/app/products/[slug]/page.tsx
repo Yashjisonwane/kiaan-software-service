@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { SaaSProductTemplate } from '@/components/SaaSProductTemplate';
@@ -14,6 +15,14 @@ import { educationData } from '@/data/educationData';
 import { constructionFieldData } from '@/data/constructionFieldData';
 import { legalComplianceData } from '@/data/legalComplianceData';
 import { aiAutomationData } from '@/data/aiAutomationData';
+
+// Import service pages
+import { CRMSystemPage } from '@/components/services/CRMSystem/CRMSystemPage';
+import { POSSystemPage } from '@/components/services/POSSystem/POSSystemPage';
+import { HospitalManagementSystemPage } from '@/components/services/HospitalManagementSystem/HospitalManagementSystemPage';
+import { HRMSystemPage } from '@/components/services/HRMSystem/HRMSystemPage';
+import { RestaurantManagementPage } from '@/components/services/Others/RestaurantManagement/RestaurantManagementPage';
+import { RentalManagementPage } from '@/components/services/Others/RentalManagement/RentalManagementPage';
 
 const allSaaSData = {
     ...businessCompanyData,
@@ -36,6 +45,20 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
+    
+    const serviceSlugs = [
+        'crm-system', 
+        'pos-system', 'hospital-management-system', 'hrm-system',
+        'restaurant-management', 'rental-management'
+    ];
+    
+    if (serviceSlugs.includes(slug)) {
+        return {
+            title: `${slug.replace(/-/g, ' ').toUpperCase()} | Kiaan Enterprise Software`,
+            description: `Interactive dashboard for ${slug.replace(/-/g, ' ')}`,
+        };
+    }
+
     const product = allSaaSData[slug];
 
     if (!product) {
@@ -53,6 +76,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SaaSProductPage({ params }: Props) {
     const { slug } = await params;
+    
+    if (slug === 'crm-system') return <CRMSystemPage />;
+    if (slug === 'pos-system') return <POSSystemPage />;
+    if (slug === 'hospital-management-system' || slug === 'hospital-services') return <HospitalManagementSystemPage />;
+    if (slug === 'hrm-system') return <HRMSystemPage />;
+    if (slug === 'restaurant-management') return <RestaurantManagementPage />;
+    if (slug === 'rental-management') return <RentalManagementPage />;
+
     const product = allSaaSData[slug];
 
     if (!product) {
@@ -62,9 +93,21 @@ export default async function SaaSProductPage({ params }: Props) {
     return <SaaSProductTemplate data={product} />;
 }
 
-// Optional: Pre-generate paths for these pages for better performance
+// Pre-generate paths for these pages for better performance
 export async function generateStaticParams() {
-    return Object.keys(allSaaSData).map((slug) => ({
+    const serviceSlugs = [
+        'crm-system', 
+        'pos-system', 'hospital-management-system', 'hrm-system',
+        'restaurant-management', 'rental-management'
+    ];
+    
+    const productSlugs = Object.keys(allSaaSData).map((slug) => ({
         slug: slug,
     }));
+    
+    const servicePaths = serviceSlugs.map((slug) => ({
+        slug: slug,
+    }));
+    
+    return [...productSlugs, ...servicePaths];
 }
