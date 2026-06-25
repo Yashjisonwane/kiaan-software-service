@@ -192,24 +192,37 @@ export const Navbar = () => {
                                                                 <div
                                                                     key={cat.title}
                                                                     onMouseEnter={(e) => {
-                                                                        if (link.name !== 'Solutions') handleCategoryHover(e, cat.title, cat.items);
+                                                                        if (link.name !== 'Solutions') {
+                                                                            handleCategoryHover(e, cat.title, cat.items);
+                                                                        }
                                                                     }}
                                                                     onClick={(e) => {
-                                                                        if (link.name !== 'Solutions') handleCategoryHover(e, cat.title, cat.items);
+                                                                        if (link.name === 'Software Services') {
+                                                                            e.preventDefault();
+                                                                            e.stopPropagation();
+                                                                        } else if (link.name !== 'Solutions') {
+                                                                            handleCategoryHover(e, cat.title, cat.items);
+                                                                        }
                                                                     }}
                                                                     className={`group/cat px-4 py-3.5 flex items-center justify-between cursor-pointer transition-colors relative ${activeCategory === cat.title ? 'bg-yellow-500 text-black' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
                                                                 >
-                                                                    <Link
-                                                                        href={(() => {
-                                                                            if (link.name === 'Products') return `/products/category/${generateSlug(cat.title)}`;
-                                                                            if (link.name === 'Solutions') return `/solutions/${cat.slug || generateSlug(cat.title)}`;
-                                                                            return `/internship?cat=${generateSlug(cat.title)}`;
-                                                                        })()}
-                                                                        prefetch={false}
-                                                                        className="text-[10px] font-bold uppercase tracking-widest flex-1 before:absolute before:inset-0"
-                                                                    >
-                                                                        {cat.title}
-                                                                    </Link>
+                                                                    {link.name === 'Software Services' ? (
+                                                                        <span className="text-[10px] font-bold uppercase tracking-widest flex-1 before:absolute before:inset-0 select-none">
+                                                                            {cat.title}
+                                                                        </span>
+                                                                    ) : (
+                                                                        <Link
+                                                                            href={(() => {
+                                                                                if (link.name === 'Products') return `/products/category/${generateSlug(cat.title)}`;
+                                                                                if (link.name === 'Solutions') return `/solutions/${cat.slug || generateSlug(cat.title)}`;
+                                                                                return `/internship?cat=${generateSlug(cat.title)}`;
+                                                                            })()}
+                                                                            prefetch={false}
+                                                                            className="text-[10px] font-bold uppercase tracking-widest flex-1 before:absolute before:inset-0"
+                                                                        >
+                                                                            {cat.title}
+                                                                        </Link>
+                                                                    )}
                                                                     {link.name !== 'Solutions' && (
                                                                         <ChevronRight size={12} className={activeCategory === cat.title ? 'text-black' : 'text-zinc-600'} />
                                                                     )}
@@ -267,6 +280,9 @@ export const Navbar = () => {
                                                                         // Individual product link, e.g. /products/crm-software
                                                                         href = `/products/${generateSlug(item)}`;
                                                                         label = item;
+                                                                    } else if (link.name === 'Software Services') {
+                                                                        href = item.href;
+                                                                        label = item.name;
                                                                     } else {
                                                                         href = `/${generateSlug(item)}`;
                                                                         label = item;

@@ -1,12 +1,11 @@
 import React from 'react';
-import { EcosystemClient } from '@/components/Ecosystem/EcosystemClient';
 import { serviceEcosystems } from '@/data/servicesData';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -15,12 +14,12 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ServiceEcosystemPage({ params }: PageProps) {
-  const { slug } = params;
+export default async function ServiceEcosystemPage({ params }: PageProps) {
+  const { slug } = await params;
 
   if (!serviceEcosystems[slug]) {
     notFound();
   }
 
-  return <EcosystemClient slug={slug} />;
+  redirect(`/products/${slug}`);
 }

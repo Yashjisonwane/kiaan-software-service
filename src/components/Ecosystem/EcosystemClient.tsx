@@ -48,7 +48,7 @@ export const EcosystemClient = ({ slug }: { slug: string }) => {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {ecosystem.products.map((product) => (
-            <div key={product.id} className="bg-zinc-900 border border-white/10 rounded-3xl p-8 hover:border-yellow-500/30 transition-colors duration-300 flex flex-col h-full shadow-2xl relative overflow-hidden group">
+            <div key={product.id} id={product.id} className="bg-zinc-900 border border-white/10 rounded-3xl p-8 hover:border-yellow-500/30 transition-colors duration-300 flex flex-col h-full shadow-2xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5 group-hover:to-red-600/5 transition-colors duration-500"></div>
               
               <div className="relative z-10 flex-1">

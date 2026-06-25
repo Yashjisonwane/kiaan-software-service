@@ -184,6 +184,58 @@ export const internshipCategories = [
     }
 ]
 
+export const softwareServicesCategories = [
+    {
+        title: "Healthcare Service Platform",
+        items: [
+            { name: "Kiaan Dental Core", href: "/services/hospital-management-system/kiaan-dental-core" },
+            { name: "Kiaan Hospital Management", href: "/services/hospital-management-system/kiaan-hospital-management" },
+            { name: "Kiaan Laboratory Management", href: "/services/hospital-management-system/kiaan-laboratory-management" },
+            { name: "Kiaan Pharmacy Management", href: "/services/hospital-management-system/kiaan-pharmacy-management" }
+        ]
+    },
+    {
+        title: "HRM",
+        items: [
+            { name: "Kiaan Employee Management", href: "/services/hrm-system/kiaan-employee-management" },
+            { name: "Kiaan Payroll Management", href: "/services/hrm-system/kiaan-payroll-management" },
+            { name: "Kiaan Attendance System", href: "/services/hrm-system/kiaan-attendance-system" },
+            { name: "Kiaan Recruitment Management", href: "/services/hrm-system/kiaan-recruitment-management" }
+        ]
+    },
+    {
+        title: "CRM",
+        items: [
+            { name: "Kiaan Sales CRM", href: "/services/crm-system/kiaan-sales-crm" },
+            { name: "Kiaan Customer CRM", href: "/services/crm-system/kiaan-customer-crm" },
+            { name: "Kiaan Lead Management", href: "/services/crm-system/kiaan-lead-management" },
+            { name: "Kiaan Marketing CRM", href: "/services/crm-system/kiaan-marketing-crm" }
+        ]
+    },
+    {
+        title: "Point of Sale (POS)",
+        items: [
+            { name: "Kiaan Retail POS", href: "/services/pos-system/kiaan-retail-pos" },
+            { name: "Kiaan Restaurant POS", href: "/services/pos-system/kiaan-restaurant-pos" },
+            { name: "Kiaan Billing POS", href: "/services/pos-system/kiaan-billing-pos" },
+            { name: "Kiaan Multi-Store POS", href: "/services/pos-system/kiaan-multi-store-pos" }
+        ]
+    },
+    {
+        title: "Others",
+        items: [
+            { name: "Kiaan Restaurant Core", href: "/services/restaurant-management/kiaan-restaurant-core" },
+            { name: "Kiaan Restaurant POS", href: "/services/restaurant-management/kiaan-restaurant-pos" },
+            { name: "Kiaan Kitchen Management", href: "/services/restaurant-management/kiaan-kitchen-management" },
+            { name: "Kiaan Online Ordering System", href: "/services/restaurant-management/kiaan-online-ordering" },
+            { name: "Kiaan Rental Core", href: "/services/rental-management/kiaan-rental-core" },
+            { name: "Kiaan Vehicle Rental System", href: "/services/rental-management/kiaan-vehicle-rental" },
+            { name: "Kiaan Property Rental System", href: "/services/rental-management/kiaan-property-rental" },
+            { name: "Kiaan Asset Tracking System", href: "/services/rental-management/kiaan-asset-tracking" }
+        ]
+    }
+]
+
 export const navLinks = [
     { name: 'Home', href: '/' },
 
@@ -213,6 +265,7 @@ export const navLinks = [
     {
         name: 'Software Services',
         href: '/software-services',
+        level2: softwareServicesCategories
     },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Demo Arena', href: '/demo' },

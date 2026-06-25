@@ -1,10 +1,10 @@
 import React from 'react';
 import './ServiceCategory.css';
-import { CRMSystem } from '../services/CRMSystem/CRMSystem';
-import { POSSystem } from '../services/POSSystem/POSSystem';
-import { HospitalManagementSystem } from '../services/HospitalManagementSystem/HospitalManagementSystem';
-import { HRMSystem } from '../services/HRMSystem/HRMSystem';
-import { Others } from '../services/Others/Others';
+import { CRMSystem } from './Services/CRMSystem/CRMSystem';
+import { POSSystem } from './Services/POSSystem/POSSystem';
+import { HospitalManagementSystem } from './Services/HospitalManagementSystem/HospitalManagementSystem';
+import { HRMSystem } from './Services/HRMSystem/HRMSystem';
+import { Others } from './Services/Others/Others';
 
 export const ServiceCategory: React.FC = () => {
   return (

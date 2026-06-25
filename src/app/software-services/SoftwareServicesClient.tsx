@@ -7,12 +7,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Box, Layers, Zap, Maximize } from 'lucide-react';
 import { ServiceCategoryGroup } from '@/utils/getServicesData';
 
-import { CRMSystemModal } from '@/components/services/CRMSystem/CRMSystemModal';
-import { POSSystemModal } from '@/components/services/POSSystem/POSSystemModal';
-import { RestaurantManagementModal } from '@/components/services/Others/RestaurantManagement/RestaurantManagementModal';
-import { RentalManagementModal } from '@/components/services/Others/RentalManagement/RentalManagementModal';
-import { HospitalManagementSystemModal } from '@/components/services/HospitalManagementSystem/HospitalManagementSystemModal';
-import { HRMSystemModal } from '@/components/services/HRMSystem/HRMSystemModal';
+import { CRMSystemModal } from '@/components/ServiceCategory/Services/CRMSystem/CRMSystemModal';
+import { POSSystemModal } from '@/components/ServiceCategory/Services/POSSystem/POSSystemModal';
+import { RestaurantManagementModal } from '@/components/ServiceCategory/Services/Others/RestaurantManagement/RestaurantManagementModal';
+import { RentalManagementModal } from '@/components/ServiceCategory/Services/Others/RentalManagement/RentalManagementModal';
+import { HospitalManagementSystemModal } from '@/components/ServiceCategory/Services/HospitalManagementSystem/HospitalManagementSystemModal';
+import { HRMSystemModal } from '@/components/ServiceCategory/Services/HRMSystem/HRMSystemModal';
 
 interface Props {
   categories: ServiceCategoryGroup[];

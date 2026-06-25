@@ -90,6 +90,9 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                                     } else if (link.name === 'Solutions') {
                                                                         href = `/solutions/${cat.slug || generateSlug(cat.title)}`;
                                                                         label = item;
+                                                                    } else if (link.name === 'Software Services') {
+                                                                        href = item.href;
+                                                                        label = item.name;
                                                                     } else {
                                                                         href = `/products/${generateSlug(item)}`;
                                                                         label = item;

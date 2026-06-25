@@ -17,12 +17,12 @@ import { legalComplianceData } from '@/data/legalComplianceData';
 import { aiAutomationData } from '@/data/aiAutomationData';
 
 // Import service pages
-import { CRMSystemPage } from '@/components/services/CRMSystem/CRMSystemPage';
-import { POSSystemPage } from '@/components/services/POSSystem/POSSystemPage';
-import { HospitalManagementSystemPage } from '@/components/services/HospitalManagementSystem/HospitalManagementSystemPage';
-import { HRMSystemPage } from '@/components/services/HRMSystem/HRMSystemPage';
-import { RestaurantManagementPage } from '@/components/services/Others/RestaurantManagement/RestaurantManagementPage';
-import { RentalManagementPage } from '@/components/services/Others/RentalManagement/RentalManagementPage';
+import { CRMSystemPage } from '@/components/ServiceCategory/Services/CRMSystem/CRMSystemPage';
+import { POSSystemPage } from '@/components/ServiceCategory/Services/POSSystem/POSSystemPage';
+import { HospitalManagementSystemPage } from '@/components/ServiceCategory/Services/HospitalManagementSystem/HospitalManagementSystemPage';
+import { HRMSystemPage } from '@/components/ServiceCategory/Services/HRMSystem/HRMSystemPage';
+import { RestaurantManagementPage } from '@/components/ServiceCategory/Services/Others/RestaurantManagement/RestaurantManagementPage';
+import { RentalManagementPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/RentalManagementPage';
 
 const allSaaSData = {
     ...businessCompanyData,
