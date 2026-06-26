@@ -595,33 +595,10 @@ export const KiaanRetailPOSLandingPage: React.FC = () => {
                   <input required type="email" placeholder="Email Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
 
-                {/* Mobile Number & WhatsApp Number (2 Columns) */}
-                <div className="flex gap-4">
-                  <div className="relative group w-1/2">
-                    <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-1/2">
-                    <MessageCircle size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="tel" placeholder="WhatsApp Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
-
-                {/* City & Pincode */}
-                <div className="flex gap-3">
-                  <div className="relative group flex-1">
-                    <MapPin size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-2/5">
-                    <input required type="text" maxLength={6} placeholder="Pincode" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-4 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
-
-                {/* Address */}
+                {/* Mobile Number */}
                 <div className="relative group">
-                  <Building size={18} className="absolute left-4 top-4 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <textarea required rows={1} placeholder="Full Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all resize-none" />
+                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
 
                 {/* Submit button with golden gradient and hover glow to match project premium aesthetics */}
