@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Utensils, ChefHat, BookOpen, TableProperties, ClipboardList, Flame, Receipt, Package, Users, TrendingUp, GitFork, Sparkles,
@@ -291,6 +291,8 @@ export const KiaanRestaurantCoreLandingPage: React.FC = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
 
+  const panelRef = useRef<HTMLDivElement>(null);
+
   // Buy Now Flow State
   const [selectedPlan, setSelectedPlan] = useState('');
   const [isCustomerFormOpen, setIsCustomerFormOpen] = useState(false);
@@ -313,6 +315,16 @@ export const KiaanRestaurantCoreLandingPage: React.FC = () => {
       window.location.href = `https://razorpay.com/pay/?plan=${encodeURIComponent(selectedPlan)}`;
       setIsCustomerFormOpen(false);
     }
+  };
+
+  const handleItemClick = (item: typeof WORKFLOW_ITEMS[0]) => {
+    setActiveItem(item);
+    setTimeout(() => {
+      if (panelRef.current) {
+        const y = panelRef.current.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 50);
   };
 
   return (
@@ -350,7 +362,7 @@ export const KiaanRestaurantCoreLandingPage: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  onMouseEnter={() => setActiveItem(item)}
+                  onClick={() => handleItemClick(item)}
                   className={`cursor-pointer rounded-xl border transition-all duration-300 flex items-center p-4 group ${isActive
                       ? 'bg-yellow-500/5 border-yellow-500'
                       : 'bg-[#111] border-white/5 hover:bg-[#151515] hover:border-white/10'
@@ -395,7 +407,7 @@ export const KiaanRestaurantCoreLandingPage: React.FC = () => {
           </div>
 
           {/* RIGHT SIDE: Workflow Detail Panel */}
-          <div className="flex-1 w-full max-w-[800px] bg-[#111] border border-white/5 rounded-2xl p-8 shadow-2xl relative">
+          <div ref={panelRef} className="flex-1 w-full max-w-[800px] bg-[#111] border border-white/5 rounded-2xl p-8 shadow-2xl relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
@@ -509,20 +521,7 @@ export const KiaanRestaurantCoreLandingPage: React.FC = () => {
                   <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
                   <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
-                <div className="flex gap-4">
-                  <div className="relative group w-1/2">
-                    <MapPin size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-1/2">
-                    <Hash size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="Pincode" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
-                <div className="relative group">
-                  <Home size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Full Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
+
                 <button type="submit" className="w-full bg-yellow-500 text-black py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-4">
                   Request Demo
                 </button>

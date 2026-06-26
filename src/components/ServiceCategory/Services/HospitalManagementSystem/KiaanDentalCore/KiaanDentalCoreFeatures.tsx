@@ -12,18 +12,18 @@ export const KiaanDentalCoreFeatures: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 px-6 bg-black">
+    <section className="py-12 px-6 bg-white">
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter mb-8 text-center">
-          Core <span className="text-yellow-500">Modules</span>
+        <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter mb-8 text-center text-[#0F172A]">
+          Core <span className="text-[#2563EB]">Modules</span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feat, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
-              <feat.icon size={32} className="text-yellow-500 mb-6" />
-              <h3 className="text-xl font-bold text-white mb-3">{feat.title}</h3>
-              <p className="text-zinc-400 leading-relaxed text-sm">{feat.desc}</p>
+            <div key={i} className="bg-[#F8FAFC] border border-[#E5E7EB] rounded-2xl p-5 hover:border-[#2563EB]/40 hover:bg-white hover:shadow-md transition-all duration-300">
+              <feat.icon size={32} className="text-[#2563EB] mb-6" />
+              <h3 className="text-xl font-bold text-[#0F172A] mb-3">{feat.title}</h3>
+              <p className="text-[#64748B] leading-relaxed text-sm">{feat.desc}</p>
             </div>
           ))}
         </div>
