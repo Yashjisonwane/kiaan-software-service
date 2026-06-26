@@ -101,6 +101,7 @@ export const serviceEcosystems: Record<string, ServiceEcosystem> = {
     products: [
       { id: "kiaan-rental-core", name: "Kiaan Rental Core", description: "Central platform for all rental operations.", features: ["Booking Management", "Rental Agreements", "Reporting & Analytics"] },
       { id: "kiaan-vehicle-rental", name: "Kiaan Vehicle Rental System", description: "Manage fleet and vehicle rentals seamlessly.", features: ["Fleet Tracking", "Maintenance Scheduling", "Insurance Management"] },
+      { id: "kiaan-car-rental", name: "Kiaan Car Rental", description: "Comprehensive car rental booking and fleet management system.", features: ["Vehicle Booking", "Driver Assignment", "Rental Agreements"] },
       { id: "kiaan-property-rental", name: "Kiaan Property Rental System", description: "Property management and tenant portals.", features: ["Lease Tracking", "Rent Collection", "Maintenance Requests"] },
       { id: "kiaan-asset-tracking", name: "Kiaan Asset Tracking System", description: "Equipment and general asset rentals.", features: ["Asset Lifecycle", "Barcode Scanning", "Availability Calendar"] },
     ]
