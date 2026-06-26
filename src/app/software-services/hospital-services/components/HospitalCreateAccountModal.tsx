@@ -43,75 +43,75 @@ export const HospitalCreateAccountModal: React.FC<Props> = ({ isOpen, onClose, s
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-3xl p-6 shadow-[0_0_50px_rgba(234,179,8,0.15)] overflow-hidden max-h-[90vh] overflow-y-auto scrollbar-hide"
+            className="relative w-full max-w-md bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-[0_8px_30px_rgba(15,23,42,0.08)] overflow-hidden max-h-[90vh] overflow-y-auto scrollbar-hide"
           >
             {/* Glow effects */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-b from-yellow-500/10 to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-b from-[#2563EB]/5 to-transparent pointer-events-none" />
             
             <button 
               onClick={onClose}
-              className="absolute top-6 right-6 text-zinc-400 hover:text-white transition-colors z-20"
+              className="absolute top-6 right-6 text-[#64748B] hover:text-[#0F172A] transition-colors z-20"
             >
               <X size={24} />
             </button>
 
             <div className="relative z-10">
-              <h2 className="text-2xl font-display font-bold text-white mb-2 uppercase pr-8">Create Account</h2>
-              <p className="text-zinc-400 text-sm mb-6">Join Kiaan Technology to manage your business.</p>
+              <h2 className="text-2xl font-display font-bold text-[#0F172A] mb-2 uppercase pr-8">Create Account</h2>
+              <p className="text-[#64748B] text-sm mb-6">Join Kiaan Technology to manage your business.</p>
 
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                  <label className="block text-xs font-bold text-zinc-300 mb-1 uppercase tracking-wider">Selected Plan</label>
+                  <label className="block text-xs font-bold text-[#4B5563] mb-1 uppercase tracking-wider">Selected Plan</label>
                   <select 
                     value={currentPlan} 
                     onChange={(e) => setCurrentPlan(e.target.value)} 
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-yellow-500 font-bold focus:outline-none focus:border-yellow-500 transition-colors text-sm appearance-none"
+                    className="w-full bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl px-4 py-3 text-[#2563EB] font-bold focus:outline-none focus:border-[#2563EB] transition-colors text-sm appearance-none"
                   >
                     {availablePlans.length > 0 ? (
                       availablePlans.map((plan, i) => (
-                        <option className="bg-[#0a0a0a] text-yellow-500" key={i} value={plan}>{plan}</option>
+                        <option className="bg-white text-[#2563EB]" key={i} value={plan}>{plan}</option>
                       ))
                     ) : (
                       <>
-                        <option className="bg-[#0a0a0a] text-yellow-500" value="10 Days Free Trial ($0)">10 Days Free Trial ($0)</option>
-                        <option className="bg-[#0a0a0a] text-yellow-500" value="Premium - 5 Users ($9/month)">Premium - 5 Users ($9/month)</option>
-                        <option className="bg-[#0a0a0a] text-yellow-500" value="Premium - 12 Users ($19/month)">Premium - 12 Users ($19/month)</option>
-                        <option className="bg-[#0a0a0a] text-yellow-500" value="Premium - 25 Users ($29/month)">Premium - 25 Users ($29/month)</option>
+                        <option className="bg-white text-[#2563EB]" value="10 Days Free Trial ($0)">10 Days Free Trial ($0)</option>
+                        <option className="bg-white text-[#2563EB]" value="Premium - 5 Users ($9/month)">Premium - 5 Users ($9/month)</option>
+                        <option className="bg-white text-[#2563EB]" value="Premium - 12 Users ($19/month)">Premium - 12 Users ($19/month)</option>
+                        <option className="bg-white text-[#2563EB]" value="Premium - 25 Users ($29/month)">Premium - 25 Users ($29/month)</option>
                       </>
                     )}
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-zinc-300 mb-1 uppercase tracking-wider">Full Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition-colors text-sm" />
+                  <label className="block text-xs font-bold text-[#4B5563] mb-1 uppercase tracking-wider">Full Name</label>
+                  <input type="text" placeholder="John Doe" className="w-full bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl px-4 py-3 text-[#0F172A] placeholder-zinc-400 focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors text-sm" />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-zinc-300 mb-1 uppercase tracking-wider">Select Service</label>
-                                    <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition-colors text-sm appearance-none">
-                    <option className="bg-[#0a0a0a] text-white" value="">Choose a specific service...</option>
-                    <option className="bg-[#0a0a0a] text-white" value="Kiaan Hospital Management">Kiaan Hospital Management</option>
-                    <option className="bg-[#0a0a0a] text-white" value="Kiaan Dental Core">Kiaan Dental Core</option>
-                    <option className="bg-[#0a0a0a] text-white" value="Kiaan Pharmacy Sync">Kiaan Pharmacy Sync</option>
-                    <option className="bg-[#0a0a0a] text-white" value="Kiaan Clinic Hub">Kiaan Clinic Hub</option>
+                  <label className="block text-xs font-bold text-[#4B5563] mb-1 uppercase tracking-wider">Select Service</label>
+                  <select className="w-full bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl px-4 py-3 text-[#0F172A] focus:outline-none focus:border-[#2563EB] transition-colors text-sm appearance-none">
+                    <option className="bg-white text-[#0F172A]" value="">Choose a specific service...</option>
+                    <option className="bg-white text-[#0F172A]" value="Kiaan Hospital Management">Kiaan Hospital Management</option>
+                    <option className="bg-white text-[#0F172A]" value="Kiaan Dental Core">Kiaan Dental Core</option>
+                    <option className="bg-white text-[#0F172A]" value="Kiaan Pharmacy Sync">Kiaan Pharmacy Sync</option>
+                    <option className="bg-white text-[#0F172A]" value="Kiaan Clinic Hub">Kiaan Clinic Hub</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-zinc-300 mb-1 uppercase tracking-wider">Email Address</label>
-                  <input type="email" placeholder="john@example.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition-colors text-sm" />
+                  <label className="block text-xs font-bold text-[#4B5563] mb-1 uppercase tracking-wider">Email Address</label>
+                  <input type="email" placeholder="john@example.com" className="w-full bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl px-4 py-3 text-[#0F172A] placeholder-zinc-400 focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors text-sm" />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-zinc-300 mb-1 uppercase tracking-wider">Password</label>
-                  <input type="password" placeholder="••••••••" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition-colors text-sm" />
+                  <label className="block text-xs font-bold text-[#4B5563] mb-1 uppercase tracking-wider">Password</label>
+                  <input type="password" placeholder="••••••••" className="w-full bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl px-4 py-3 text-[#0F172A] placeholder-zinc-400 focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors text-sm" />
                 </div>
 
                 <button 
                   type="button"
                   onClick={onClose}
-                  className="w-full bg-gradient-to-r from-yellow-500 to-red-600 text-white font-bold uppercase tracking-wider py-4 rounded-xl mt-6 hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-shadow duration-300 text-sm"
+                  className="w-full bg-[#2563EB] text-white font-bold uppercase tracking-wider py-4 rounded-xl mt-6 hover:bg-[#1D4ED8] transition-colors duration-300 text-sm shadow-md shadow-[#2563EB]/15"
                 >
                   Create Account
                 </button>

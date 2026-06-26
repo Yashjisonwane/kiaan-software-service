@@ -54,16 +54,16 @@ export const HospitalFeatureCards: React.FC<{ features?: Feature[] }> = ({ featu
               <motion.div 
                 key={index}
                 layout
-                className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-4 hover:border-yellow-500/30 transition-colors"
+                className="bg-white border border-[#E5E7EB] rounded-3xl p-6 hover:border-[#2563EB]/40 hover:shadow-lg transition-all duration-300"
               >
                 <motion.div layout className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                  <h3 className="text-xl font-bold text-[#0F172A]">{feature.title}</h3>
                 </motion.div>
                 
-                <motion.p layout className="text-zinc-400 text-sm mb-4">
+                <motion.p layout className="text-[#64748B] text-sm mb-4">
                   {feature.shortDesc}
                 </motion.p>
 
@@ -75,7 +75,7 @@ export const HospitalFeatureCards: React.FC<{ features?: Feature[] }> = ({ featu
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-zinc-300 pb-4 leading-relaxed border-t border-white/5 pt-4 mt-2 text-xs">
+                      <p className="text-[#4B5563] pb-4 leading-relaxed border-t border-[#E5E7EB] pt-4 mt-2 text-xs">
                         {feature.fullDesc}
                       </p>
                     </motion.div>
@@ -85,7 +85,7 @@ export const HospitalFeatureCards: React.FC<{ features?: Feature[] }> = ({ featu
                 <motion.button 
                   layout
                   onClick={() => toggleExpand(index)}
-                  className="flex items-center gap-2 text-yellow-500 font-bold uppercase tracking-wider text-xs hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-[#2563EB] font-bold uppercase tracking-wider text-xs hover:text-[#1D4ED8] transition-colors"
                 >
                   {isExpanded ? 'Show Less' : 'Learn More'}
                   {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}

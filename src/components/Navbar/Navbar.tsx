@@ -111,12 +111,14 @@ export const Navbar = () => {
     };
 
     // Hide global navbar on Dashboard product pages to prevent overlapping with Dashboard headers
-    const isDashboardPage = pathname.startsWith('/products/') && pathname !== '/products';
+    const isDashboardPage = (pathname.startsWith('/products/') && pathname !== '/products') || pathname.includes('/dashboard');
     if (isDashboardPage) return null;
+
+    const isLightPage = pathname.includes('hospital') || pathname.includes('dental');
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5 h-[52px]' : 'bg-transparent border-transparent h-[70px]'}`}>
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5 h-[52px]' : isLightPage ? 'bg-[#0a0a0a] border-b border-white/5 h-[70px]' : 'bg-transparent border-transparent h-[70px]'}`}>
                 {/* Scroll Progress Bar - Wrapped to prevent overflow from spring overshoot */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden z-[60]">
                     <motion.div
@@ -131,7 +133,7 @@ export const Navbar = () => {
                 <div className="container mx-auto px-6 h-full flex items-center justify-between">
                     <Link href="/" className="group text-[1.8rem] font-display uppercase tracking-tighter leading-none transition-all duration-300 flex items-center relative z-50">
                         <div className="logo-glitter">
-                            <span className="text-white group-hover:text-yellow-500 transition-colors duration-300 font-bold">KIAAN</span>
+                            <span className="text-white group-hover:text-yellow-500 transition-colors duration-300 font-bold mr-2">KIAAN</span>
                             <span className="text-yellow-500 group-hover:text-white transition-colors duration-300 font-bold">TECHNOLOGY</span>
                         </div>
                     </Link>
