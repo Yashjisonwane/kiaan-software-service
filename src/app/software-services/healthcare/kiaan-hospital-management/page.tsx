@@ -187,6 +187,7 @@ export default function KiaanHospitalManagementPage() {
   const handleChoosePlan = (plan: string) => {
     setSelectedPlan(plan);
     setIsBuyModalOpen(false);
+    setIsPricingModalOpen(false);
     setIsCustomerFormOpen(true);
   };
 
@@ -287,27 +288,19 @@ export default function KiaanHospitalManagementPage() {
             <div className="flex gap-4 mt-6">
               <button
                 onClick={() => setIsDemoModalOpen(true)}
-                className="flex-1 bg-yellow-500 text-black py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all flex items-center justify-center gap-2"
+                className="flex-1 bg-transparent border border-white/20 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-white/5 transition-all flex items-center justify-center gap-2"
               >
                 <Rocket size={18} />
                 Request Demo
               </button>
               <button
                 onClick={() => setIsPricingModalOpen(true)}
-                className="flex-1 bg-transparent border border-yellow-500 text-yellow-500 py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-500/10 transition-all flex items-center justify-center gap-2"
+                className="flex-1 bg-yellow-500 text-black py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.3)]"
               >
                 <ShoppingCart size={18} />
-                Subscription Plans
+                Buy Now
               </button>
             </div>
-            {/* Buy Now Button — identical to Dental Core */}
-            <button
-              onClick={() => setIsBuyModalOpen(true)}
-              className="w-full mt-3 bg-transparent border border-yellow-500 text-yellow-500 py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-500/10 transition-all flex items-center justify-center gap-2"
-            >
-              <ShoppingCart size={18} />
-              Buy Now
-            </button>
           </div>
 
           {/* RIGHT: Detail Panel */}
@@ -417,20 +410,7 @@ export default function KiaanHospitalManagementPage() {
                   <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
                   <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
-                <div className="relative group">
-                  <Building size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Hospital / Organization Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
-                <div className="flex gap-4">
-                  <div className="relative group w-1/2">
-                    <Stethoscope size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="number" placeholder="Beds" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-1/2">
-                    <MapPin size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
+
                 <button type="submit" className="w-full bg-yellow-500 text-black py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-4">
                   Request Demo Account
                 </button>
@@ -440,29 +420,21 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Pricing Modal — Backdrop */}
+      {/* Pricing Modal */}
       <AnimatePresence>
-        {isPricingModalOpen && createPortal(
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 99999, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}
-            onClick={() => setIsPricingModalOpen(false)}
-          />,
-          document.body
-        )}
-      </AnimatePresence>
-
-      {/* Pricing Modal — Content */}
-      <AnimatePresence>
-        {isPricingModalOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', overflowY: 'auto', pointerEvents: 'none' }}>
+        {isPricingModalOpen && (
+          <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              onClick={() => setIsPricingModalOpen(false)}
+            />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-              style={{ pointerEvents: 'auto' }}
-              className="relative w-full max-w-5xl bg-[#111] border border-white/5 p-4 md:p-5 shadow-2xl text-left rounded-2xl my-auto overflow-hidden"
+              className="relative w-full max-w-5xl bg-[#111] border border-white/5 p-4 md:p-5 shadow-2xl text-left rounded-2xl my-auto overflow-hidden z-10"
             >
               <button
                 onClick={() => setIsPricingModalOpen(false)}
@@ -495,7 +467,7 @@ export default function KiaanHospitalManagementPage() {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => { alert('Premium - 5 Users Selected!'); setIsPricingModalOpen(false); }} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                  <button onClick={() => handleChoosePlan('Premium - 5 Users - $9/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
                     CHOOSE PLAN
                   </button>
                 </div>
@@ -518,7 +490,7 @@ export default function KiaanHospitalManagementPage() {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => { alert('Premium - 12 Users Selected!'); setIsPricingModalOpen(false); }} className="w-full py-1.5 md:py-2 rounded-lg bg-yellow-500 text-black font-bold text-[9px] md:text-[10px] hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.2)] uppercase tracking-widest">
+                  <button onClick={() => handleChoosePlan('Premium - 12 Users - $19/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-yellow-500 text-black font-bold text-[9px] md:text-[10px] hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.2)] uppercase tracking-widest">
                     CHOOSE PLAN
                   </button>
                 </div>
@@ -538,15 +510,14 @@ export default function KiaanHospitalManagementPage() {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => { alert('Premium - 25 Users Selected!'); setIsPricingModalOpen(false); }} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                  <button onClick={() => handleChoosePlan('Premium - 25 Users - $29/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
                     CHOOSE PLAN
                   </button>
                 </div>
 
               </div>
             </motion.div>
-          </div>,
-          document.body
+          </div>
         )}
       </AnimatePresence>
 
@@ -562,7 +533,7 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Buy Now Modal — Plan Selection (same as Dental Core) */}
+      {/* Buy Now Modal — Plan Selection */}
       <AnimatePresence>
         {isBuyModalOpen && createPortal(
           <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', overflowY: 'auto', pointerEvents: 'none' }}>
@@ -583,7 +554,7 @@ export default function KiaanHospitalManagementPage() {
                   SELECT <span className="text-yellow-500">SUBSCRIPTION PLAN</span>
                 </h3>
                 <p className="text-zinc-400 text-[10px] md:text-[11px]">
-                  Choose the perfect Hospital Management plan for your hospital, clinic, or healthcare organization.
+                  Choose the perfect fit for your dental clinic operations
                 </p>
               </div>
 
@@ -591,15 +562,24 @@ export default function KiaanHospitalManagementPage() {
                 {/* Starter Plan */}
                 <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
                   <h4 className="text-base font-bold text-white mb-0.5">Starter</h4>
-                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Ideal for small clinics & hospitals</p>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Ideal for small clinics</p>
                   <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
                     <span className="text-2xl md:text-3xl font-bold text-white">$9</span>
                     <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
                   </div>
                   <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Up to 5 Users','Patient Registration','Appointment Management','Doctor Dashboard','Basic Billing','Reception Module','Email Support'].map((f, i) => (
+                    {[
+                      'Up to 1 Doctor',
+                      'Up to 500 Patients',
+                      'Appointment Management',
+                      'Patient Record Management',
+                      'Billing & Invoicing',
+                      'Basic Reports',
+                      'Email Support'
+                    ].map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
-                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} /><span>{f}</span>
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -614,15 +594,25 @@ export default function KiaanHospitalManagementPage() {
                     Most Popular
                   </div>
                   <h4 className="text-base font-bold text-white mb-0.5">Professional</h4>
-                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Perfect for growing hospitals</p>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Perfect for growing practices</p>
                   <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
                     <span className="text-2xl md:text-3xl font-bold text-white">$19</span>
                     <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
                   </div>
                   <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Everything in Starter','Pharmacy Module','Laboratory Module','Radiology Module','Inventory Management','Advanced Reports','Priority Support','Data Backup'].map((f, i) => (
+                    {[
+                      'Up to 5 Doctors',
+                      'Up to 2,000 Patients',
+                      'Everything in Starter',
+                      'Treatment Management',
+                      'SMS & Email Reminders',
+                      'Advanced Reports',
+                      'Priority Support',
+                      'Data Backup'
+                    ].map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-white font-medium">
-                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} /><span>{f}</span>
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -634,15 +624,25 @@ export default function KiaanHospitalManagementPage() {
                 {/* Enterprise Plan */}
                 <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
                   <h4 className="text-base font-bold text-white mb-0.5">Enterprise</h4>
-                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">For multi-speciality hospitals</p>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">For multi-location clinics</p>
                   <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
                     <span className="text-2xl md:text-3xl font-bold text-white">$29</span>
                     <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
                   </div>
                   <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Everything in Professional','Multi-Hospital Management','Unlimited Users','Role-Based Access Control','Analytics Dashboard','API Integration','Dedicated Account Manager','24x7 Priority Support'].map((f, i) => (
+                    {[
+                      'Unlimited Doctors',
+                      'Unlimited Patients',
+                      'Everything in Professional',
+                      'Multi-Branch Management',
+                      'Inventory Management',
+                      'Advanced Analytics',
+                      'Role-Based Access',
+                      '24/7 Priority Support'
+                    ].map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
-                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} /><span>{f}</span>
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -657,26 +657,21 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Customer Information Form — Backdrop */}
+      {/* Customer Information Form */}
       <AnimatePresence>
-        {isCustomerFormOpen && createPortal(
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 99999, backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
-            onClick={() => setIsCustomerFormOpen(false)}
-          />,
-          document.body
-        )}
-      </AnimatePresence>
-
-      {/* Customer Information Form — Content (same as Dental Core) */}
-      <AnimatePresence>
-        {isCustomerFormOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', pointerEvents: 'none' }}>
+        {isCustomerFormOpen && (
+          <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              style={{ pointerEvents: 'auto' }}
-              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-6 w-full max-w-md relative shadow-2xl overflow-hidden"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              onClick={() => setIsCustomerFormOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+              className="relative w-full max-w-md bg-[#111] border border-white/5 p-4 md:p-6 shadow-2xl rounded-2xl overflow-hidden z-10"
             >
               <div className="mb-6 text-center">
                 <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2 tracking-wide">
@@ -732,11 +727,19 @@ export default function KiaanHospitalManagementPage() {
 
                 <div className="relative group">
                   <label className="sr-only">Selected Plan</label>
-                  <Crown size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-500" />
-                  <input
-                    type="text" readOnly value={selectedPlan}
-                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-12 pr-4 py-3 text-sm text-yellow-500 font-bold outline-none cursor-not-allowed"
-                  />
+                  <Crown size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-500 z-10" />
+                  <select
+                    value={selectedPlan}
+                    onChange={(e) => setSelectedPlan(e.target.value)}
+                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-12 pr-8 py-3 text-sm text-yellow-500 font-bold outline-none focus:border-yellow-500 cursor-pointer appearance-none"
+                  >
+                    <option value="Premium - 5 Users - $9/month">Premium - 5 Users - $9/month</option>
+                    <option value="Premium - 12 Users - $19/month">Premium - 12 Users - $19/month</option>
+                    <option value="Premium - 25 Users - $29/month">Premium - 25 Users - $29/month</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
                 </div>
               </div>
 
@@ -767,8 +770,7 @@ export default function KiaanHospitalManagementPage() {
                 </button>
               </div>
             </motion.div>
-          </div>,
-          document.body
+          </div>
         )}
       </AnimatePresence>
 

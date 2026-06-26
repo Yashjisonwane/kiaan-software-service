@@ -230,6 +230,7 @@ export const softwareServicesCategories = [
             { name: "Kiaan Online Ordering System", href: "/services/restaurant-management/kiaan-online-ordering" },
             { name: "Kiaan Rental Core", href: "/services/rental-management/kiaan-rental-core" },
             { name: "Kiaan Vehicle Rental System", href: "/services/rental-management/kiaan-vehicle-rental" },
+            { name: "Kiaan Car Rental", href: "/services/rental-management/kiaan-car-rental" },
             { name: "Kiaan Property Rental System", href: "/services/rental-management/kiaan-property-rental" },
             { name: "Kiaan Asset Tracking System", href: "/services/rental-management/kiaan-asset-tracking" }
         ]
