@@ -187,6 +187,7 @@ export default function KiaanHospitalManagementPage() {
   const handleChoosePlan = (plan: string) => {
     setSelectedPlan(plan);
     setIsBuyModalOpen(false);
+    setIsPricingModalOpen(false);
     setIsCustomerFormOpen(true);
   };
 
@@ -417,7 +418,7 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Pricing Modal — Backdrop */}
+      {/* Pricing Modal */}
       <AnimatePresence>
         {isPricingModalOpen && createPortal(
           <motion.div
@@ -466,7 +467,7 @@ export default function KiaanHospitalManagementPage() {
                     <span className="text-[9px] md:text-[10px] text-[#64748B] pb-1">/month</span>
                   </div>
                   <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Up to 5 Users','Patient Registration','Appointment Management','Doctor Dashboard','Basic Billing','Reception Module','Email Support'].map((f,i) => (
+                    {['Up to 5 Users', 'Patient Registration', 'Appointment Management', 'Doctor Dashboard', 'Basic Billing', 'Reception Module', 'Email Support'].map((f, i) => (
                       <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-[#4B5563] font-medium">
                         <CheckCircle2 size={12} className="text-[#2563EB] shrink-0" /><span>{f}</span>
                       </li>
@@ -489,7 +490,7 @@ export default function KiaanHospitalManagementPage() {
                     <span className="text-[9px] md:text-[10px] text-[#64748B] pb-1">/month</span>
                   </div>
                   <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Everything in 5 Users plan','Pharmacy Module','Laboratory Module','Radiology Module','Inventory Management','Advanced Reports','Priority Support'].map((f,i) => (
+                    {['Everything in 5 Users plan', 'Pharmacy Module', 'Laboratory Module', 'Radiology Module', 'Inventory Management', 'Advanced Reports', 'Priority Support'].map((f, i) => (
                       <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-[#0F172A] font-semibold">
                         <CheckCircle2 size={12} className="text-[#2563EB] shrink-0" /><span>{f}</span>
                       </li>
@@ -509,7 +510,7 @@ export default function KiaanHospitalManagementPage() {
                     <span className="text-[9px] md:text-[10px] text-[#64748B] pb-1">/month</span>
                   </div>
                   <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Everything in 12 Users plan','Multi-Hospital Management','Unlimited Users','Role-Based Access Control','Analytics Dashboard','API Integration','Dedicated Account Manager','24x7 Premium Support'].map((f,i) => (
+                    {['Everything in 12 Users plan', 'Multi-Hospital Management', 'Unlimited Users', 'Role-Based Access Control', 'Analytics Dashboard', 'API Integration', 'Dedicated Account Manager', '24x7 Premium Support'].map((f, i) => (
                       <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-[#4B5563] font-medium">
                         <CheckCircle2 size={12} className="text-[#2563EB] shrink-0" /><span>{f}</span>
                       </li>
@@ -522,8 +523,7 @@ export default function KiaanHospitalManagementPage() {
 
               </div>
             </motion.div>
-          </div>,
-          document.body
+          </div>
         )}
       </AnimatePresence>
 
@@ -542,7 +542,7 @@ export default function KiaanHospitalManagementPage() {
       {/* Buy Now Modal — Plan Selection */}
       <AnimatePresence>
         {isBuyModalOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', overflowY: 'auto', pointerEvents: 'none' }}>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', overflowY: 'auto', pointerEvents: 'none' }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
               style={{ pointerEvents: 'auto' }}
@@ -552,7 +552,7 @@ export default function KiaanHospitalManagementPage() {
                 onClick={() => setIsBuyModalOpen(false)}
                 className="absolute top-4 right-4 text-[#64748B] hover:text-[#0F172A] transition-colors bg-[#F8FAFC] border border-[#E5E7EB] p-2 rounded-full"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
 
               <div className="mb-8 text-center">
@@ -576,7 +576,7 @@ export default function KiaanHospitalManagementPage() {
                     <span className="text-[#64748B] text-sm mb-1">/month</span>
                   </div>
                   <ul className="space-y-2.5 flex-1">
-                    {['Up to 1 Doctor','Up to 500 Patients','Appointment Management','Patient Record Management','Billing & Invoicing','Basic Reports','Email Support'].map((f, i) => (
+                    {['Up to 1 Doctor', 'Up to 500 Patients', 'Appointment Management', 'Patient Record Management', 'Billing & Invoicing', 'Basic Reports', 'Email Support'].map((f, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-[#4B5563] text-sm">
                         <Check size={14} className="text-[#2563EB] shrink-0" strokeWidth={3} />{f}
                       </li>
@@ -604,7 +604,7 @@ export default function KiaanHospitalManagementPage() {
                     <span className="text-[#64748B] text-sm mb-1">/month</span>
                   </div>
                   <ul className="space-y-2.5 flex-1">
-                    {['Up to 5 Doctors','Up to 2,000 Patients','Everything in Starter','Treatment Management','SMS & Email Reminders','Advanced Reports','Priority Support','Data Backup'].map((f, i) => (
+                    {['Up to 5 Doctors', 'Up to 2,000 Patients', 'Everything in Starter', 'Treatment Management', 'SMS & Email Reminders', 'Advanced Reports', 'Priority Support', 'Data Backup'].map((f, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-[#0F172A] text-sm font-medium">
                         <Check size={14} className="text-[#2563EB] shrink-0" strokeWidth={3} />{f}
                       </li>
@@ -629,7 +629,7 @@ export default function KiaanHospitalManagementPage() {
                     <span className="text-[#64748B] text-sm mb-1">/month</span>
                   </div>
                   <ul className="space-y-2.5 flex-1">
-                    {['Unlimited Doctors','Unlimited Patients','Everything in Professional','Multi-Branch Management','Inventory Management','Advanced Analytics','Role-Based Access','24/7 Priority Support'].map((f, i) => (
+                    {['Unlimited Doctors', 'Unlimited Patients', 'Everything in Professional', 'Multi-Branch Management', 'Inventory Management', 'Advanced Analytics', 'Role-Based Access', '24/7 Priority Support'].map((f, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-[#4B5563] text-sm">
                         <Check size={14} className="text-[#2563EB] shrink-0" strokeWidth={3} />{f}
                       </li>
@@ -649,7 +649,7 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Customer Information Form — Backdrop */}
+      {/* Customer Information Form */}
       <AnimatePresence>
         {isCustomerFormOpen && createPortal(
           <motion.div
@@ -730,12 +730,12 @@ export default function KiaanHospitalManagementPage() {
                     onChange={(e) => setSelectedPlan(e.target.value)}
                     className="w-full bg-white border border-[#2563EB]/30 rounded-xl pl-12 pr-8 py-3 text-sm text-[#2563EB] font-bold outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/25 cursor-pointer appearance-none"
                   >
-                    <option value="Starter - $9/month">Starter - $9/month</option>
-                    <option value="Professional - $19/month">Professional - $19/month</option>
-                    <option value="Enterprise - $29/month">Enterprise - $29/month</option>
+                    <option value="Premium - 5 Users - $9/month">Premium - 5 Users - $9/month</option>
+                    <option value="Premium - 12 Users - $19/month">Premium - 12 Users - $19/month</option>
+                    <option value="Premium - 25 Users - $29/month">Premium - 25 Users - $29/month</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#2563EB]">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                   </div>
                 </div>
               </div>
@@ -751,11 +751,10 @@ export default function KiaanHospitalManagementPage() {
                 <button
                   onClick={handleContinueToPayment}
                   disabled={!isCustomerFormValid}
-                  className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${
-                    isCustomerFormValid
+                  className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
                       ? 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-lg shadow-[#2563EB]/15'
                       : 'bg-[#2563EB]/30 text-white/50 cursor-not-allowed'
-                  }`}
+                    }`}
                 >
                   Continue to Secure Payment
                 </button>
@@ -767,8 +766,7 @@ export default function KiaanHospitalManagementPage() {
                 </button>
               </div>
             </motion.div>
-          </div>,
-          document.body
+          </div>
         )}
       </AnimatePresence>
 

@@ -22,7 +22,7 @@ export const KiaanRecruitmentManagementModal: React.FC<Props> = ({ onClose }) =>
         <div className="sticky top-0 z-50 flex items-center justify-between px-4 py-2 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5">
           <div className="text-xs font-bold uppercase tracking-widest text-zinc-400 flex items-center gap-2">
             <span className="w-5 h-5 rounded bg-yellow-500 text-black flex items-center justify-center text-[10px]">K</span>
-            H R M System
+            HRM System
           </div>
           <button 
             onClick={onClose}
