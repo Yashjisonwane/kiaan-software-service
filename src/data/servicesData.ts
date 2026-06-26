@@ -82,7 +82,7 @@ export const serviceEcosystems: Record<string, ServiceEcosystem> = {
       { id: "kiaan-employee-management", name: "Kiaan Employee Management", description: "Centralized employee database and self-service.", features: ["Digital Onboarding", "Document Storage", "Self-Service Portal"] },
       { id: "kiaan-payroll-management", name: "Kiaan Payroll Management", description: "Automated salary processing and compliance.", features: ["Tax Deductions", "Payslip Generation", "Direct Deposit"] },
       { id: "kiaan-attendance-system", name: "Kiaan Attendance System", description: "Track hours, shifts, and leaves.", features: ["Biometric Integration", "Shift Rostering", "Leave Approvals"] },
-      { id: "kiaan-recruitment-management", name: "Kiaan Recruitment Management", description: "End-to-end applicant tracking system.", features: ["Job Postings", "Interview Scheduling", "Offer Letters"] },
+      { id: "kiaan-recruitment-management", name: "Kiaan Monday.com", description: "Comprehensive multi-tenant workflow, payroll & project management.", features: ["Boards & Folders", "Time Tracking", "Payroll & HR", "Multi-Tenant SaaS"] },
     ]
   },
   "restaurant-management": {
