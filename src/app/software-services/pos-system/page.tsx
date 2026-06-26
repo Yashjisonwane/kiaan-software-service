@@ -5,7 +5,7 @@ import { Store, ShoppingCart, Smartphone, Terminal } from 'lucide-react';
 
 const posFeatures = [
   {
-    title: "Kiaan Retail POS",
+    title: "Kiaan iPOS",
     shortDesc: "Complete checkout and inventory management for retail stores.",
     fullDesc: "Handle barcode scanning, multi-register checkout, receipt printing, and real-time stock deductions seamlessly.",
     icon: <Store size={24} />

@@ -91,7 +91,7 @@ export const POSCreateAccountModal: React.FC<Props> = ({ isOpen, onClose, select
                   <label className="block text-xs font-bold text-zinc-300 mb-1 uppercase tracking-wider">Select Service</label>
                                     <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition-colors text-sm appearance-none">
                     <option className="bg-[#0a0a0a] text-white" value="">Choose a specific service...</option>
-                    <option className="bg-[#0a0a0a] text-white" value="Kiaan Retail POS">Kiaan Retail POS</option>
+                    <option className="bg-[#0a0a0a] text-white" value="Kiaan iPOS">Kiaan iPOS</option>
                     <option className="bg-[#0a0a0a] text-white" value="Kiaan Restaurant POS">Kiaan Restaurant POS</option>
                     <option className="bg-[#0a0a0a] text-white" value="Kiaan Mobile POS">Kiaan Mobile POS</option>
                     <option className="bg-[#0a0a0a] text-white" value="Kiaan Self-Service Kiosk">Kiaan Self-Service Kiosk</option>

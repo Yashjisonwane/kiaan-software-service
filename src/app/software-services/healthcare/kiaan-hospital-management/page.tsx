@@ -287,27 +287,19 @@ export default function KiaanHospitalManagementPage() {
             <div className="flex gap-4 mt-6">
               <button
                 onClick={() => setIsDemoModalOpen(true)}
-                className="flex-1 bg-yellow-500 text-black py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all flex items-center justify-center gap-2"
+                className="flex-1 bg-transparent border border-white/20 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-white/5 transition-all flex items-center justify-center gap-2"
               >
                 <Rocket size={18} />
                 Request Demo
               </button>
               <button
-                onClick={() => setIsPricingModalOpen(true)}
-                className="flex-1 bg-transparent border border-yellow-500 text-yellow-500 py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-500/10 transition-all flex items-center justify-center gap-2"
+                onClick={() => setIsBuyModalOpen(true)}
+                className="flex-1 bg-yellow-500 text-black py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.3)]"
               >
                 <ShoppingCart size={18} />
-                Subscription Plans
+                Buy Now
               </button>
             </div>
-            {/* Buy Now Button — identical to Dental Core */}
-            <button
-              onClick={() => setIsBuyModalOpen(true)}
-              className="w-full mt-3 bg-transparent border border-yellow-500 text-yellow-500 py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-500/10 transition-all flex items-center justify-center gap-2"
-            >
-              <ShoppingCart size={18} />
-              Buy Now
-            </button>
           </div>
 
           {/* RIGHT: Detail Panel */}
@@ -417,20 +409,7 @@ export default function KiaanHospitalManagementPage() {
                   <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
                   <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
-                <div className="relative group">
-                  <Building size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Hospital / Organization Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
-                <div className="flex gap-4">
-                  <div className="relative group w-1/2">
-                    <Stethoscope size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="number" placeholder="Beds" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-1/2">
-                    <MapPin size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
+
                 <button type="submit" className="w-full bg-yellow-500 text-black py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-4">
                   Request Demo Account
                 </button>
@@ -562,91 +541,106 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Buy Now Modal — Plan Selection (same as Dental Core) */}
+      {/* Buy Now Modal — Plan Selection */}
       <AnimatePresence>
         {isBuyModalOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', overflowY: 'auto', pointerEvents: 'none' }}>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', overflowY: 'auto', pointerEvents: 'none' }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
               style={{ pointerEvents: 'auto' }}
-              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-5 w-full max-w-4xl relative shadow-2xl overflow-hidden my-auto"
+              className="bg-[#111] border border-white/5 rounded-2xl p-6 md:p-8 w-full max-w-5xl relative shadow-2xl my-auto"
             >
               <button
                 onClick={() => setIsBuyModalOpen(false)}
-                className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10"
+                className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10"
               >
-                <X size={14} />
+                <X size={16} />
               </button>
 
-              <div className="mb-4 text-center">
-                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-1 uppercase tracking-wide">
+              <div className="mb-8 text-center">
+                <h3 className="text-2xl md:text-4xl font-display font-black text-white mb-2 uppercase tracking-wide">
                   SELECT <span className="text-yellow-500">SUBSCRIPTION PLAN</span>
                 </h3>
-                <p className="text-zinc-400 text-[10px] md:text-[11px]">
-                  Choose the perfect Hospital Management plan for your hospital, clinic, or healthcare organization.
+                <p className="text-zinc-400 text-sm">
+                  Choose the perfect fit for your hospital operations
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-                {/* Starter Plan */}
-                <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
-                  <h4 className="text-base font-bold text-white mb-0.5">Starter</h4>
-                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Ideal for small clinics & hospitals</p>
-                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
-                    <span className="text-2xl md:text-3xl font-bold text-white">$9</span>
-                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
+                {/* Starter */}
+                <div className="bg-[#181818] border border-white/10 rounded-2xl p-6 flex flex-col gap-4 hover:border-white/20 transition-all">
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-1">Starter</h4>
+                    <p className="text-zinc-500 text-xs">Ideal for small clinics</p>
                   </div>
-                  <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Up to 5 Users','Patient Registration','Appointment Management','Doctor Dashboard','Basic Billing','Reception Module','Email Support'].map((f, i) => (
-                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
-                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} /><span>{f}</span>
+                  <div className="flex items-end gap-1">
+                    <span className="text-4xl font-black text-white">$9</span>
+                    <span className="text-zinc-500 text-sm mb-1">/month</span>
+                  </div>
+                  <ul className="space-y-2.5 flex-1">
+                    {['Up to 1 Doctor','Up to 500 Patients','Appointment Management','Patient Record Management','Billing & Invoicing','Basic Reports','Email Support'].map((f, i) => (
+                      <li key={i} className="flex items-center gap-2.5 text-zinc-300 text-sm">
+                        <Check size={14} className="text-yellow-500 shrink-0" strokeWidth={3} />{f}
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => handleChoosePlan('Starter - $9/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                  <button
+                    onClick={() => handleChoosePlan('Starter - $9/month')}
+                    className="w-full py-3 rounded-xl bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-colors uppercase tracking-widest mt-2"
+                  >
                     CHOOSE PLAN
                   </button>
                 </div>
 
-                {/* Professional Plan */}
-                <div className="bg-[#1a1a1a] border border-yellow-500 rounded-2xl p-4 flex flex-col relative shadow-[0_0_30px_rgba(234,179,8,0.1)] -mt-1 mb-1 z-10">
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-yellow-500 text-black text-[8px] md:text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg whitespace-nowrap">
-                    Most Popular
+                {/* Professional - Most Popular */}
+                <div className="bg-[#181818] border-2 border-yellow-500 rounded-2xl p-6 flex flex-col gap-4 relative shadow-[0_0_40px_rgba(234,179,8,0.15)] -mt-2 mb-2">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-black text-xs font-black px-5 py-1.5 rounded-full uppercase tracking-widest shadow-lg whitespace-nowrap">
+                    MOST POPULAR
                   </div>
-                  <h4 className="text-base font-bold text-white mb-0.5">Professional</h4>
-                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Perfect for growing hospitals</p>
-                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
-                    <span className="text-2xl md:text-3xl font-bold text-white">$19</span>
-                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-1">Professional</h4>
+                    <p className="text-zinc-500 text-xs">Perfect for growing practices</p>
                   </div>
-                  <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Everything in Starter','Pharmacy Module','Laboratory Module','Radiology Module','Inventory Management','Advanced Reports','Priority Support','Data Backup'].map((f, i) => (
-                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-white font-medium">
-                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} /><span>{f}</span>
+                  <div className="flex items-end gap-1">
+                    <span className="text-4xl font-black text-white">$19</span>
+                    <span className="text-zinc-500 text-sm mb-1">/month</span>
+                  </div>
+                  <ul className="space-y-2.5 flex-1">
+                    {['Up to 5 Doctors','Up to 2,000 Patients','Everything in Starter','Treatment Management','SMS & Email Reminders','Advanced Reports','Priority Support','Data Backup'].map((f, i) => (
+                      <li key={i} className="flex items-center gap-2.5 text-white text-sm font-medium">
+                        <Check size={14} className="text-yellow-500 shrink-0" strokeWidth={3} />{f}
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => handleChoosePlan('Professional - $19/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-yellow-500 text-black font-bold text-[9px] md:text-[10px] hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.2)] uppercase tracking-widest">
+                  <button
+                    onClick={() => handleChoosePlan('Professional - $19/month')}
+                    className="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold text-xs hover:bg-yellow-400 transition-colors uppercase tracking-widest mt-2 shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                  >
                     CHOOSE PLAN
                   </button>
                 </div>
 
-                {/* Enterprise Plan */}
-                <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
-                  <h4 className="text-base font-bold text-white mb-0.5">Enterprise</h4>
-                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">For multi-speciality hospitals</p>
-                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
-                    <span className="text-2xl md:text-3xl font-bold text-white">$29</span>
-                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+                {/* Enterprise */}
+                <div className="bg-[#181818] border border-white/10 rounded-2xl p-6 flex flex-col gap-4 hover:border-white/20 transition-all">
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-1">Enterprise</h4>
+                    <p className="text-zinc-500 text-xs">For multi-location clinics</p>
                   </div>
-                  <ul className="space-y-1.5 mb-4 flex-1">
-                    {['Everything in Professional','Multi-Hospital Management','Unlimited Users','Role-Based Access Control','Analytics Dashboard','API Integration','Dedicated Account Manager','24x7 Priority Support'].map((f, i) => (
-                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
-                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} /><span>{f}</span>
+                  <div className="flex items-end gap-1">
+                    <span className="text-4xl font-black text-white">$29</span>
+                    <span className="text-zinc-500 text-sm mb-1">/month</span>
+                  </div>
+                  <ul className="space-y-2.5 flex-1">
+                    {['Unlimited Doctors','Unlimited Patients','Everything in Professional','Multi-Branch Management','Inventory Management','Advanced Analytics','Role-Based Access','24/7 Priority Support'].map((f, i) => (
+                      <li key={i} className="flex items-center gap-2.5 text-zinc-300 text-sm">
+                        <Check size={14} className="text-yellow-500 shrink-0" strokeWidth={3} />{f}
                       </li>
                     ))}
                   </ul>
-                  <button onClick={() => handleChoosePlan('Enterprise - $29/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                  <button
+                    onClick={() => handleChoosePlan('Enterprise - $29/month')}
+                    className="w-full py-3 rounded-xl bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-colors uppercase tracking-widest mt-2"
+                  >
                     CHOOSE PLAN
                   </button>
                 </div>
@@ -732,11 +726,19 @@ export default function KiaanHospitalManagementPage() {
 
                 <div className="relative group">
                   <label className="sr-only">Selected Plan</label>
-                  <Crown size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-500" />
-                  <input
-                    type="text" readOnly value={selectedPlan}
-                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-12 pr-4 py-3 text-sm text-yellow-500 font-bold outline-none cursor-not-allowed"
-                  />
+                  <Crown size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-500 z-10" />
+                  <select
+                    value={selectedPlan}
+                    onChange={(e) => setSelectedPlan(e.target.value)}
+                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-12 pr-8 py-3 text-sm text-yellow-500 font-bold outline-none focus:border-yellow-500 cursor-pointer appearance-none"
+                  >
+                    <option value="Starter - $9/month">Starter - $9/month</option>
+                    <option value="Professional - $19/month">Professional - $19/month</option>
+                    <option value="Enterprise - $29/month">Enterprise - $29/month</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
                 </div>
               </div>
 

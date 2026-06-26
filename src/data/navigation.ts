@@ -215,7 +215,7 @@ export const softwareServicesCategories = [
     {
         title: "Point of Sale (POS)",
         items: [
-            { name: "Kiaan Retail POS", href: "/services/pos-system/kiaan-retail-pos" },
+            { name: "Kiaan iPOS", href: "/services/pos-system/kiaan-retail-pos" },
             { name: "Kiaan Restaurant POS", href: "/services/pos-system/kiaan-restaurant-pos" },
             { name: "Kiaan Billing POS", href: "/services/pos-system/kiaan-billing-pos" },
             { name: "Kiaan Multi-Store POS", href: "/services/pos-system/kiaan-multi-store-pos" }

@@ -69,7 +69,7 @@ export const serviceEcosystems: Record<string, ServiceEcosystem> = {
     id: "pos-system",
     name: "POS System",
     products: [
-      { id: "kiaan-retail-pos", name: "Kiaan Retail POS", description: "Fast checkout for retail storefronts.", features: ["Barcode Integration", "Receipt Printing", "Customer Loyalty"] },
+      { id: "kiaan-retail-pos", name: "Kiaan iPOS", description: "Fast checkout for retail storefronts.", features: ["Barcode Integration", "Receipt Printing", "Customer Loyalty"] },
       { id: "kiaan-restaurant-pos", name: "Kiaan Restaurant POS", description: "Table management and kitchen orders.", features: ["Table Mapping", "KDS Integration", "Split Checks"] },
       { id: "kiaan-billing-pos", name: "Kiaan Billing POS", description: "Service-based invoicing and checkout.", features: ["Service Items", "Tax Calculation", "Digital Invoices"] },
       { id: "kiaan-multi-store-pos", name: "Kiaan Multi-Store POS", description: "Centralized control for franchise operations.", features: ["Global Inventory", "Franchise Reporting", "Centralized Pricing"] },
