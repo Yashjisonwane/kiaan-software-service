@@ -10,7 +10,7 @@ import { KiaanHospitalManagementWorkflow } from './KiaanHospitalManagementWorkfl
 import { KiaanHospitalManagementFeatures } from './KiaanHospitalManagementFeatures';
 import { KiaanHospitalManagementGallery } from './KiaanHospitalManagementGallery';
 import { KiaanHospitalManagementForms } from './KiaanHospitalManagementForms';
-
+// ye line add ki hai mene bhai
 const PLANS = [
   {
     name: 'Starter',
@@ -362,7 +362,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
                     <option value="Enterprise - $29/month">Enterprise - $29/month</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                   </div>
                 </div>
               </div>
@@ -379,11 +379,10 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
                 <button
                   onClick={handleContinueToPayment}
                   disabled={!isCustomerFormValid}
-                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${
-                    isCustomerFormValid
+                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${isCustomerFormValid
                       ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
                       : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
-                  }`}
+                    }`}
                 >
                   Continue to Secure Payment
                 </button>
