@@ -31,12 +31,15 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                         {navLinks.map((link) => (
                             <div key={link.name} className="border-b border-white/5">
                                 <Link
-                                    href={link.href}
+                                    href={link.name === 'Software Services' ? '#' : link.href}
                                     className="flex items-center justify-between py-5 cursor-pointer group"
                                     onClick={(e) => {
                                         if ((link.level2 || link.subItems) && openMenu !== link.name) {
                                             e.preventDefault();
                                             setOpenMenu(link.name);
+                                        } else if (link.name === 'Software Services') {
+                                            e.preventDefault();
+                                            setOpenMenu(null);
                                         } else {
                                             onClose();
                                         }

@@ -150,7 +150,12 @@ export const Navbar = () => {
                             >
                                 {link.level2 || link.subItems ? (
                                     <Link
-                                        href={link.href}
+                                        href={link.name === 'Software Services' ? '#' : link.href}
+                                        onClick={(e) => {
+                                            if (link.name === 'Software Services') {
+                                                e.preventDefault();
+                                            }
+                                        }}
                                         prefetch={false}
                                         className={`relative h-full px-1.5 xl:px-2.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.15em] flex items-center gap-1 xl:gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
