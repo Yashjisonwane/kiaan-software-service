@@ -564,7 +564,7 @@ export const KiaanEmployeeManagementLandingPage: React.FC = () => {
 
 
       {/* ─── Main Container ─── */}
-      <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16">
+      <div className="max-w-[1400px] mx-auto px-6 pt-28 pb-12 lg:pt-32 lg:pb-16">
 
         {/* ─── SECTION 1: Product Description (Hero) ─── */}
         <div className="w-full mb-20 text-left">

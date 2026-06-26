@@ -449,7 +449,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
       </div>
 
       {/* Main Container */}
-      <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16">
+      <div className="max-w-[1400px] mx-auto px-6 pt-28 pb-12 lg:pt-32 lg:pb-16">
 
         {/* WORKFLOW OVERVIEW TITLE */}
         <div className="text-[#2563EB] text-xs font-bold uppercase tracking-widest mb-8 text-center lg:text-left flex items-center gap-2 justify-center lg:justify-start">
