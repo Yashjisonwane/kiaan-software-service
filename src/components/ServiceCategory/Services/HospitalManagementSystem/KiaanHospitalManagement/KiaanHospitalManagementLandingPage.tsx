@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Hospital, Building2, Stethoscope, UserRound, CalendarDays, Bed, Microscope, Pill, ClipboardList, FileText, Package, BarChart3, BrainCircuit, HeartPulse,
@@ -367,6 +367,10 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
 
+  // Refs for scrolling
+  const desktopPanelRef = useRef<HTMLDivElement>(null);
+  const mobileRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
   // Buy Now Flow State
   const [selectedPlan, setSelectedPlan] = useState('');
   const [isCustomerFormOpen, setIsCustomerFormOpen] = useState(false);
@@ -391,8 +395,29 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
     }
   };
 
+  const handleDesktopItemClick = (item: typeof WORKFLOW_ITEMS[0]) => {
+    setActiveItem(item);
+    setTimeout(() => {
+      if (desktopPanelRef.current) {
+        const y = desktopPanelRef.current.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 50);
+  };
+
   const toggleMobileAccordion = (id: string) => {
-    setMobileExpandedId(mobileExpandedId === id ? null : id);
+    const isOpening = mobileExpandedId !== id;
+    setMobileExpandedId(isOpening ? id : null);
+    
+    if (isOpening) {
+      setTimeout(() => {
+        const el = mobileRefs.current[id];
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 150);
+    }
   };
 
   return (
@@ -437,7 +462,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  onMouseEnter={() => setActiveItem(item)}
+                  onClick={() => handleDesktopItemClick(item)}
                   className={`cursor-pointer rounded-2xl border transition-all duration-300 flex items-center p-4 group ${isActive
                       ? 'bg-white border-[#2563EB] shadow-[0_8px_30px_rgba(15,23,42,0.08)] translate-x-1'
                       : 'bg-white border-[#E5E7EB] hover:bg-[#F8FBFF] hover:border-[#2563EB]/30'
@@ -482,7 +507,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
           </div>
 
           {/* RIGHT SIDE: Interactive Detail Panel */}
-          <div className="flex-1 w-full max-w-[850px] bg-white border border-[#E5E7EB] rounded-[20px] p-8 shadow-xl shadow-[#0F172A]/8 relative">
+          <div ref={desktopPanelRef} className="flex-1 w-full max-w-[850px] bg-white border border-[#E5E7EB] rounded-[20px] p-8 shadow-xl shadow-[#0F172A]/8 relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
@@ -554,7 +579,11 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
           {WORKFLOW_ITEMS.map((item) => {
             const isExpanded = mobileExpandedId === item.id;
             return (
-              <div key={item.id} className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden shadow-sm transition-all duration-300">
+              <div 
+                key={item.id} 
+                ref={(el) => { mobileRefs.current[item.id] = el; }}
+                className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
+              >
                 
                 {/* Accordion Trigger */}
                 <button

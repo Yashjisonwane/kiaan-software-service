@@ -752,8 +752,8 @@ export default function KiaanHospitalManagementPage() {
                   onClick={handleContinueToPayment}
                   disabled={!isCustomerFormValid}
                   className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
-                      ? 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-lg shadow-[#2563EB]/15'
-                      : 'bg-[#2563EB]/30 text-white/50 cursor-not-allowed'
+                    ? 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-lg shadow-[#2563EB]/15'
+                    : 'bg-[#2563EB]/30 text-white/50 cursor-not-allowed'
                     }`}
                 >
                   Continue to Secure Payment
