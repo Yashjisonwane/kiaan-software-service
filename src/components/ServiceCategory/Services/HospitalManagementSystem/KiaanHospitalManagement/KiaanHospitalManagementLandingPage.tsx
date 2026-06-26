@@ -677,13 +677,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Sub-features list */}
-        <div className="flex flex-wrap justify-between items-center mt-16 pt-8 border-t border-[#E5E7EB] text-xs text-[#6B7280] font-medium max-w-4xl mx-auto">
-          <div className="flex items-center gap-2"><ShieldCheck className="text-[#2563EB]" size={16} /> Secure & Reliable</div>
-          <div className="flex items-center gap-2"><Cloud className="text-[#2563EB]" size={16} /> Cloud Based</div>
-          <div className="flex items-center gap-2"><Clock className="text-[#2563EB]" size={16} /> 99.9% Uptime</div>
-          <div className="flex items-center gap-2"><Headphones className="text-[#2563EB]" size={16} /> 24/7 Support</div>
-        </div>
+
 
       </div>
 

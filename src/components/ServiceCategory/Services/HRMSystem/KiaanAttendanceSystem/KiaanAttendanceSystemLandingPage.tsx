@@ -341,13 +341,7 @@ export const KiaanAttendanceSystemLandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer Features */}
-        <div className="flex flex-wrap justify-between items-center mt-16 pt-8 border-t border-white/5 text-xs text-zinc-500 font-medium max-w-4xl">
-          <div className="flex items-center gap-2"><ShieldCheck className="text-yellow-500" size={16} /> Secure & Reliable</div>
-          <div className="flex items-center gap-2"><Cloud className="text-yellow-500" size={16} /> Cloud Based</div>
-          <div className="flex items-center gap-2"><Clock className="text-yellow-500" size={16} /> 99.9% Uptime</div>
-          <div className="flex items-center gap-2"><Headphones className="text-yellow-500" size={16} /> 24/7 Support</div>
-        </div>
+
       </div>
 
       {/* Demo Modal */}
