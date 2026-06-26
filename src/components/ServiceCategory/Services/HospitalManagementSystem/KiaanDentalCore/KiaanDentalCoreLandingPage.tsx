@@ -249,23 +249,32 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#111827] font-sans selection:bg-[#2563EB]/20">
 
-      {/* Container max-w-1400px centered */}
-      <div className="max-w-[1400px] mx-auto px-6 pt-28 pb-12 lg:pt-32 lg:pb-16">
-
-        {/* SECTION 1 — PRODUCT DESCRIPTION */}
-        <div className="w-full mb-16">
-          <h1 className="text-4xl lg:text-5xl font-display font-bold mb-6 tracking-tight">
-            Kiaan <span className="text-[#2563EB] bg-gradient-to-r from-[#2563EB] to-[#0EA5E9] bg-clip-text text-transparent">Dental Core</span>
+      {/* Hero Header with Premium Black and Golden Theme */}
+      <div className="relative overflow-hidden bg-black border-b border-zinc-800 pt-40 pb-20 px-6">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-yellow-600/10 blur-[120px] pointer-events-none rounded-full"></div>
+        <div className="max-w-[1400px] mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold uppercase tracking-widest mb-6">
+            <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+            Enterprise Clinical SaaS
+          </div>
+          
+          <h1 className="text-4xl lg:text-5xl font-display font-bold tracking-tight text-white mb-6">
+            Kiaan <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600">Dental Core</span>
           </h1>
-          <div className="text-[#4B5563] text-[15px] lg:text-base leading-relaxed space-y-6">
+
+          <div className="max-w-3xl mx-auto text-zinc-400 text-[15px] lg:text-base leading-relaxed space-y-4">
             <p>
-              Kiaan Dental Core is an all-in-one intelligent dental practice management platform built to simplify the complete workflow of modern clinics. From patient registration and appointment scheduling to treatment planning, billing, reporting, inventory, AI-powered insights, and multi-branch management, every operation is connected through one centralized dashboard. The platform eliminates manual work, improves collaboration between doctors and staff, and provides complete visibility over day-to-day clinic operations.
+              Kiaan Dental Core is an all-in-one intelligent dental practice management platform built to simplify the complete workflow of modern clinics. From patient registration and appointment scheduling to treatment planning, billing, reporting, inventory, AI-powered insights, and multi-branch management, every operation is connected through one centralized dashboard.
             </p>
             <p>
               Whether you operate a single dental clinic or a growing healthcare organization, Kiaan Dental Core enables your team to manage patients faster, reduce operational delays, automate repetitive tasks, improve patient experience, and make smarter business decisions using real-time analytics. Every module is designed to work together so your clinic operates efficiently from the first appointment to the final payment.
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Main Content Container */}
+      <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16">
 
         {/* SECTION 2 — WORKFLOW OVERVIEW */}
         <div className="text-[#2563EB] text-xs font-bold uppercase tracking-widest mb-6">

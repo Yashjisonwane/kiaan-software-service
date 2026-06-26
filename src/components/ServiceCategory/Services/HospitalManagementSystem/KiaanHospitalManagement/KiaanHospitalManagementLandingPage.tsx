@@ -7,17 +7,8 @@ import {
   ChevronRight, Rocket, ShoppingCart, ShieldCheck, Cloud, Clock, Headphones, X,
   User, Mail, Phone, Building, MapPin, Send, Star, Crown, CheckCircle2, Lock, Check, ChevronDown, Hash, Home, GitFork
 } from 'lucide-react';
-<<<<<<< HEAD
 
 const WORKFLOW_ITEMS = [
-=======
-import { KiaanHospitalManagementWorkflow } from './KiaanHospitalManagementWorkflow';
-import { KiaanHospitalManagementFeatures } from './KiaanHospitalManagementFeatures';
-import { KiaanHospitalManagementGallery } from './KiaanHospitalManagementGallery';
-import { KiaanHospitalManagementForms } from './KiaanHospitalManagementForms';
-// ye line add ki hai mene bhai
-const PLANS = [
->>>>>>> 0cf77e71c9ef044395b09c54ed11749230a4fcd1
   {
     id: '01',
     title: 'Hospital Setup',
@@ -407,19 +398,20 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#111827] font-sans selection:bg-[#2563EB]/20">
 
-      {/* Hero Header with Premium White Background and Blue Accents */}
-      <div className="relative overflow-hidden bg-white border-b border-[#E5E7EB] pt-32 pb-20 px-6">
+      {/* Hero Header with Premium Black and Golden Theme */}
+      <div className="relative overflow-hidden bg-black border-b border-zinc-800 pt-40 pb-20 px-6">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-yellow-600/10 blur-[120px] pointer-events-none rounded-full"></div>
         <div className="max-w-[1400px] mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#2563EB] text-xs font-bold uppercase tracking-widest mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold uppercase tracking-widest mb-6">
+            <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
             Enterprise Clinical SaaS
           </div>
           
-          <h1 className="text-4xl lg:text-5xl font-display font-bold tracking-tight text-[#111827] mb-6">
-            Hospital <span className="text-[#2563EB] bg-gradient-to-r from-[#2563EB] to-[#0EA5E9] bg-clip-text text-transparent">Management System</span>
+          <h1 className="text-4xl lg:text-5xl font-display font-bold tracking-tight text-white mb-6">
+            Hospital <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600">Management System</span>
           </h1>
 
-          <div className="max-w-3xl mx-auto text-[#4B5563] text-base lg:text-lg leading-relaxed space-y-4">
+          <div className="max-w-3xl mx-auto text-zinc-400 text-base lg:text-lg leading-relaxed space-y-4">
             <p>
               A clean, modular, and cloud-first platform engineered to centralize patient registration, schedules, OPD, IPD, lab tests, prescriptions, pharmacy stock, billing, and insurances under one secure portal.
             </p>
@@ -913,13 +905,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
                     <option value="Professional - $19/month" className="text-[#111827]">Professional - $19/month</option>
                     <option value="Enterprise - $29/month" className="text-[#111827]">Enterprise - $29/month</option>
                   </select>
-<<<<<<< HEAD
                   <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#2563EB] pointer-events-none z-10" />
-=======
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                  </div>
->>>>>>> 0cf77e71c9ef044395b09c54ed11749230a4fcd1
                 </div>
               </div>
 
@@ -934,15 +920,9 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
                 <button
                   onClick={handleContinueToPayment}
                   disabled={!isCustomerFormValid}
-<<<<<<< HEAD
                   className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
                       ? 'bg-[#2563EB] text-white hover:bg-[#2563EB]/90 shadow-lg shadow-[#2563EB]/15'
                       : 'bg-[#2563EB]/30 text-white/50 cursor-not-allowed'
-=======
-                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${isCustomerFormValid
-                      ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
-                      : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
->>>>>>> 0cf77e71c9ef044395b09c54ed11749230a4fcd1
                     }`}
                 >
                   Continue to Secure Payment
