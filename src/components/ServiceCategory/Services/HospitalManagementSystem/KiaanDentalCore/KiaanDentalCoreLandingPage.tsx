@@ -416,45 +416,46 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#111] border border-white/10 rounded-2xl p-6 md:p-8 w-full max-w-md relative z-10 shadow-2xl"
+              className="bg-[#111] border border-white/10 rounded-2xl p-5 md:p-6 w-full max-w-md relative z-10 shadow-2xl max-h-[85vh] overflow-y-auto"
             >
-              <button onClick={() => setIsDemoModalOpen(false)} className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10">
-                <X size={16} />
+              <button onClick={() => setIsDemoModalOpen(false)} className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10">
+                <X size={14} />
               </button>
 
-              <div className="mb-8">
-                <h3 className="text-2xl font-display font-bold text-white mb-2">Request Demo</h3>
-                <p className="text-zinc-400 text-sm">Enter your details and our team will set up your personalized demo account.</p>
+              <div className="mb-5">
+                <h3 className="text-xl font-display font-bold text-white mb-1.5">Request Demo</h3>
+                <p className="text-zinc-400 text-xs">Enter your details and our team will set up your personalized demo account.</p>
               </div>
 
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Demo Requested!"); setIsDemoModalOpen(false); }}>
+              <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert("Demo Requested!"); setIsDemoModalOpen(false); }}>
                 <div className="relative group">
-                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Full Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                  <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="text" placeholder="Full Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
                 <div className="relative group">
-                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="email" placeholder="Email Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                  <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="email" placeholder="Email Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
                 <div className="relative group">
-                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                  <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
-                <div className="relative group">
-                  <Building size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Clinic Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                   <div className="relative group w-1/2">
-                    <Stethoscope size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="number" placeholder="Doctors" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                    <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-3 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                   </div>
                   <div className="relative group w-1/2">
-                    <MapPin size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                    <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                    <input required type="text" placeholder="Pin Code" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-3 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-yellow-500 text-black py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-4">
+                <div className="relative group">
+                  <Building size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="text" placeholder="Full Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                </div>
+
+                <button type="submit" className="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-2">
                   Request Demo
                 </button>
               </form>
@@ -602,18 +603,18 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-6 w-full max-w-md relative z-10 shadow-2xl overflow-hidden"
+              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-5 w-full max-w-md relative z-10 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
             >
-              <div className="mb-6 text-center">
-                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2 tracking-wide">
+              <div className="mb-5 text-center">
+                <h3 className="text-xl font-display font-bold text-white mb-1.5 tracking-wide">
                   Complete Your Purchase
                 </h3>
-                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
+                <p className="text-zinc-400 text-xs leading-relaxed">
                   Enter your details below to continue with your subscription and proceed to secure payment.
                 </p>
               </div>
 
-              <div className="space-y-4 mb-6">
+              <div className="space-y-3 mb-5">
                 <div className="relative group">
                   <label className="sr-only">Full Name</label>
                   <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
@@ -623,30 +624,30 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                     value={customerForm.fullName}
                     onChange={(e) => setCustomerForm({ ...customerForm, fullName: e.target.value })}
                     placeholder="Full Name"
-                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
                   />
                 </div>
 
                 <div className="relative group">
                   <label className="sr-only">Email Address</label>
-                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
                   <input
                     required
                     type="email"
                     value={customerForm.email}
                     onChange={(e) => setCustomerForm({ ...customerForm, email: e.target.value })}
                     placeholder="Email Address"
-                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
                   />
                 </div>
 
                 <div className="flex">
-                  <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-4 py-3 text-sm text-zinc-400 flex items-center justify-center font-bold">
+                  <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-3 py-2.5 text-xs text-zinc-400 flex items-center justify-center font-bold">
                     +91
                   </div>
                   <div className="relative group flex-1">
                     <label className="sr-only">WhatsApp Number</label>
-                    <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
+                    <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
                     <input
                       required
                       type="tel"
@@ -654,24 +655,30 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                       onChange={(e) => setCustomerForm({ ...customerForm, whatsapp: e.target.value.replace(/\D/g, '') })}
                       placeholder="WhatsApp Number"
                       maxLength={10}
-                      className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-12 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                      className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
                     />
                   </div>
                 </div>
 
                 <div className="relative group">
                   <label className="sr-only">Selected Plan</label>
-                  <Crown size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-500" />
-                  <input
-                    type="text"
-                    readOnly
+                  <Crown size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-yellow-500 z-10" />
+                  <select
                     value={selectedPlan}
-                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-12 pr-4 py-3 text-sm text-yellow-500 font-bold outline-none cursor-not-allowed"
-                  />
+                    onChange={(e) => setSelectedPlan(e.target.value)}
+                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-10 pr-8 py-2.5 text-xs text-yellow-500 font-bold outline-none focus:border-yellow-500 cursor-pointer appearance-none"
+                  >
+                    <option value="Starter - $9/month">Starter - $9/month</option>
+                    <option value="Professional - $19/month">Professional - $19/month</option>
+                    <option value="Enterprise - $29/month">Enterprise - $29/month</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
                 </div>
               </div>
 
-              <div className="mb-6 text-center">
+              <div className="mb-5 text-center">
                 <p className="text-[10px] md:text-xs text-zinc-500 flex items-center justify-center gap-1.5">
                   <Lock size={12} className="text-zinc-400" />
                   Your information is secure and will only be used for your subscription and account setup.
@@ -682,7 +689,7 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                 <button
                   onClick={handleContinueToPayment}
                   disabled={!isCustomerFormValid}
-                  className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
+                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${isCustomerFormValid
                       ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
                       : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
                     }`}
@@ -691,7 +698,7 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                 </button>
                 <button
                   onClick={() => setIsCustomerFormOpen(false)}
-                  className="w-full py-2 text-zinc-500 font-bold text-xs hover:text-white transition-colors"
+                  className="w-full py-1.5 text-zinc-500 font-bold text-[10px] uppercase hover:text-white transition-colors"
                 >
                   Cancel
                 </button>
