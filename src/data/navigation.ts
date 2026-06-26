@@ -189,7 +189,7 @@ export const softwareServicesCategories = [
         title: "Healthcare Service Platform",
         items: [
             { name: "Kiaan Dental Core", href: "/services/hospital-management-system/kiaan-dental-core" },
-            { name: "Kiaan Hospital Management", href: "/services/hospital-management-system/kiaan-hospital-management" },
+            { name: "Kiaan Hospital Management", href: "/software-services/healthcare/kiaan-hospital-management" },
             { name: "Kiaan Laboratory Management", href: "/services/hospital-management-system/kiaan-laboratory-management" },
             { name: "Kiaan Pharmacy Management", href: "/services/hospital-management-system/kiaan-pharmacy-management" }
         ]
