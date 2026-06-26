@@ -639,7 +639,7 @@ export const KiaanCarRentalLandingPage: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
           
           {/* LEFT SIDE: Workflow Cards */}
-          <div className="w-full lg:w-[420px] xl:w-[480px] shrink-0 flex flex-col gap-3 lg:sticky lg:top-8 z-20">
+          <div className="w-full lg:w-[420px] xl:w-[480px] shrink-0 flex flex-col gap-3">
             {WORKFLOW_ITEMS.map((item) => {
               const isActive = activeItem.id === item.id;
               return (
@@ -692,7 +692,7 @@ export const KiaanCarRentalLandingPage: React.FC = () => {
           </div>
 
           {/* RIGHT SIDE: Workflow Detail Panel (Single Active Step with AnimatePresence) */}
-          <div className="flex-1 w-full max-w-[800px] bg-[#111] border border-yellow-500/30 shadow-[0_0_30px_rgba(234,179,8,0.03)] rounded-2xl p-8 shadow-2xl relative min-h-[600px]">
+          <div className="flex-1 w-full max-w-[800px] bg-[#111] border border-yellow-500/30 shadow-[0_0_30px_rgba(234,179,8,0.03)] rounded-2xl p-8 shadow-2xl relative min-h-[600px] lg:sticky lg:top-24">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
