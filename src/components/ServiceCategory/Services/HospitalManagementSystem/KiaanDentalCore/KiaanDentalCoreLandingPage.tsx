@@ -440,20 +440,7 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                   <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
                   <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
-                <div className="flex gap-3">
-                  <div className="relative group w-1/2">
-                    <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-3 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-1/2">
-                    <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="Pin Code" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-3 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
-                <div className="relative group">
-                  <Building size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Full Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
+
 
                 <button type="submit" className="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-2">
                   Request Demo
