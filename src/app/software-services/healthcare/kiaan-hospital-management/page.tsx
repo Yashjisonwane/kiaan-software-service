@@ -231,7 +231,7 @@ export default function KiaanHospitalManagementPage() {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white font-sans selection:bg-yellow-500/30">
-      <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16">
+      <div className="max-w-[1400px] mx-auto px-6 pt-24 pb-12 lg:pt-32 lg:pb-16">
 
         {/* SECTION 1 - PRODUCT DESCRIPTION */}
         <div className="w-full mb-16">

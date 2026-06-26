@@ -200,7 +200,7 @@ export default function RootLayout({
                 />
                 <div className="flex flex-col min-h-screen relative bg-black text-white">
                     <Navbar />
-                    <main className="relative z-10 w-full">{children}</main>
+                    <main className="relative w-full">{children}</main>
                     <Footer />
                     <GlobalClientComponents />
                     <AwardBanner />
