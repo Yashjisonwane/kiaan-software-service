@@ -30,6 +30,7 @@ import { KiaanOnlineOrderingSystemLandingPage } from '@/components/ServiceCatego
 
 import { KiaanRentalCoreLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanRentalCore/KiaanRentalCoreLandingPage';
 import { KiaanVehicleRentalSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanVehicleRentalSystem/KiaanVehicleRentalSystemLandingPage';
+import { KiaanCarRentalLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanCarRental/KiaanCarRentalLandingPage';
 import { KiaanPropertyRentalSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanPropertyRentalSystem/KiaanPropertyRentalSystemLandingPage';
 import { KiaanAssetTrackingSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanAssetTrackingSystem/KiaanAssetTrackingSystemLandingPage';
 
@@ -99,6 +100,7 @@ export default async function ProductInformationPage({ params }: PageProps) {
     // Others - Rental Management
     "kiaan-rental-core": KiaanRentalCoreLandingPage,
     "kiaan-vehicle-rental": KiaanVehicleRentalSystemLandingPage,
+    "kiaan-car-rental": KiaanCarRentalLandingPage,
     "kiaan-property-rental": KiaanPropertyRentalSystemLandingPage,
     "kiaan-asset-tracking": KiaanAssetTrackingSystemLandingPage
   };
