@@ -7,13 +7,10 @@ import {
   ChevronRight, Rocket, ShoppingCart, ShieldCheck, Cloud, Clock, Headphones, X,
   User, Mail, Phone, Building, MapPin, Send, Star, Crown, CheckCircle2, Lock, Check, ChevronDown, Hash, Home, GitFork
 } from 'lucide-react';
-<<<<<<< HEAD
-=======
 import { KiaanHospitalManagementWorkflow } from './KiaanHospitalManagementWorkflow';
 import { KiaanHospitalManagementFeatures } from './KiaanHospitalManagementFeatures';
 import { KiaanHospitalManagementGallery } from './KiaanHospitalManagementGallery';
 import { KiaanHospitalManagementForms } from './KiaanHospitalManagementForms';
->>>>>>> 3edc98972ac8c4fdeceb21c540d1fff614b0434f
 
 const WORKFLOW_ITEMS = [
   {
@@ -941,17 +938,7 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
                     <option value="Professional - $19/month" className="text-[#111827]">Professional - $19/month</option>
                     <option value="Enterprise - $29/month" className="text-[#111827]">Enterprise - $29/month</option>
                   </select>
-<<<<<<< HEAD
                   <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#2563EB] pointer-events-none z-10" />
-=======
-<<<<<<< HEAD
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                  </div>
-=======
-                  <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#2563EB] pointer-events-none z-10" />
->>>>>>> 296e5298f9918165ac4dca24083d9e1f0b695e53
->>>>>>> 3edc98972ac8c4fdeceb21c540d1fff614b0434f
                 </div>
               </div>
 
@@ -966,21 +953,9 @@ export const KiaanHospitalManagementLandingPage: React.FC = () => {
                 <button
                   onClick={handleContinueToPayment}
                   disabled={!isCustomerFormValid}
-<<<<<<< HEAD
                   className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
                       ? 'bg-[#2563EB] text-white hover:bg-[#2563EB]/90 shadow-lg shadow-[#2563EB]/15'
                       : 'bg-[#2563EB]/30 text-white/50 cursor-not-allowed'
-=======
-<<<<<<< HEAD
-                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${isCustomerFormValid
-                      ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
-                      : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
-=======
-                  className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
-                      ? 'bg-[#2563EB] text-white hover:bg-[#2563EB]/90 shadow-lg shadow-[#2563EB]/15'
-                      : 'bg-[#2563EB]/30 text-white/50 cursor-not-allowed'
->>>>>>> 296e5298f9918165ac4dca24083d9e1f0b695e53
->>>>>>> 3edc98972ac8c4fdeceb21c540d1fff614b0434f
                     }`}
                 >
                   Continue to Secure Payment
