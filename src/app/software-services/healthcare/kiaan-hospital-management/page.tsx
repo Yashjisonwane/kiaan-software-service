@@ -420,27 +420,19 @@ export default function KiaanHospitalManagementPage() {
 
       {/* Pricing Modal */}
       <AnimatePresence>
-        {isPricingModalOpen && createPortal(
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 99999, backgroundColor: 'rgba(15,23,42,0.3)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}
-            onClick={() => setIsPricingModalOpen(false)}
-          />,
-          document.body
-        )}
-      </AnimatePresence>
-
-      {/* Pricing Modal — Content */}
-      <AnimatePresence>
-        {isPricingModalOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', overflowY: 'auto', pointerEvents: 'none' }}>
+        {isPricingModalOpen && (
+          <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-[#0F172A]/30 backdrop-blur-sm"
+              onClick={() => setIsPricingModalOpen(false)}
+            />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-              style={{ pointerEvents: 'auto' }}
-              className="relative w-full max-w-5xl bg-white border border-[#E5E7EB] p-4 md:p-5 shadow-2xl text-left rounded-2xl my-auto overflow-hidden"
+              className="relative w-full max-w-5xl bg-white border border-[#E5E7EB] p-4 md:p-5 shadow-2xl text-left rounded-2xl my-auto overflow-hidden z-10"
             >
               <button
                 onClick={() => setIsPricingModalOpen(false)}
@@ -527,26 +519,19 @@ export default function KiaanHospitalManagementPage() {
         )}
       </AnimatePresence>
 
-      {/* Buy Now Modal — Backdrop */}
+      {/* Buy Now Modal */}
       <AnimatePresence>
-        {isBuyModalOpen && createPortal(
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 99999, backgroundColor: 'rgba(15,23,42,0.3)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
-            onClick={() => setIsBuyModalOpen(false)}
-          />,
-          document.body
-        )}
-      </AnimatePresence>
-
-      {/* Buy Now Modal — Plan Selection */}
-      <AnimatePresence>
-        {isBuyModalOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', overflowY: 'auto', pointerEvents: 'none' }}>
+        {isBuyModalOpen && (
+          <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4 overflow-y-auto">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              style={{ pointerEvents: 'auto' }}
-              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 w-full max-w-5xl relative shadow-2xl my-auto"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-[#0F172A]/30 backdrop-blur-sm"
+              onClick={() => setIsBuyModalOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 w-full max-w-5xl relative shadow-2xl my-auto z-10"
             >
               <button
                 onClick={() => setIsBuyModalOpen(false)}
@@ -644,31 +629,23 @@ export default function KiaanHospitalManagementPage() {
                 </div>
               </div>
             </motion.div>
-          </div>,
-          document.body
+          </div>
         )}
       </AnimatePresence>
 
       {/* Customer Information Form */}
       <AnimatePresence>
-        {isCustomerFormOpen && createPortal(
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 99999, backgroundColor: 'rgba(15,23,42,0.3)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
-            onClick={() => setIsCustomerFormOpen(false)}
-          />,
-          document.body
-        )}
-      </AnimatePresence>
-
-      {/* Customer Information Form — Content (same as Dental Core) */}
-      <AnimatePresence>
-        {isCustomerFormOpen && createPortal(
-          <div style={{ position: 'fixed', inset: 0, zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', pointerEvents: 'none' }}>
+        {isCustomerFormOpen && (
+          <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4 overflow-y-auto">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              style={{ pointerEvents: 'auto' }}
-              className="bg-white border border-[#E5E7EB] rounded-2xl p-4 md:p-6 w-full max-w-md relative shadow-2xl overflow-hidden"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-[#0F172A]/30 backdrop-blur-sm"
+              onClick={() => setIsCustomerFormOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-4 md:p-6 w-full max-w-md relative shadow-2xl overflow-hidden z-10"
             >
               <div className="mb-6 text-center">
                 <h3 className="text-xl md:text-2xl font-display font-bold text-[#0F172A] mb-2 tracking-wide">
