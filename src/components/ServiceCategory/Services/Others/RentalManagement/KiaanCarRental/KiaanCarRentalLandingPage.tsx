@@ -5,23 +5,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Building2, Users, UserPlus, Calendar, CreditCard, BarChart3, 
   ChevronRight, Rocket, ShoppingCart, ShieldCheck, Cloud, Clock, Headphones, X,
-  User, Mail, Phone, Building, MapPin, Car, Wrench, Shield
+  User, Mail, Phone, Building, MapPin, Car, Wrench, Shield, Check, Lock, Crown,
+  Map, ClipboardCheck
 } from 'lucide-react';
 
 const WORKFLOW_ITEMS = [
   {
     id: '01',
-    title: 'Create Your Fleet & Hub',
-    subtitle: 'Configure company profile, branding, and hub locations.',
+    title: 'Create Your Fleet & Hubs',
+    subtitle: 'Configure operational hubs, vehicle classes, and daily base rates.',
     icon: <Building2 className="w-6 h-6" />,
-    description: 'Start by configuring your global rental profile. Set up custom branding assets (logos, colors, domains) and add multiple geographic hubs (e.g., Beverly Hills Hub, Downtown Hub, North Port Sky Station) to segregate vehicle availability, tax codes, and operation currencies. Define your active car categories (SUV, Convertible, Electric, Sport) and terms of lease. This serves as the single source of truth for operations, enabling automatic dispatch routes, location-based tax overrides, and geo-fenced fleet distribution across all branches from a unified back-office panel.',
+    description: 'Configure your car rental workspace. Set up geographic hubs to segregate vehicle availability, local tax codes, and currency configurations. Group your fleet into distinct rental categories and establish base daily rental rates, mileage limits, and general leasing terms.',
     features: [
-      'Add rental hub details',
-      'Configure business hours',
-      'Upload custom branding',
-      'Define rental categories',
-      'Manage multiple locations',
-      'Set general rental terms'
+      'Set up multi-location rental hubs',
+      'Define vehicle class categorizations',
+      'Configure business hours per hub',
+      'Upload company branding & terms',
+      'Manage regional tax policies',
+      'Establish base daily rental rates'
     ],
     mockup: (
       <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
@@ -32,28 +33,28 @@ const WORKFLOW_ITEMS = [
               <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
                 <th className="pb-1">Hub Name</th>
                 <th className="pb-1">Address Location</th>
-                <th className="pb-1 text-center">Fleet Count</th>
-                <th className="pb-1 text-right">Operating Shifts</th>
+                <th className="pb-1 text-center">Fleet Capacity</th>
+                <th className="pb-1 text-right">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
               <tr>
                 <td className="py-1 text-white font-bold">Beverly Hills Hub</td>
                 <td className="py-1">128 Beverly Dr, Beverly Hills, CA 90210</td>
-                <td className="py-1 text-center text-yellow-500 font-bold">5 Cars</td>
-                <td className="py-1 text-right">24/7 Hours</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">25 Cars</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Active</span></td>
               </tr>
               <tr>
                 <td className="py-1 text-white font-bold">Downtown Executive Hub</td>
                 <td className="py-1">712 Sunset Blvd, Los Angeles, CA 90017</td>
-                <td className="py-1 text-center text-yellow-500 font-bold">3 Cars</td>
-                <td className="py-1 text-right">8:00 AM – 10:00 PM</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">15 Cars</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Active</span></td>
               </tr>
               <tr>
                 <td className="py-1 text-white font-bold">North Port Sky Station</td>
                 <td className="py-1">902 Ocean Ave, Los Angeles, CA 90045</td>
-                <td className="py-1 text-center text-yellow-500 font-bold">1 Car</td>
-                <td className="py-1 text-right">6:00 AM – 12:00 AM</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">10 Cars</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Active</span></td>
               </tr>
             </tbody>
           </table>
@@ -61,23 +62,23 @@ const WORKFLOW_ITEMS = [
         
         <div className="grid grid-cols-2 gap-4 pt-1">
           <div>
-            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Vehicle Categories & Pricing</div>
+            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Vehicle Categories & Base Pricing</div>
             <table className="w-full text-left text-[9px] text-zinc-400">
               <tbody className="divide-y divide-white/5">
                 <tr><td className="py-1 text-white font-bold">Electric</td><td className="py-1 text-right">$150 – $450/day</td></tr>
-                <tr><td className="py-1 text-white font-bold">Sport Exotics</td><td className="py-1 text-right">$300 – $700/day</td></tr>
-                <tr><td className="py-1 text-white font-bold">SUV Luxury</td><td className="py-1 text-right">$250/day</td></tr>
-                <tr><td className="py-1 text-white font-bold">Convertibles</td><td className="py-1 text-right">$220/day</td></tr>
+                <tr><td className="py-1 text-white font-bold">Exotic Sport</td><td className="py-1 text-right">$300 – $700/day</td></tr>
+                <tr><td className="py-1 text-white font-bold">Luxury SUV</td><td className="py-1 text-right">$250/day</td></tr>
+                <tr><td className="py-1 text-white font-bold">Convertible</td><td className="py-1 text-right">$220/day</td></tr>
               </tbody>
             </table>
           </div>
           <div>
-            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Global System Configurations</div>
+            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Base Rules & Scope</div>
             <ul className="text-[9px] text-zinc-400 space-y-1 pl-3 list-disc">
-              <li><span className="text-zinc-500">Base Currency:</span> USD ($)</li>
-              <li><span className="text-zinc-500">Routing Node:</span> Multi-Hub Fleet Allocation</li>
-              <li><span className="text-zinc-500">Auto Chauffeur Dispatch:</span> Active (Proximity-based)</li>
-              <li><span className="text-zinc-500">Brand Host:</span> gofintaza.com</li>
+              <li><span className="text-zinc-500">Currency:</span> USD ($)</li>
+              <li><span className="text-zinc-500">Allocation:</span> Hub-specific</li>
+              <li><span className="text-zinc-500">Grace Period:</span> 29 Minutes</li>
+              <li><span className="text-zinc-500">Support Host:</span> gofintaza.com</li>
             </ul>
           </div>
         </div>
@@ -86,17 +87,17 @@ const WORKFLOW_ITEMS = [
   },
   {
     id: '02',
-    title: 'Add Drivers & Staff',
-    subtitle: 'Invite fleet managers, drivers, and agents.',
+    title: 'Add Drivers & Chauffeurs',
+    subtitle: 'Register drivers, assign shift schedules, and manage CDL profiles.',
     icon: <Users className="w-6 h-6" />,
-    description: 'Build your organization chart and invite team members (Admins, Operations Managers, Receptionists, Chauffeurs, and Finance admins). Restrict module visibility with secure Role-Based Access Control (RBAC) to ensure chauffeurs only access routes and checklists, while billing staff see only transactions. Configure shift patterns, logs, and dynamic chauffeur availability (Available, Assigned, On Route, On Leave, Suspended) to facilitate instant booking dispatches and automatic duty scheduling notifications via WhatsApp and SMS.',
+    description: 'Build your organization chart and invite team members. Record professional chauffeur licenses, medical certificates, and driving histories. Use Role-Based Access Control (RBAC) to ensure drivers only access routing and inspection check sheets, while support staff handle booking requests.',
     features: [
-      'Invite unlimited staff',
-      'Role-based access controls',
-      'Driver profile verification',
-      'Duty scheduling & shifts',
-      'Staff login credentials',
-      'Activity tracking'
+      'Register chauffeurs & support staff',
+      'Set role-based access permissions',
+      'Log CDL license credentials',
+      'Configure shifts & working patterns',
+      'Monitor driver feedback ratings',
+      'Set dynamic availability statuses'
     ],
     mockup: (
       <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
@@ -115,31 +116,24 @@ const WORKFLOW_ITEMS = [
             <tbody className="divide-y divide-white/5">
               <tr>
                 <td className="py-1 text-white font-bold">David Wilson</td>
-                <td className="py-1 font-mono text-zinc-400">DL-908234-A / CDL-40918-B</td>
+                <td className="py-1 font-mono text-zinc-400 text-[9px]">DL-908234-A / CDL-40918-B</td>
                 <td className="py-1">Beverly Hills Hub</td>
                 <td className="py-1 text-center text-yellow-500">★ 4.8</td>
                 <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Available</span></td>
               </tr>
               <tr>
                 <td className="py-1 text-white font-bold">John Smith</td>
-                <td className="py-1 font-mono text-zinc-400">DL-293847-B / CDL-11928-C</td>
-                <td className="py-1">Downtown Executive Hub</td>
+                <td className="py-1 font-mono text-zinc-400 text-[9px]">DL-293847-B / CDL-11928-C</td>
+                <td className="py-1">Downtown Hub</td>
                 <td className="py-1 text-center text-yellow-500">★ 4.9</td>
                 <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-500/10 text-blue-400">Assigned</span></td>
               </tr>
               <tr>
                 <td className="py-1 text-white font-bold">Robert Lee</td>
-                <td className="py-1 font-mono text-zinc-400">DL-109238-C / CDL-33902-A</td>
+                <td className="py-1 font-mono text-zinc-400 text-[9px]">DL-109238-C / CDL-33902-A</td>
                 <td className="py-1">Beverly Hills Hub</td>
                 <td className="py-1 text-center text-yellow-500">★ 4.7</td>
                 <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-zinc-500/10 text-zinc-400">On Leave</span></td>
-              </tr>
-              <tr>
-                <td className="py-1 text-white font-bold">Sarah Miller</td>
-                <td className="py-1 font-mono text-zinc-400">DL-552819-D / CDL-55218-F</td>
-                <td className="py-1">North Port Station</td>
-                <td className="py-1 text-center text-yellow-500">★ 4.5</td>
-                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-red-500/10 text-red-400">Suspended</span></td>
               </tr>
             </tbody>
           </table>
@@ -166,24 +160,10 @@ const WORKFLOW_ITEMS = [
                 <td className="py-1 text-center text-green-400">Full Access</td>
               </tr>
               <tr>
-                <td className="py-1 text-white font-bold">Operations Manager</td>
-                <td className="py-1 text-center text-green-400">Full Access</td>
-                <td className="py-1 text-center text-green-400">Full Access</td>
-                <td className="py-1 text-center text-yellow-500">Read Only</td>
-                <td className="py-1 text-center text-red-500">No Access</td>
-              </tr>
-              <tr>
                 <td className="py-1 text-white font-bold">Chauffeur / Driver</td>
                 <td className="py-1 text-center text-yellow-500">Checklists Only</td>
                 <td className="py-1 text-center text-green-400">Active Routes</td>
                 <td className="py-1 text-center text-red-500">No Access</td>
-                <td className="py-1 text-center text-red-500">No Access</td>
-              </tr>
-              <tr>
-                <td className="py-1 text-white font-bold">Customer Support</td>
-                <td className="py-1 text-center text-yellow-500">Read Only</td>
-                <td className="py-1 text-center text-red-500">No Access</td>
-                <td className="py-1 text-center text-green-400">Create Invoices</td>
                 <td className="py-1 text-center text-red-500">No Access</td>
               </tr>
             </tbody>
@@ -194,76 +174,70 @@ const WORKFLOW_ITEMS = [
   },
   {
     id: '03',
-    title: 'Register Customers',
-    subtitle: 'Store customer profiles, license details, and histories.',
+    title: 'Register Customers & KYC',
+    subtitle: "Securely verify driver's licenses, auto insurance, and credit risk scores.",
     icon: <UserPlus className="w-6 h-6" />,
-    description: 'Maintain a secure Customer Directory that files contact details, active driving licenses, dynamic risk scores (Low, Medium, Critical), and historic trip files. Upload identity credentials to feed the KYC verification funnel, checking license status, auto-matching insurance policies, verifying security status, and automatically blacklisting accounts with histories of late returns or unpaid damages to minimize vehicle recovery risks.',
+    description: 'Maintain a secure Customer Directory that files contact profiles, driving records, and liability insurance cards. Feed upload documents through the automated customer KYC verification funnel to validate credentials.',
     features: [
-      'Create digital customer profiles',
-      'Verify driving licenses',
-      'Track rental histories',
-      'Manage security status',
-      'Verify insurance coverage',
-      'Customer loyalty tracking'
+      'Store comprehensive customer profiles',
+      'Automate license OCR verification',
+      'Validate active auto insurance policies',
+      'Assess guest financial credit risks',
+      'Track historical trip logs & spend',
+      'Maintain blacklist database rules'
     ],
     mockup: (
       <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
         <div>
-          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Verified Customer Registry</div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Verified Customer Directory</div>
           <table className="w-full text-left text-[10px] text-zinc-300 border-collapse">
             <thead>
               <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
-                <th className="pb-1">Customer ID</th>
-                <th className="pb-1">Customer Name</th>
-                <th className="pb-1">Contact Email / Phone</th>
-                <th className="pb-1 text-center">KYC Check</th>
-                <th className="pb-1 text-center">Trips</th>
-                <th className="pb-1 text-right">Spent Total</th>
+                <th className="pb-1">Customer</th>
+                <th className="pb-1">License State</th>
+                <th className="pb-1">Primary Insurer</th>
+                <th className="pb-1 text-center">KYC Status</th>
+                <th className="pb-1 text-right">Lifetime Spend</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
               <tr>
-                <td className="py-1 font-mono text-zinc-500">CUST-101</td>
                 <td className="py-1 text-white font-bold">Elena Rodriguez</td>
-                <td className="py-1">elena@vortex.io • (555) 042-8812</td>
+                <td className="py-1">California (Class C)</td>
+                <td className="py-1">State Farm</td>
                 <td className="py-1 text-center"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Verified</span></td>
-                <td className="py-1 text-center text-yellow-500 font-bold">14</td>
-                <td className="py-1 text-right text-white font-bold">$12,450</td>
+                <td className="py-1 text-right text-yellow-500 font-bold">$12,850</td>
               </tr>
               <tr>
-                <td className="py-1 font-mono text-zinc-500">CUST-103</td>
                 <td className="py-1 text-white font-bold">Michael Chen</td>
-                <td className="py-1">michael.c@gmail.com • (555) 902-1122</td>
+                <td className="py-1">New York (Class D)</td>
+                <td className="py-1">GEICO Auto</td>
                 <td className="py-1 text-center"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-yellow-500/10 text-yellow-400">Pending</span></td>
-                <td className="py-1 text-center text-yellow-500 font-bold">2</td>
-                <td className="py-1 text-right text-white font-bold">$850</td>
+                <td className="py-1 text-right text-yellow-500 font-bold">$4,200</td>
               </tr>
               <tr>
-                <td className="py-1 font-mono text-zinc-500">CUST-105</td>
-                <td className="py-1 text-white font-bold">David Wilson</td>
-                <td className="py-1">david.w@proton.me • (555) 381-0029</td>
-                <td className="py-1 text-center"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-red-500/10 text-red-400">Rejected</span></td>
-                <td className="py-1 text-center text-yellow-500 font-bold">1</td>
-                <td className="py-1 text-right text-white font-bold">$450</td>
+                <td className="py-1 text-white font-bold">David Johnson</td>
+                <td className="py-1">Texas (Class A)</td>
+                <td className="py-1">Progressive</td>
+                <td className="py-1 text-center"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-red-500/10 text-red-400">Flagged</span></td>
+                <td className="py-1 text-right text-yellow-500 font-bold">$0</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div>
-          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">KYC Verification Pipeline Funnel</div>
-          <div className="grid grid-cols-5 gap-2 text-center text-[8px]">
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">KYC Verification Funnel Milestones</div>
+          <div className="grid grid-cols-4 gap-2">
             {[
-              { s: 'Stage 1', n: 'License OCR Scan', d: 'Extract data, check expiration' },
-              { s: 'Stage 2', n: 'Identity Validation', d: 'Check government files' },
-              { s: 'Stage 3', n: 'Credit Validation', d: 'Card limit hold check' },
-              { s: 'Stage 4', n: 'Insurance Match', d: 'Confirm active cover' },
-              { s: 'Stage 5', n: 'Risk Scoring', d: 'Evaluate driving records' }
-            ].map((st, i) => (
-              <div key={i} className="bg-[#181818] border border-white/5 p-2 rounded-lg relative">
-                <div className="text-yellow-500 font-mono font-bold mb-0.5">{st.s}</div>
-                <div className="text-white font-bold mb-1 truncate">{st.n}</div>
-                <div className="text-zinc-500 text-[7px] leading-tight">{st.d}</div>
+              { label: '01. License OCR Check', desc: 'Validates status & class' },
+              { label: '02. Identity Match', desc: 'Facial recognition verification' },
+              { label: '03. Insurance Policy Match', desc: 'Auto coverage authentication' },
+              { label: '04. Liability Risk Score', desc: 'Generates user safety tier' }
+            ].map((step, idx) => (
+              <div key={idx} className="bg-[#181818] border border-white/5 p-2 rounded text-center">
+                <div className="text-[8px] font-bold text-white mb-0.5">{step.label}</div>
+                <div className="text-[7px] text-zinc-550">{step.desc}</div>
               </div>
             ))}
           </div>
@@ -273,74 +247,68 @@ const WORKFLOW_ITEMS = [
   },
   {
     id: '04',
-    title: 'Manage Bookings',
-    subtitle: 'Book rentals, schedule pick-ups, and automate notifications.',
+    title: 'Dynamic Booking Engine',
+    subtitle: 'Automate reservation workflows, vehicle assignments, and alerts.',
     icon: <Calendar className="w-6 h-6" />,
-    description: 'Schedule, modify, and track reservations on a unified calendar. Filter bookings by pickup hub, date ranges, and status (Pending, Confirmed, Active, Completed, Cancelled). When a booking is created, the system auto-locks vehicle availability, pre-auths security deposits via Stripe, triggers e-mail reminders, compiles the digital rental lease contract, and assigns the closest available chauffeur for logistics delivery based on proximity.',
+    description: 'Process rental bookings seamlessly through an intelligent allocation calendar. Set up real-time availability filters, handle reservation deposits, and automate rental confirmation notifications.',
     features: [
-      'Interactive booking calendar',
-      'Automated notifications',
-      'Online reservation portal',
-      'Vehicle availability status',
-      'Waitlist & extension request',
-      'Track cancellations & no-shows'
+      'Real-time vehicle availability sync',
+      'Direct booking engine integration',
+      'Location-based auto assignments',
+      'Instant guest check-out logs',
+      'Automated confirmation alerts',
+      'Extend active rentals dynamically'
     ],
     mockup: (
       <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
         <div>
-          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Active Reservation Registry</div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Active Reservations Ledger</div>
           <table className="w-full text-left text-[10px] text-zinc-300 border-collapse">
             <thead>
               <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
-                <th className="pb-1">Booking ID</th>
-                <th className="pb-1">Customer Name</th>
-                <th className="pb-1">Appointed Exotic Car</th>
-                <th className="pb-1">Rental Period Range</th>
-                <th className="pb-1 text-center">Base Price</th>
+                <th className="pb-1">Res ID</th>
+                <th className="pb-1">Customer</th>
+                <th className="pb-1">Car Model</th>
+                <th className="pb-1">Rental Period</th>
                 <th className="pb-1 text-right">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
               <tr>
-                <td className="py-1 font-mono text-zinc-500">RSV-8829</td>
-                <td className="py-1 text-white font-bold">Elena Rodriguez</td>
-                <td className="py-1">Tesla Model S Plaid (Solid Black)</td>
-                <td className="py-1">2026-06-10 to 2026-06-14</td>
-                <td className="py-1 text-center text-yellow-500 font-bold">$600</td>
-                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Confirmed (Paid)</span></td>
+                <td className="py-1 text-white font-mono font-bold">RSV-8829</td>
+                <td className="py-1">Elena Rodriguez</td>
+                <td className="py-1">Lamborghini Revuelto</td>
+                <td className="py-1">June 26 – June 29 (3 Days)</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">In Progress</span></td>
               </tr>
               <tr>
-                <td className="py-1 font-mono text-zinc-500">RSV-7712</td>
-                <td className="py-1 text-white font-bold">James T.</td>
-                <td className="py-1">BMW M8 Convertible (Alpine White)</td>
-                <td className="py-1">2026-05-12 to 2026-05-15</td>
-                <td className="py-1 text-center text-yellow-500 font-bold">$660</td>
-                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-zinc-500/10 text-zinc-400">Completed</span></td>
+                <td className="py-1 text-white font-mono font-bold">RSV-7712</td>
+                <td className="py-1">Michael Chen</td>
+                <td className="py-1">Porsche 911 GT3 RS</td>
+                <td className="py-1">July 02 – July 04 (2 Days)</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-500/10 text-blue-400">Confirmed</span></td>
               </tr>
               <tr>
-                <td className="py-1 font-mono text-zinc-500">RSV-9011</td>
-                <td className="py-1 text-white font-bold">Elena Rodriguez</td>
-                <td className="py-1">Rolls-Royce Spectre (Midnight Blue)</td>
-                <td className="py-1">2026-06-20 to 2026-06-25</td>
-                <td className="py-1 text-center text-yellow-500 font-bold">$2,250</td>
-                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-yellow-500/10 text-yellow-400">Pending</span></td>
+                <td className="py-1 text-white font-mono font-bold">RSV-9011</td>
+                <td className="py-1">Alice Smith</td>
+                <td className="py-1">Mercedes-Benz G-Class</td>
+                <td className="py-1">June 20 – June 22 (2 Days)</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-zinc-500/10 text-zinc-400">Returned</span></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div>
-          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Booking Operational Lifecycle Stages</div>
-          <div className="flex justify-between items-center text-[8px] text-zinc-500">
-            <div className="flex-1 text-center bg-[#181818] p-2 border border-white/5 rounded-lg text-white font-bold">1. Booking Created</div>
-            <div className="px-2 text-zinc-700">→</div>
-            <div className="flex-1 text-center bg-[#181818] p-2 border border-white/5 rounded-lg text-white font-bold">2. KYC Credentials Verified</div>
-            <div className="px-2 text-zinc-700">→</div>
-            <div className="flex-1 text-center bg-[#181818] p-2 border border-white/5 rounded-lg text-white font-bold">3. Deposit Stripe Hold</div>
-            <div className="px-2 text-zinc-700">→</div>
-            <div className="flex-1 text-center bg-[#181818] p-2 border border-white/5 rounded-lg text-white font-bold">4. Rental Agreement E-signed</div>
-            <div className="px-2 text-zinc-700">→</div>
-            <div className="flex-1 text-center bg-[#181818] p-2 border border-white/5 rounded-lg text-white font-bold">5. Driver Dispatched</div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Booking Lifecycle Milestones</div>
+          <div className="flex items-center justify-between text-[8px] font-bold font-mono text-zinc-400">
+            <span className="text-yellow-500">1. Res Received</span>
+            <span className="text-zinc-500">&rarr;</span>
+            <span className="text-yellow-500">2. Deposit Checked</span>
+            <span className="text-zinc-500">&rarr;</span>
+            <span className="text-yellow-500">3. Agreement E-Signed</span>
+            <span className="text-zinc-500">&rarr;</span>
+            <span className="text-yellow-500">4. Keys Dispatched</span>
           </div>
         </div>
       </div>
@@ -348,164 +316,67 @@ const WORKFLOW_ITEMS = [
   },
   {
     id: '05',
-    title: 'Inspection & Servicing',
-    subtitle: 'Log digital inspection checklists and damage reports.',
-    icon: <Car className="w-6 h-6" />,
-    description: 'Ensure fleet durability by conducting walkaround checklists before delivery and immediately upon return. Inspectors check 16 key zones on a digital damage marking log, record fuel/battery levels, take photo evidence, and log mileage. Schedule recurring service logs (e.g., Brake pad replacement, oil changes) that auto-trigger maintenance reminders once the vehicle exceeds set odometer limits, tracking repair costs directly against unit revenue.',
+    title: 'GPS Tracking & Telematics',
+    subtitle: 'Monitor real-time coordinates, geofences, and vehicle speed alerts.',
+    icon: <Map className="w-6 h-6" />,
+    description: 'Protect your high-value assets with live GPS tracking and telemetry logging. Track vehicle locations on a dynamic map, monitor live vehicle speed alerts, and receive instant geofence breach notifications.',
     features: [
-      'Digital walkaround checklists',
-      'Odometer & fuel log',
-      'Damage marking diagram',
-      'Schedule routine maintenance',
-      'Log servicing costs',
-      'Upload inspection reports'
-    ],
-    mockup: (
-      <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
-        <div className="grid grid-cols-2 gap-6">
-          <div>
-            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Chauffeur 16-Zone Handover Checklist</div>
-            <p className="text-[9px] text-zinc-400 leading-relaxed mb-3">
-              Chauffeurs log details with pictures on their mobile web view before handing keys to the customer:
-            </p>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-[8px] text-zinc-300">
-              <div>• Front Bumper & Grill</div>
-              <div>• Hood & Left Fender</div>
-              <div>• Windshield & Roof</div>
-              <div>• Right Front Door</div>
-              <div>• Left Front Door</div>
-              <div>• Right Rear Door</div>
-              <div>• Left Rear Door</div>
-              <div>• Rear Bumper & Exhaust</div>
-              <div>• Left Quarter Panel</div>
-              <div>• Right Quarter Panel</div>
-              <div>• Left Front/Rear Tires</div>
-              <div>• Right Front/Rear Tires</div>
-            </div>
-          </div>
-
-          <div>
-            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Active Servicing Record</div>
-            <table className="w-full text-left text-[9px] text-zinc-400 border-collapse">
-              <thead>
-                <tr className="border-b border-white/5 text-[8px] uppercase tracking-wider text-zinc-600">
-                  <th className="pb-1">Exotic model</th>
-                  <th className="pb-1">Service task description</th>
-                  <th className="pb-1 text-center">Cost</th>
-                  <th className="pb-1 text-right">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                <tr>
-                  <td className="py-1 text-white font-bold">Mercedes G-Class</td>
-                  <td className="py-1">Brake pad replacement</td>
-                  <td className="py-1 text-center text-yellow-500 font-bold">$850</td>
-                  <td className="py-1 text-right text-green-400">Completed</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Lambo Revuelto</td>
-                  <td className="py-1">Engine tune-up & spark plugs</td>
-                  <td className="py-1 text-center text-yellow-500 font-bold">$1,200</td>
-                  <td className="py-1 text-right text-blue-400">In Service</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">RR Spectre</td>
-                  <td className="py-1">EV Software system upgrade</td>
-                  <td className="py-1 text-center text-yellow-500 font-bold">$150</td>
-                  <td className="py-1 text-right text-zinc-500">Scheduled</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: '06',
-    title: 'Invoices & Payments',
-    subtitle: 'Generate rental agreements, handle deposits, and track payments.',
-    icon: <CreditCard className="w-6 h-6" />,
-    description: 'Streamline billing with automatic rental agreements, deposit holds, and invoices. Collect rental payments, secure credit card pre-authorizations for deposits ($500 to $5,000 holds depending on vehicle value), and automatically calculate late-return fines or excess mileage surcharges upon check-in. Process transactions securely via integrated processors (Stripe, Credit Cards, Zelle, Cash App) and output downloadable PDF statements.',
-    features: [
-      'Instant invoice & agreement generation',
-      'Hold & release security deposits',
-      'Collect late-return & damage fees',
-      'Supports multiple payment gateways',
-      'Handle tax & rental discounts',
-      'Detailed billing dashboard'
+      'Real-time GPS coordinate mapping',
+      'Set geographic boundary geofences',
+      'Receive instant overspeed alerts',
+      'Track fuel & battery charge levels',
+      'Log engine diagnostics & DTC codes',
+      'Monitor chauffeur driving behaviors'
     ],
     mockup: (
       <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
         <div>
-          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Recent Transactions Ledger</div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Live Telemetry & GPS Tracking</div>
           <table className="w-full text-left text-[10px] text-zinc-300 border-collapse">
             <thead>
               <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
-                <th className="pb-1">Transaction ID</th>
-                <th className="pb-1">Customer / Entity</th>
-                <th className="pb-1">Transaction Type</th>
-                <th className="pb-1">Date/Time</th>
-                <th className="pb-1 text-center">Channel</th>
-                <th className="pb-1 text-right">Amount</th>
+                <th className="pb-1">Vehicle</th>
+                <th className="pb-1">Live Coordinates / Speed</th>
+                <th className="pb-1">Fuel / Battery</th>
+                <th className="pb-1 text-right">Active Alerts</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
               <tr>
-                <td className="py-1 font-mono text-zinc-500">TRX-9921</td>
-                <td className="py-1 text-white font-bold">Elena Rodriguez</td>
-                <td className="py-1">Rental Payment</td>
-                <td className="py-1">2026-06-05 14:30</td>
-                <td className="py-1 text-center text-zinc-400">Stripe</td>
-                <td className="py-1 text-right text-green-400 font-bold">+$1,250.00</td>
+                <td className="py-1 text-white font-bold">Lamborghini Revuelto</td>
+                <td className="py-1 font-mono text-[9px]">34.0522° N, 118.2437° W / 65 mph</td>
+                <td className="py-1 text-yellow-500 font-bold">78% Fuel</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">None</span></td>
               </tr>
               <tr>
-                <td className="py-1 font-mono text-zinc-500">TRX-9922</td>
-                <td className="py-1 text-white font-bold">James T.</td>
-                <td className="py-1">Security Deposit (Hold)</td>
-                <td className="py-1">2026-06-04 11:15</td>
-                <td className="py-1 text-center text-zinc-400">Zelle</td>
-                <td className="py-1 text-right text-yellow-500 font-bold">+$500.00</td>
+                <td className="py-1 text-white font-bold">Porsche 911 GT3 RS</td>
+                <td className="py-1 font-mono text-[9px]">34.0736° N, 118.4004° W / 105 mph</td>
+                <td className="py-1 text-yellow-500 font-bold">45% Fuel</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-red-500/10 text-red-400">Overspeed Warn</span></td>
               </tr>
               <tr>
-                <td className="py-1 font-mono text-zinc-500">TRX-9923</td>
-                <td className="py-1 text-white font-bold">David W.</td>
-                <td className="py-1">Rental Payment</td>
-                <td className="py-1">2026-06-03 09:20</td>
-                <td className="py-1 text-center text-zinc-400">Credit Card</td>
-                <td className="py-1 text-right text-green-400 font-bold">+$600.00</td>
-              </tr>
-              <tr>
-                <td className="py-1 font-mono text-zinc-500">TRX-9924</td>
-                <td className="py-1 text-white font-bold">Sarah M.</td>
-                <td className="py-1">Insurance Surcharge</td>
-                <td className="py-1">2026-06-02 16:45</td>
-                <td className="py-1 text-center text-zinc-400">Cash App</td>
-                <td className="py-1 text-right text-green-400 font-bold">+$150.00</td>
+                <td className="py-1 text-white font-bold">Tesla Model S Plaid</td>
+                <td className="py-1 font-mono text-[9px]">34.0194° N, 118.4912° W / 0 mph</td>
+                <td className="py-1 text-yellow-500 font-bold">88% Battery</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-yellow-500/10 text-yellow-400">Geofence Exit</span></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 pt-1">
+        <div className="grid grid-cols-2 gap-4">
           <div>
-            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Security Deposit Holds (Pre-Auths)</div>
-            <table className="w-full text-left text-[9px] text-zinc-400">
-              <tbody className="divide-y divide-white/5">
-                <tr><td className="py-1 text-white font-bold">Lamborghini Revuelto</td><td className="py-1 text-right text-yellow-500 font-bold">$5,000 hold</td></tr>
-                <tr><td className="py-1 text-white font-bold">Rolls-Royce Spectre / Ferrari SF90</td><td className="py-1 text-right text-yellow-500 font-bold">$3,500 hold</td></tr>
-                <tr><td className="py-1 text-white font-bold">Mercedes-Benz G-Class</td><td className="py-1 text-right text-yellow-500 font-bold">$2,000 hold</td></tr>
-                <tr><td className="py-1 text-white font-bold">BMW M8 / Tesla Plaid</td><td className="py-1 text-right text-yellow-500 font-bold">$1,200 – $1,500 hold</td></tr>
-              </tbody>
-            </table>
+            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Active Geofences</div>
+            <ul className="text-[9px] text-zinc-400 space-y-1">
+              <li>📍 <strong className="text-white">Beverly Hills Safe Zone:</strong> Radius 15 miles</li>
+              <li>📍 <strong className="text-white">Los Angeles Metro Boundary:</strong> Radius 50 miles</li>
+            </ul>
           </div>
           <div>
-            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">System Billing Fines & Rules</div>
-            <ul className="text-[9px] text-zinc-400 space-y-1 pl-3 list-disc">
-              <li><span className="text-zinc-500">Late returns:</span> $100.00 per hour delay fee</li>
-              <li><span className="text-zinc-500">Refueling charge:</span> Fuel cost + $50 service fee</li>
-              <li><span className="text-zinc-500">Excess mileage:</span> $2.50 per excess mile</li>
-              <li><span className="text-zinc-500">Tolls handling:</span> Total tolls + $10 fee</li>
+            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Telemetry Diagnostics</div>
+            <ul className="text-[9px] text-zinc-400 space-y-1">
+              <li>📡 <strong className="text-white">Ping Interval:</strong> Every 5 seconds</li>
+              <li>🩺 <strong className="text-white">Diagnostic Codes (OBD):</strong> Clear (0 DTC)</li>
             </ul>
           </div>
         </div>
@@ -513,111 +384,192 @@ const WORKFLOW_ITEMS = [
     )
   },
   {
-    id: '07',
-    title: 'Fleet Reports & Analytics',
-    subtitle: 'Monitor vehicle utilization, rental revenue, and fleet health.',
-    icon: <BarChart3 className="w-6 h-6" />,
-    description: 'Monitor business growth with real-time analytics. View utilization rate metrics, gross revenues generated per unit, acquisition costs vs repair records, and driver productivity logs. Drill down into specific exotic performance (e.g., Lamborghini Revuelto vs Rolls-Royce Spectre trip count and earnings) and export compliance-ready PDF ledger reports to automate accounting audits and guide fleet expansion strategies.',
+    id: '06',
+    title: '16-Zone Digital Inspections',
+    subtitle: 'Perform walkaround damage checks, log tyre tread, and schedule service.',
+    icon: <ClipboardCheck className="w-6 h-6" />,
+    description: 'Ensure quality control with mandatory chauffeur-led digital inspections before handovers and after returns. Walk through the 16-zone exterior/interior check-sheet, record damage logs, and report technical faults.',
     features: [
-      'Daily utilization rate dashboard',
-      'Vehicle class revenue metrics',
-      'Acquisition & growth charts',
-      'Maintenance cost tracking',
-      'Driver productivity reports',
-      'Exportable CSV/PDF statistics'
+      'Mandatory 16-zone walkaround checklist',
+      'Log high-resolution damage reports',
+      'Record tyre wear & brake pad logs',
+      'Verify interior cleanliness ratings',
+      'Auto-create mechanic service orders',
+      'Lock faulty vehicles from inventory'
     ],
     mockup: (
       <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
         <div>
-          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Fleet Lifetime Performance & Gross Revenue</div>
-          <div className="max-h-36 overflow-y-auto pr-2 custom-scrollbar">
-            <table className="w-full text-left text-[9px] text-zinc-300 border-collapse">
-              <thead>
-                <tr className="border-b border-white/5 text-[8px] uppercase tracking-wider text-zinc-500 sticky top-0 bg-[#121212]">
-                  <th className="pb-1">Vehicle Model Name</th>
-                  <th className="pb-1">Category</th>
-                  <th className="pb-1 text-center">Trips</th>
-                  <th className="pb-1 text-center">Miles Driven</th>
-                  <th className="pb-1 text-center">Maintenance</th>
-                  <th className="pb-1 text-right">Gross Earnings</th>
-                </tr>
-              </thead>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Active Servicing & Fleet Maintenance Logs</div>
+          <table className="w-full text-left text-[10px] text-zinc-300 border-collapse">
+            <thead>
+              <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
+                <th className="pb-1">Vehicle Model</th>
+                <th className="pb-1">Maintenance Type</th>
+                <th className="pb-1">Assigned Shop</th>
+                <th className="pb-1 text-center">Cost</th>
+                <th className="pb-1 text-right">Repair Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              <tr>
+                <td className="py-1 text-white font-bold">Mercedes-Benz G-Class</td>
+                <td className="py-1">Transmission Fluid Flush</td>
+                <td className="py-1">MB Beverly Hills Service</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">$850</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Completed</span></td>
+              </tr>
+              <tr>
+                <td className="py-1 text-white font-bold">Lamborghini Revuelto</td>
+                <td className="py-1">Carbon Ceramic Brake Pads</td>
+                <td className="py-1">Lamborghini LA Service</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">$3,400</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-yellow-500/10 text-yellow-400">In Progress</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Chauffeur 16-Zone Handover Checksheet</div>
+          <div className="grid grid-cols-3 gap-y-1 gap-x-4 text-[9px] text-zinc-400">
+            <div className="flex items-center gap-1.5"><Check size={10} className="text-yellow-500" /> Exterior Panels</div>
+            <div className="flex items-center gap-1.5"><Check size={10} className="text-yellow-500" /> Front Windshield</div>
+            <div className="flex items-center gap-1.5"><Check size={10} className="text-yellow-500" /> Tyre Tread Depth</div>
+            <div className="flex items-center gap-1.5"><Check size={10} className="text-yellow-500" /> Interior Leather</div>
+            <div className="flex items-center gap-1.5"><Check size={10} className="text-yellow-500" /> Dashboard Screens</div>
+            <div className="flex items-center gap-1.5"><Check size={10} className="text-yellow-500" /> Fluid Levels</div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: '07',
+    title: 'Billing, Deposits & Payments',
+    subtitle: 'Manage security deposit pre-authorizations, invoices, and toll logs.',
+    icon: <CreditCard className="w-6 h-6" />,
+    description: 'Automate billing operations with transparent invoices and integrated payment gateways. Charge security deposit pre-authorizations, release holds automatically on clean returns, and track incidental charges.',
+    features: [
+      'Pre-authorize card security deposits',
+      'Generate GST/VAT compliant invoices',
+      'Auto-charge toll road fee adjustments',
+      'Track fuel & cleaning fee penalties',
+      'Split billing invoice sharing',
+      'Process refunds & gateway cashouts'
+    ],
+    mockup: (
+      <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
+        <div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Recent Transaction Ledger</div>
+          <table className="w-full text-left text-[10px] text-zinc-300 border-collapse">
+            <thead>
+              <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
+                <th className="pb-1">Transaction ID</th>
+                <th className="pb-1">Billing Customer</th>
+                <th className="pb-1">Paid Via</th>
+                <th className="pb-1 text-center">Amount</th>
+                <th className="pb-1 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              <tr>
+                <td className="py-1 font-mono text-zinc-400">TRX-9921</td>
+                <td className="py-1 text-white font-bold">Elena Rodriguez</td>
+                <td className="py-1">Stripe Checkout</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">$1,350</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-green-500/10 text-green-400">Cleared</span></td>
+              </tr>
+              <tr>
+                <td className="py-1 font-mono text-zinc-400">TRX-9922</td>
+                <td className="py-1 text-white font-bold">Michael Chen</td>
+                <td className="py-1">Stripe Deposit Hold</td>
+                <td className="py-1 text-center text-yellow-500 font-bold">$2,500</td>
+                <td className="py-1 text-right"><span className="px-2 py-0.5 rounded text-[8px] font-bold bg-yellow-500/10 text-yellow-400">Held</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Security Deposit Holds</div>
+            <table className="w-full text-left text-[9px] text-zinc-400">
               <tbody className="divide-y divide-white/5">
-                <tr>
-                  <td className="py-1 text-white font-bold">Lamborghini Revuelto</td>
-                  <td className="py-1 text-zinc-500">Sport</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">42</td>
-                  <td className="py-1 text-center">4,800 mi</td>
-                  <td className="py-1 text-center text-red-500">$2,400</td>
-                  <td className="py-1 text-right text-white font-bold">$208,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Rolls-Royce Spectre</td>
-                  <td className="py-1 text-zinc-500">Electric</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">14</td>
-                  <td className="py-1 text-center">1,240 mi</td>
-                  <td className="py-1 text-center text-red-500">$0</td>
-                  <td className="py-1 text-right text-white font-bold">$124,500</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Ferrari SF90 Stradale</td>
-                  <td className="py-1 text-zinc-500">Sport</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">15</td>
-                  <td className="py-1 text-center">500 mi</td>
-                  <td className="py-1 text-center text-red-500">$1,850</td>
-                  <td className="py-1 text-right text-white font-bold">$92,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Tesla Model S Plaid</td>
-                  <td className="py-1 text-zinc-500">Electric</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">34</td>
-                  <td className="py-1 text-center">9,450 mi</td>
-                  <td className="py-1 text-center text-red-500">$600</td>
-                  <td className="py-1 text-right text-white font-bold">$92,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Porsche 911 GT3</td>
-                  <td className="py-1 text-zinc-500">Sport</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">18</td>
-                  <td className="py-1 text-center">1,500 mi</td>
-                  <td className="py-1 text-center text-red-500">$3,200</td>
-                  <td className="py-1 text-right text-white font-bold">$74,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Aston Martin DBS</td>
-                  <td className="py-1 text-zinc-500">Sport</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">22</td>
-                  <td className="py-1 text-center">1,800 mi</td>
-                  <td className="py-1 text-center text-red-500">$4,100</td>
-                  <td className="py-1 text-right text-white font-bold">$64,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">BMW M8 Convertible</td>
-                  <td className="py-1 text-zinc-500">Convertible</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">12</td>
-                  <td className="py-1 text-center">2,150 mi</td>
-                  <td className="py-1 text-center text-red-500">$850</td>
-                  <td className="py-1 text-right text-white font-bold">$58,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Bentley Continental GT</td>
-                  <td className="py-1 text-zinc-500">Sport</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">14</td>
-                  <td className="py-1 text-center">3,100 mi</td>
-                  <td className="py-1 text-center text-red-500">$1,500</td>
-                  <td className="py-1 text-right text-white font-bold">$48,000</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-white font-bold">Mercedes-Benz G-Class</td>
-                  <td className="py-1 text-zinc-500">SUV</td>
-                  <td className="py-1 text-center font-bold text-yellow-500">8</td>
-                  <td className="py-1 text-center">800 mi</td>
-                  <td className="py-1 text-center text-red-500">$10,350</td>
-                  <td className="py-1 text-right text-white font-bold">$45,200</td>
-                </tr>
+                <tr><td className="py-1 text-white font-bold">Exotic Sport</td><td className="py-1 text-right">$5,000 hold</td></tr>
+                <tr><td className="py-1 text-white font-bold">Luxury SUV</td><td className="py-1 text-right">$2,500 hold</td></tr>
+                <tr><td className="py-1 text-white font-bold">Convertible</td><td className="py-1 text-right">$1,500 hold</td></tr>
               </tbody>
             </table>
           </div>
+          <div>
+            <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Incidentals & Penalty Tariff</div>
+            <ul className="text-[9px] text-zinc-400 space-y-1 pl-3 list-disc">
+              <li><span className="text-zinc-500">Late Return:</span> $100.00 / hour</li>
+              <li><span className="text-zinc-500">Refuelling:</span> Fuel cost + $50 fee</li>
+              <li><span className="text-zinc-500">Excess Miles:</span> $2.50 / excess mile</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: '08',
+    title: 'Fleet Revenue & Analytics',
+    subtitle: 'View vehicle class utilization indexes, trip counts, and net profits.',
+    icon: <BarChart3 className="w-6 h-6" />,
+    description: 'Analyze business performance with consolidated analytics reports. Monitor asset utilization index trends, track trip logs per vehicle class, and review gross revenues alongside maintenance cost allocations.',
+    features: [
+      'Consolidated revenue analytics boards',
+      'Monthly asset utilization indexes',
+      'Exotic model cost-to-income comparisons',
+      'Log total operational mileage driven',
+      'Export ledger files for tax audits',
+      'Track net profit margin metrics'
+    ],
+    mockup: (
+      <div className="bg-[#121212] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block space-y-5">
+        <div>
+          <div className="text-[10px] font-bold text-yellow-500 mb-2 uppercase tracking-wider">Exotic Fleet Performance Ledger</div>
+          <table className="w-full text-left text-[10px] text-zinc-300 border-collapse">
+            <thead>
+              <tr className="border-b border-white/10 text-[8px] uppercase tracking-wider text-zinc-500">
+                <th className="pb-1">Vehicle Model</th>
+                <th className="pb-1">Class</th>
+                <th className="pb-1 text-center">Trips</th>
+                <th className="pb-1 text-center">Miles Driven</th>
+                <th className="pb-1 text-center">Maint Cost</th>
+                <th className="pb-1 text-right">Gross Earnings</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              <tr>
+                <td className="py-1 text-white font-bold">Lamborghini Revuelto</td>
+                <td className="py-1 text-zinc-500 font-mono text-[9px]">Exotic</td>
+                <td className="py-1 text-center font-bold text-yellow-500">22</td>
+                <td className="py-1 text-center">2,450 mi</td>
+                <td className="py-1 text-center text-red-500">$3,400</td>
+                <td className="py-1 text-right text-white font-bold">$54,200</td>
+              </tr>
+              <tr>
+                <td className="py-1 text-white font-bold">Porsche 911 GT3 RS</td>
+                <td className="py-1 text-zinc-500 font-mono text-[9px]">Sport</td>
+                <td className="py-1 text-center font-bold text-yellow-500">18</td>
+                <td className="py-1 text-center">1,890 mi</td>
+                <td className="py-1 text-center text-red-500">$1,200</td>
+                <td className="py-1 text-right text-white font-bold">$38,900</td>
+              </tr>
+              <tr>
+                <td className="py-1 text-white font-bold">Mercedes-Benz G-Class</td>
+                <td className="py-1 text-zinc-500 font-mono text-[9px]">SUV</td>
+                <td className="py-1 text-center font-bold text-yellow-500">35</td>
+                <td className="py-1 text-center">4,200 mi</td>
+                <td className="py-1 text-center text-red-550">$850</td>
+                <td className="py-1 text-right text-white font-bold">$45,200</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         
         <div className="mt-4 pt-3 border-t border-white/5 flex justify-between text-[10px] text-zinc-400 font-mono">
@@ -630,15 +582,33 @@ const WORKFLOW_ITEMS = [
   }
 ];
 
+
 export const KiaanCarRentalLandingPage: React.FC = () => {
   const [activeItem, setActiveItem] = useState(WORKFLOW_ITEMS[0]);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
   
-  // Buy Now Flow State
-  const [buyStep, setBuyStep] = useState(1);
-  const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedPlan, setSelectedPlan] = useState('');
+  const [isCustomerFormOpen, setIsCustomerFormOpen] = useState(false);
+  const [customerForm, setCustomerForm] = useState({ fullName: '', email: '', whatsapp: '' });
+
+  const handleChoosePlan = (plan: string) => {
+    setSelectedPlan(plan);
+    setIsBuyModalOpen(false);
+    setIsCustomerFormOpen(true);
+  };
+
+  const isCustomerFormValid = customerForm.fullName.trim() !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerForm.email) &&
+    /^[0-9]{10,}$/.test(customerForm.whatsapp);
+
+  const handleContinueToPayment = () => {
+    if (isCustomerFormValid) {
+      console.log("Proceeding to payment:", { ...customerForm, plan: selectedPlan });
+      window.location.href = `https://razorpay.com/pay/?plan=${encodeURIComponent(selectedPlan)}`;
+      setIsCustomerFormOpen(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#080808] text-white font-sans selection:bg-yellow-500/30">
@@ -794,45 +764,31 @@ export const KiaanCarRentalLandingPage: React.FC = () => {
             />
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#111] border border-white/10 rounded-2xl p-6 md:p-8 w-full max-w-md relative z-10 shadow-2xl"
+              className="bg-[#111] border border-white/10 rounded-2xl p-5 md:p-6 w-full max-w-md relative z-10 shadow-2xl max-h-[85vh] overflow-y-auto"
             >
-              <button onClick={() => setIsDemoModalOpen(false)} className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10">
-                <X size={16} />
+              <button onClick={() => setIsDemoModalOpen(false)} className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10">
+                <X size={14} />
               </button>
               
-              <div className="mb-8">
-                <h3 className="text-2xl font-display font-bold text-white mb-2">Request Demo</h3>
-                <p className="text-zinc-400 text-sm">Enter your details and our team will set up your personalized demo account.</p>
+              <div className="mb-5">
+                <h3 className="text-xl font-display font-bold text-white mb-1.5">Request Demo</h3>
+                <p className="text-zinc-400 text-xs">Enter your details and our team will set up your personalized demo account.</p>
               </div>
 
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Demo Requested!"); setIsDemoModalOpen(false); }}>
+              <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert("Demo Requested!"); setIsDemoModalOpen(false); }}>
                 <div className="relative group">
-                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Full Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
-                <div className="relative group">
-                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="email" placeholder="Email Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                  <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="text" placeholder="Full Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
                 <div className="relative group">
-                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                  <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="email" placeholder="Email Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
                 <div className="relative group">
-                  <Building size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Company Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+                  <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
                 </div>
-                <div className="flex gap-4">
-                  <div className="relative group w-1/2">
-                    <Car size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="number" placeholder="Fleet Size" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                  <div className="relative group w-1/2">
-                    <MapPin size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                    <input required type="text" placeholder="City" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                  </div>
-                </div>
-                <button type="submit" className="w-full bg-yellow-500 text-black py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-4">
+                <button type="submit" className="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-2">
                   Request Demo
                 </button>
               </form>
@@ -844,148 +800,241 @@ export const KiaanCarRentalLandingPage: React.FC = () => {
       {/* Buy Now Modal */}
       <AnimatePresence>
         {isBuyModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div 
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-              onClick={() => { setIsBuyModalOpen(false); setBuyStep(1); setSelectedProduct(''); setSelectedPlan(''); }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              onClick={() => setIsBuyModalOpen(false)}
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#111] border border-white/10 rounded-2xl p-6 md:p-8 w-full max-w-xl relative z-10 shadow-2xl overflow-hidden"
+              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-5 w-full max-w-4xl relative z-10 shadow-2xl overflow-hidden"
             >
-              <button 
-                onClick={() => { setIsBuyModalOpen(false); setBuyStep(1); setSelectedProduct(''); setSelectedPlan(''); }} 
-                className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10"
+              <button
+                onClick={() => setIsBuyModalOpen(false)}
+                className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
-              
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-3 text-[10px] font-bold text-zinc-600 uppercase tracking-widest bg-black/50 inline-flex px-3 py-1.5 rounded-full border border-white/5">
-                  <span className={buyStep >= 1 ? 'text-yellow-500' : ''}>1. Product</span>
-                  <ChevronRight size={12} className="text-zinc-700" />
-                  <span className={buyStep >= 2 ? 'text-yellow-500' : ''}>2. Plan</span>
-                  <ChevronRight size={12} className="text-zinc-700" />
-                  <span className={buyStep >= 3 ? 'text-yellow-500' : ''}>3. Details</span>
-                </div>
-                <h3 className="text-2xl font-display font-bold text-white">Purchase Subscription</h3>
+
+              <div className="mb-4 text-center">
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-1 uppercase tracking-wide">
+                  SELECT <span className="text-yellow-500">SUBSCRIPTION PLAN</span>
+                </h3>
+                <p className="text-zinc-400 text-[10px] md:text-[11px]">
+                  Choose the perfect fit for your car rental operations
+                </p>
               </div>
 
-              {/* Step 1: Product Selection */}
-              {buyStep === 1 && (
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <p className="text-zinc-400 text-sm mb-6">Select the relevant Rental Management product:</p>
-                  <div className="space-y-3">
-                    {['Kiaan Rental Core', 'Kiaan Car Rental', 'Kiaan Vehicle Rental System'].map((prod, i) => (
-                      <button 
-                        key={i}
-                        onClick={() => setSelectedProduct(prod)}
-                        className={`w-full text-left px-5 py-5 rounded-xl border transition-all ${
-                          selectedProduct === prod 
-                            ? 'bg-yellow-500/10 border-yellow-500 text-white shadow-[0_0_15px_rgba(234,179,8,0.1)]' 
-                            : 'bg-[#181818] border-white/10 text-zinc-400 hover:border-white/30 hover:bg-[#222]'
-                        }`}
-                      >
-                        <div className="font-bold text-sm">{prod}</div>
-                      </button>
-                    ))}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                {/* Starter Plan */}
+                <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
+                  <h4 className="text-base font-bold text-white mb-0.5">Starter</h4>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Ideal for small local fleets</p>
+                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
+                    <span className="text-2xl md:text-3xl font-bold text-white">$9</span>
+                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
                   </div>
-                  <div className="mt-8 flex justify-end">
-                    <button 
-                      disabled={!selectedProduct}
-                      onClick={() => setBuyStep(2)}
-                      className="bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-black px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] disabled:shadow-none"
-                    >
-                      Next Step
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 2: Plan Selection */}
-              {buyStep === 2 && (
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <p className="text-zinc-400 text-sm mb-6">Select a plan for <span className="text-white font-bold">{selectedProduct}</span>:</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <ul className="space-y-1.5 mb-4 flex-1">
                     {[
-                      { name: 'Starter', price: '$49', period: '/mo', desc: 'For small fleets & independent operators' },
-                      { name: 'Professional', price: '$129', period: '/mo', desc: 'For growing agencies & multiple locations' },
-                    ].map((plan, i) => (
-                      <button 
-                        key={i}
-                        onClick={() => setSelectedPlan(plan.name)}
-                        className={`text-left p-6 rounded-xl border transition-all ${
-                          selectedPlan === plan.name 
-                            ? 'bg-yellow-500/10 border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.1)]' 
-                            : 'bg-[#181818] border-white/10 hover:border-white/30 hover:bg-[#222]'
-                        }`}
-                      >
-                        <div className={`font-bold text-sm uppercase tracking-wider mb-2 ${selectedPlan === plan.name ? 'text-yellow-500' : 'text-zinc-400'}`}>{plan.name}</div>
-                        <div className="text-3xl font-bold text-white mb-3">{plan.price}<span className="text-sm text-zinc-500 font-normal">{plan.period}</span></div>
-                        <div className="text-xs text-zinc-500 leading-relaxed">{plan.desc}</div>
-                      </button>
+                      'Up to 10 Vehicles',
+                      '1 Operational Hub',
+                      'Basic Booking Calendar',
+                      'Customer Directory',
+                      'Automated Lease Agreements',
+                      'Email Support'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
+                      </li>
                     ))}
-                  </div>
-                  <div className="mt-8 flex justify-between">
-                    <button 
-                      onClick={() => setBuyStep(1)}
-                      className="bg-[#181818] text-white border border-white/10 px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#222] transition-colors"
-                    >
-                      Back
-                    </button>
-                    <button 
-                      disabled={!selectedPlan}
-                      onClick={() => setBuyStep(3)}
-                      className="bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-black px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] disabled:shadow-none"
-                    >
-                      Next Step
-                    </button>
-                  </div>
-                </motion.div>
-              )}
+                  </ul>
+                  <button onClick={() => handleChoosePlan('Starter - $9/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                    CHOOSE PLAN
+                  </button>
+                </div>
 
-              {/* Step 3: Details */}
-              {buyStep === 3 && (
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <p className="text-zinc-400 text-sm mb-6">Finalize your purchase details:</p>
-                  <div className="bg-[#181818] border border-white/10 rounded-xl p-5 mb-8">
-                    <div className="flex justify-between text-sm mb-3">
-                      <span className="text-zinc-400">Product:</span>
-                      <span className="text-white font-bold">{selectedProduct}</span>
-                    </div>
-                    <div className="flex justify-between text-sm border-t border-white/5 pt-3">
-                      <span className="text-zinc-400">Selected Plan:</span>
-                      <span className="text-yellow-500 font-bold">{selectedPlan}</span>
-                    </div>
+                {/* Professional Plan */}
+                <div className="bg-[#1a1a1a] border border-yellow-500 rounded-2xl p-4 flex flex-col relative shadow-[0_0_30px_rgba(234,179,8,0.1)] -mt-1 mb-1 z-10">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-yellow-500 text-black text-[8px] md:text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg whitespace-nowrap">
+                    Most Popular
                   </div>
-                  
-                  <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Proceeding to payment gateway..."); setIsBuyModalOpen(false); setBuyStep(1); }}>
-                    <div className="grid grid-cols-2 gap-4">
-                      <input required type="text" placeholder="First Name" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                      <input required type="text" placeholder="Last Name" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                    </div>
-                    <input required type="email" placeholder="Billing Email" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                    <input required type="text" placeholder="Company Name" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                    
-                    <div className="mt-8 flex justify-between pt-4 border-t border-white/5">
-                      <button 
-                        type="button"
-                        onClick={() => setBuyStep(2)}
-                        className="bg-[#181818] text-white border border-white/10 px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#222] transition-colors"
-                      >
-                        Back
-                      </button>
-                      <button 
-                        type="submit"
-                        className="bg-yellow-500 text-black px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)]"
-                      >
-                        Continue to Payment
-                      </button>
-                    </div>
-                  </form>
-                </motion.div>
-              )}
+                  <h4 className="text-base font-bold text-white mb-0.5">Professional</h4>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Perfect for growing agencies</p>
+                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
+                    <span className="text-2xl md:text-3xl font-bold text-white">$19</span>
+                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+                  </div>
+                  <ul className="space-y-1.5 mb-4 flex-1">
+                    {[
+                      'Up to 50 Vehicles',
+                      'Multiple Operational Hubs',
+                      'Chauffeur & Staff Rosters',
+                      '16-Zone Digital Inspections',
+                      'Stripe Security Deposit Holds',
+                      'WhatsApp & SMS Notifications',
+                      'Active Servicing Logs',
+                      'Priority Support'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-white font-medium">
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={() => handleChoosePlan('Professional - $19/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-yellow-500 text-black font-bold text-[9px] md:text-[10px] hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.2)] uppercase tracking-widest">
+                    CHOOSE PLAN
+                  </button>
+                </div>
+
+                {/* Enterprise Plan */}
+                <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
+                  <h4 className="text-base font-bold text-white mb-0.5">Enterprise</h4>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">For large & airport fleets</p>
+                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
+                    <span className="text-2xl md:text-3xl font-bold text-white">$29</span>
+                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+                  </div>
+                  <ul className="space-y-1.5 mb-4 flex-1">
+                    {[
+                      'Unlimited Vehicles',
+                      'Unlimited Hub Locations',
+                      'Everything in Professional',
+                      'Custom Brand Domains',
+                      'Custom Agreement Templates',
+                      'Automated Toll Calculations',
+                      'Dedicated Account Manager',
+                      '24/7 Priority Support'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={() => handleChoosePlan('Enterprise - $29/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                    CHOOSE PLAN
+                  </button>
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Customer Information Form Modal */}
+      <AnimatePresence>
+        {isCustomerFormOpen && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              onClick={() => setIsCustomerFormOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-5 w-full max-w-md relative z-10 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            >
+              <div className="mb-5 text-center">
+                <h3 className="text-xl font-display font-bold text-white mb-1.5 tracking-wide">
+                  Complete Your Purchase
+                </h3>
+                <p className="text-zinc-400 text-xs leading-relaxed">
+                  Enter your details below to continue with your subscription and proceed to secure payment.
+                </p>
+              </div>
+
+              <div className="space-y-3 mb-5">
+                <div className="relative group">
+                  <label className="sr-only">Full Name</label>
+                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input
+                    required
+                    type="text"
+                    value={customerForm.fullName}
+                    onChange={(e) => setCustomerForm({ ...customerForm, fullName: e.target.value })}
+                    placeholder="Full Name"
+                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                  />
+                </div>
+
+                <div className="relative group">
+                  <label className="sr-only">Email Address</label>
+                  <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input
+                    required
+                    type="email"
+                    value={customerForm.email}
+                    onChange={(e) => setCustomerForm({ ...customerForm, email: e.target.value })}
+                    placeholder="Email Address"
+                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                  />
+                </div>
+
+                <div className="flex">
+                  <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-3 py-2.5 text-xs text-zinc-400 flex items-center justify-center font-bold">
+                    +91
+                  </div>
+                  <div className="relative group flex-1">
+                    <label className="sr-only">WhatsApp Number</label>
+                    <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
+                    <input
+                      required
+                      type="tel"
+                      value={customerForm.whatsapp}
+                      onChange={(e) => setCustomerForm({ ...customerForm, whatsapp: e.target.value.replace(/\D/g, '') })}
+                      placeholder="WhatsApp Number"
+                      maxLength={10}
+                      className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <label className="sr-only">Selected Plan</label>
+                  <Crown size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-yellow-500 z-10" />
+                  <select
+                    value={selectedPlan}
+                    onChange={(e) => setSelectedPlan(e.target.value)}
+                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-10 pr-8 py-2.5 text-xs text-yellow-500 font-bold outline-none focus:border-yellow-500 cursor-pointer appearance-none"
+                  >
+                    <option value="Starter - $9/month">Starter - $9/month</option>
+                    <option value="Professional - $19/month">Professional - $19/month</option>
+                    <option value="Enterprise - $29/month">Enterprise - $29/month</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-5 text-center">
+                <p className="text-[10px] md:text-xs text-zinc-500 flex items-center justify-center gap-1.5">
+                  <Lock size={12} className="text-zinc-400" />
+                  Your information is secure and will only be used for your subscription and account setup.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={handleContinueToPayment}
+                  disabled={!isCustomerFormValid}
+                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${isCustomerFormValid
+                      ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
+                      : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
+                    }`}
+                >
+                  Continue to Secure Payment
+                </button>
+                <button
+                  onClick={() => setIsCustomerFormOpen(false)}
+                  className="w-full py-1.5 text-zinc-500 font-bold text-[10px] uppercase hover:text-white transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
 
             </motion.div>
           </div>

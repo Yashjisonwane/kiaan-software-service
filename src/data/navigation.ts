@@ -200,7 +200,7 @@ export const softwareServicesCategories = [
             { name: "Kiaan Employee Management", href: "/services/hrm-system/kiaan-employee-management" },
             { name: "Kiaan Payroll Management", href: "/services/hrm-system/kiaan-payroll-management" },
             { name: "Kiaan Attendance System", href: "/services/hrm-system/kiaan-attendance-system" },
-            { name: "Kiaan Recruitment Management", href: "/services/hrm-system/kiaan-recruitment-management" }
+            { name: "Kiaan Monday.com", href: "/services/hrm-system/kiaan-recruitment-management" }
         ]
     },
     {
