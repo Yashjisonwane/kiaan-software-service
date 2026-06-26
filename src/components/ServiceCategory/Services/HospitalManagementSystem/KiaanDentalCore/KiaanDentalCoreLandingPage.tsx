@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Building2, Users, UserPlus, Calendar, Stethoscope, CreditCard, BarChart3, 
+import {
+  Building2, Users, UserPlus, Calendar, Stethoscope, CreditCard, BarChart3,
   ChevronRight, Rocket, ShoppingCart, ShieldCheck, Cloud, Clock, Headphones, X,
-  User, Mail, Phone, Building, MapPin
+  User, Mail, Phone, Building, MapPin, Send, Star, Crown, CheckCircle2, Lock, Check, ChevronDown
 } from 'lucide-react';
 
 const WORKFLOW_ITEMS = [
@@ -23,44 +23,20 @@ const WORKFLOW_ITEMS = [
       'Create treatment categories',
       'Enable multiple branches'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block">
-        <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/5">
-          <div className="w-6 h-6 bg-yellow-500 rounded flex items-center justify-center text-black font-bold text-xs">K</div>
-          <div className="text-sm font-bold text-white">Clinic Setup</div>
-        </div>
-        <div className="flex gap-6">
-          <div className="flex-1 space-y-4">
-            <div>
-              <div className="text-[10px] text-zinc-500 mb-1 uppercase tracking-wider font-bold">Clinic Name</div>
-              <div className="bg-[#222] border border-white/5 rounded px-4 py-2.5 text-xs text-white">Bright Smile Dental Clinic</div>
-            </div>
-            <div className="bg-[#222] border border-dashed border-white/20 rounded-xl p-6 flex flex-col items-center justify-center mt-2">
-               <div className="text-zinc-600 mb-2"><Building2 size={28} /></div>
-               <div className="text-yellow-500 text-xs font-bold">Upload Logo</div>
-               <div className="text-[9px] text-zinc-600 mt-1">JPG, PNG up to 2MB</div>
-            </div>
-          </div>
-          <div className="flex-1 space-y-4">
-            <div>
-              <div className="text-[10px] text-zinc-500 mb-1 uppercase tracking-wider font-bold">Clinic Branch</div>
-              <div className="bg-[#222] border border-white/5 rounded px-4 py-2.5 text-xs text-white">Main Branch</div>
-            </div>
-            <div>
-              <div className="text-[10px] text-zinc-500 mb-1 uppercase tracking-wider font-bold">Language</div>
-              <div className="bg-[#222] border border-white/5 rounded px-4 py-2.5 text-xs text-white">English</div>
-            </div>
-            <div className="pt-2">
-               <div className="text-[10px] text-zinc-500 mb-2 uppercase tracking-wider font-bold">Clinic Type</div>
-               <div className="flex gap-2">
-                 <div className="bg-yellow-500 text-black text-[10px] px-4 py-2 rounded font-bold shadow-lg">Single Clinic</div>
-                 <div className="bg-[#222] border border-white/5 text-zinc-400 text-[10px] px-4 py-2 rounded hover:bg-white/5 transition-colors cursor-pointer">Multi Branch</div>
-               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Centralized Clinic Setup',
+        content: 'Establish the core digital identity of your dental practice. This module allows you to define clinic particulars such as contact details, branding, and location, ensuring all patient communications and invoices reflect your clinic\'s professional image.'
+      },
+      {
+        heading: 'Multi-Branch Management',
+        content: 'For growing practices, Kiaan Dental Core supports multiple locations under a single umbrella. You can effortlessly toggle between branches, share patient records securely, and maintain standardized workflows across all your facilities.'
+      },
+      {
+        heading: 'Operational Parameters',
+        content: 'Define the fundamental rules of your clinic. Set standard working hours, create customized treatment categories, and establish the foundational settings that drive the scheduling and billing engines of the platform.'
+      }
+    ]
   },
   {
     id: '02',
@@ -76,48 +52,20 @@ const WORKFLOW_ITEMS = [
       'Staff login credentials',
       'Attendance access'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block">
-        <div className="flex justify-between items-center mb-5 pb-3 border-b border-white/5">
-          <div className="text-sm font-bold text-white">Staff Management</div>
-          <div className="bg-yellow-500 text-black px-4 py-1.5 text-[10px] font-bold rounded shadow-lg">+ Invite Staff</div>
-        </div>
-        <div className="grid grid-cols-5 gap-3 mb-5">
-          {[
-            {l: 'Total Staff', v: '32'}, 
-            {l: 'Doctors', v: '8'}, 
-            {l: 'Hygienists', v: '6'}, 
-            {l: 'Receptionists', v: '7'}, 
-            {l: 'Other Staff', v: '11'}
-          ].map((t,i) => (
-            <div key={i} className="bg-[#222] border border-white/5 p-3 rounded-lg text-center">
-               <div className="text-[9px] text-zinc-500 mb-1">{t.l}</div>
-               <div className="text-lg font-bold text-white">{t.v}</div>
-            </div>
-          ))}
-        </div>
-        <div className="w-full text-left text-[10px] text-zinc-400 bg-[#111] rounded-lg p-3 border border-white/5">
-          <div className="grid grid-cols-4 pb-2 border-b border-white/10 mb-2 font-bold uppercase tracking-wider text-[8px] text-zinc-500">
-            <div>Name</div><div>Role</div><div>Department</div><div>Status</div>
-          </div>
-          {[
-            ['Dr. Ramesh Sharma', 'Dentist', 'Orthodontics', 'Active'], 
-            ['Dr. Priya Patel', 'Dentist', 'Cosmetic', 'Active'], 
-            ['Neha Singh', 'Hygienist', 'Dental Care', 'Active'],
-            ['Amit Verma', 'Receptionist', 'Front Desk', 'Active']
-          ].map((row,i) => (
-            <div key={i} className="grid grid-cols-4 py-2 items-center hover:bg-white/5 rounded px-2 -mx-2 transition-colors">
-              <div className="text-white font-medium flex items-center gap-2 text-xs">
-                 <div className="w-5 h-5 rounded-full bg-zinc-700 flex items-center justify-center text-[8px]">{row[0].charAt(0)}</div>{row[0]}
-              </div>
-              <div className="text-zinc-300">{row[1]}</div>
-              <div className="text-zinc-300">{row[2]}</div>
-              <div><span className="text-green-500 bg-green-500/10 px-2 py-1 rounded text-[8px] font-bold tracking-wider">{row[3]}</span></div>
-            </div>
-          ))}
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Role-Based Access Control',
+        content: 'Maintain strict data security by assigning specific roles to your team. Whether it\'s a senior dentist, an intern, a hygienist, or front-desk staff, the system ensures they only see the information and modules necessary for their daily tasks.'
+      },
+      {
+        heading: 'Department Organization',
+        content: 'Structure your clinic systematically by creating dedicated departments. Assign staff to their respective specialties, such as Orthodontics, Endodontics, or General Dentistry, streamlining internal communication and patient routing.'
+      },
+      {
+        heading: 'Productivity & Attendance',
+        content: 'Keep track of staff availability, working shifts, and login activity. This provides clinic administrators with a clear overview of workforce utilization and helps in accurately calculating payroll and incentives.'
+      }
+    ]
   },
   {
     id: '03',
@@ -133,67 +81,20 @@ const WORKFLOW_ITEMS = [
       'Track previous treatments',
       'Family member grouping'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:flex gap-5">
-        <div className="flex-1">
-          <div className="text-sm font-bold text-white mb-4">Patients Directory</div>
-          <div className="grid grid-cols-3 gap-3 mb-5">
-            <div className="bg-[#222] border border-white/5 p-3 rounded-lg col-span-2 flex items-center justify-between">
-               <div>
-                 <div className="text-[10px] text-zinc-500 uppercase tracking-wider mb-1 font-bold">Total Patients</div>
-                 <div className="text-2xl font-bold text-white">1,248</div>
-               </div>
-               <div className="text-green-500 text-xs font-bold">+12%</div>
-            </div>
-            <div className="bg-[#222] border border-white/5 p-3 rounded-lg">
-               <div className="text-[10px] text-zinc-500 uppercase tracking-wider mb-1 font-bold">New</div>
-               <div className="text-xl font-bold text-white">48</div>
-            </div>
-          </div>
-          <div className="space-y-2">
-            {[
-              { n: 'Rahul Mehta', t: '98765 43210', d: '2 May 2024', s: 'Active' },
-              { n: 'Sneha Kapoor', t: '87654 32109', d: '30 Apr 2024', s: 'Active' },
-              { n: 'Vikram Joshi', t: '76543 21098', d: '28 Apr 2024', s: 'Inactive' }
-            ].map((p, i) => (
-              <div key={i} className="bg-[#222] p-2.5 rounded-lg text-[10px] flex justify-between items-center border border-white/5 hover:border-yellow-500/30 transition-colors">
-                 <div className="flex items-center gap-2">
-                   <div className="w-6 h-6 rounded-full bg-zinc-800 flex items-center justify-center text-white font-bold">{p.n.charAt(0)}</div>
-                   <div><div className="text-white font-bold text-xs">{p.n}</div><div className="text-zinc-500 text-[8px]">{p.t}</div></div>
-                 </div>
-                 <div className="text-right">
-                   <div className={`font-bold ${p.s === 'Active' ? 'text-green-500' : 'text-zinc-500'}`}>{p.s}</div>
-                   <div className="text-zinc-600 text-[8px]">{p.d}</div>
-                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="w-48 bg-[#222] border border-white/5 p-4 rounded-xl flex flex-col justify-between">
-          <div>
-            <div className="text-[11px] font-bold text-white mb-4 pb-2 border-b border-white/10">Quick Registration</div>
-            <div className="space-y-3">
-              <div>
-                <div className="text-[8px] text-zinc-500 mb-1">Full Name</div>
-                <div className="h-7 bg-[#111] rounded border border-white/5"></div>
-              </div>
-              <div>
-                <div className="text-[8px] text-zinc-500 mb-1">Phone Number</div>
-                <div className="h-7 bg-[#111] rounded border border-white/5"></div>
-              </div>
-              <div>
-                <div className="text-[8px] text-zinc-500 mb-1">Gender</div>
-                <div className="flex gap-2">
-                  <div className="flex-1 h-6 bg-yellow-500/20 border border-yellow-500/50 rounded text-yellow-500 flex items-center justify-center text-[8px] font-bold">M</div>
-                  <div className="flex-1 h-6 bg-[#111] border border-white/5 rounded text-zinc-500 flex items-center justify-center text-[8px]">F</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="h-8 bg-yellow-500 rounded text-black flex items-center justify-center text-[10px] font-bold shadow-lg mt-6">Save Patient</div>
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Comprehensive Digital Profiles',
+        content: 'Move away from paper records. Each patient gets a secure, exhaustive digital profile that captures demographics, contact information, emergency contacts, and complete medical history in one easily accessible location.'
+      },
+      {
+        heading: 'Document & X-Ray Vault',
+        content: 'Securely upload and store patient documents, consent forms, and high-resolution dental X-rays directly into their profile. Retrieve historical imaging instantly during consultations to make accurate diagnoses.'
+      },
+      {
+        heading: 'Family & Group Linking',
+        content: 'Simplify the management of families visiting your clinic. Link multiple patient profiles under a primary account holder, making it easier to manage shared insurance plans, consolidated billing, and group appointments.'
+      }
+    ]
   },
   {
     id: '04',
@@ -209,52 +110,20 @@ const WORKFLOW_ITEMS = [
       'Waitlist & queue management',
       'Track no-shows & cancellations'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block">
-        <div className="flex justify-between items-center mb-5 pb-3 border-b border-white/5">
-          <div className="text-sm font-bold text-white flex items-center gap-3">
-            Appointments
-            <span className="text-xs font-normal text-zinc-500 bg-[#222] px-2 py-1 rounded">May 2024</span>
-          </div>
-          <div className="flex bg-[#222] rounded overflow-hidden text-[10px] border border-white/5">
-             <div className="px-3 py-1.5 bg-yellow-500 text-black font-bold">Day</div>
-             <div className="px-3 py-1.5 text-zinc-400">Week</div>
-             <div className="px-3 py-1.5 text-zinc-400">Month</div>
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div className="flex-1 bg-[#222] border border-white/5 rounded-lg p-1 grid grid-cols-4 gap-1 relative h-40">
-             {/* Header */}
-             <div className="text-[8px] text-zinc-500 text-center py-1">Mon</div>
-             <div className="text-[8px] text-zinc-500 text-center py-1 bg-white/5 rounded">Tue (Today)</div>
-             <div className="text-[8px] text-zinc-500 text-center py-1">Wed</div>
-             <div className="text-[8px] text-zinc-500 text-center py-1">Thu</div>
-             
-             {/* Calendar blocks */}
-             <div className="col-start-1 row-start-2 w-[90%] h-12 bg-blue-500/20 border border-blue-500/50 rounded-md text-[8px] text-blue-200 p-1.5 mx-auto mt-2">
-               <div className="font-bold text-[9px] mb-0.5">Rahul Mehta</div>
-               <div className="opacity-70">Root Canal • 09:30 AM</div>
-             </div>
-             <div className="col-start-2 row-start-2 w-[90%] h-16 bg-green-500/20 border border-green-500/50 rounded-md text-[8px] text-green-200 p-1.5 mx-auto mt-8">
-               <div className="font-bold text-[9px] mb-0.5">Sneha Kapoor</div>
-               <div className="opacity-70">Teeth Cleaning • 10:30 AM</div>
-             </div>
-             <div className="col-start-3 row-start-2 w-[90%] h-10 bg-purple-500/20 border border-purple-500/50 rounded-md text-[8px] text-purple-200 p-1.5 mx-auto mt-4">
-               <div className="font-bold text-[9px] mb-0.5">Amit Verma</div>
-               <div className="opacity-70">Consultation • 11:00 AM</div>
-             </div>
-          </div>
-          <div className="w-40 bg-[#222] border border-white/5 p-3 rounded-lg flex flex-col">
-             <div className="text-[10px] font-bold text-white mb-3 uppercase tracking-wider text-yellow-500">Today's Queue</div>
-             <div className="space-y-3 flex-1">
-               <div className="text-[9px] text-zinc-300 border-l-2 border-yellow-500 pl-2 bg-[#111] p-1.5 rounded-r">1. Rahul Mehta<br/><span className="text-zinc-500 text-[8px]">09:30 AM - Dr. Sharma</span></div>
-               <div className="text-[9px] text-zinc-300 border-l-2 border-green-500 pl-2 bg-[#111] p-1.5 rounded-r">2. Sneha Kapoor<br/><span className="text-zinc-500 text-[8px]">10:30 AM - Dr. Patel</span></div>
-             </div>
-             <button className="w-full mt-3 bg-yellow-500/10 text-yellow-500 py-1.5 rounded text-[10px] font-bold border border-yellow-500/20">+ New Appt</button>
-          </div>
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Intelligent Scheduling Calendar',
+        content: 'Replace your traditional appointment book with a dynamic, color-coded calendar. Instantly identify available slots, doctor schedules, and treatment rooms. Drag and drop appointments to accommodate urgent cases or last-minute changes seamlessly.'
+      },
+      {
+        heading: 'Automated Reminders',
+        content: 'Significantly reduce no-shows and late arrivals. The system automatically sends customizable SMS and email reminders to patients prior to their visit, keeping your clinic\'s schedule running on time and maximizing revenue.'
+      },
+      {
+        heading: 'Queue & Waitlist Management',
+        content: 'Handle walk-ins and fully booked days effortlessly. The digital waitlist tracks patients waiting in the clinic, monitoring their wait times and alerting staff when a doctor becomes available, ensuring a smooth patient experience.'
+      }
+    ]
   },
   {
     id: '05',
@@ -270,52 +139,20 @@ const WORKFLOW_ITEMS = [
       'Track procedural progress',
       'Record patient consent'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block">
-        <div className="flex justify-between items-end border-b border-white/10 pb-3 mb-5">
-           <div>
-             <div className="text-[10px] text-zinc-500 mb-1">Patient File</div>
-             <div className="text-lg font-display font-bold text-white">Rahul Mehta <span className="text-xs font-normal bg-[#222] px-2 py-0.5 rounded text-zinc-400">P-1001</span></div>
-           </div>
-           <div className="text-[11px] flex gap-4 text-zinc-400 font-bold">
-             <span className="cursor-pointer hover:text-white">Overview</span>
-             <span className="text-yellow-500 border-b-2 border-yellow-500 pb-3 -mb-[13px]">Treatment Plan</span>
-             <span className="cursor-pointer hover:text-white">Notes</span>
-           </div>
-        </div>
-        <div className="flex gap-5">
-          <div className="w-48 space-y-3">
-            <div className="text-[10px] font-bold text-white uppercase tracking-wider mb-2">Active Plans</div>
-            <div className="bg-[#222] p-3 rounded-lg border-l-2 border-green-500 hover:bg-[#2a2a2a] transition-colors cursor-pointer">
-               <div className="text-[11px] font-bold text-white mb-1">Root Canal Treatment</div>
-               <div className="text-[9px] text-zinc-500 flex justify-between"><span>11 May 2024</span><span className="text-green-500 font-bold">Completed</span></div>
-            </div>
-            <div className="bg-[#222] p-3 rounded-lg border-l-2 border-yellow-500 hover:bg-[#2a2a2a] transition-colors cursor-pointer relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-8 h-8 bg-yellow-500/10 rounded-bl-full"></div>
-               <div className="text-[11px] font-bold text-white mb-1">Dental Crown</div>
-               <div className="text-[9px] text-zinc-500 flex justify-between"><span>18 May 2024</span><span className="text-yellow-500 font-bold">In Progress</span></div>
-            </div>
-          </div>
-          <div className="flex-1 bg-[#222] rounded-xl flex flex-col items-center justify-center py-6 relative border border-white/5">
-             <div className="absolute top-3 left-3 flex gap-2">
-                <div className="flex items-center gap-1 text-[8px] text-zinc-400"><div className="w-2 h-2 rounded-full bg-white/20"></div> Healthy</div>
-                <div className="flex items-center gap-1 text-[8px] text-zinc-400"><div className="w-2 h-2 rounded-full bg-yellow-500"></div> Treated</div>
-                <div className="flex items-center gap-1 text-[8px] text-zinc-400"><div className="w-2 h-2 rounded-full bg-red-500"></div> Cavity</div>
-             </div>
-             
-             <div className="text-[9px] text-zinc-500 mb-3 font-bold uppercase tracking-widest mt-4">Upper Jaw</div>
-             <div className="flex gap-1.5 mb-6">
-               {[...Array(14)].map((_, i) => <div key={i} className={`w-3.5 h-6 rounded-b-md shadow-sm ${i === 4 ? 'bg-yellow-500' : i === 5 ? 'bg-yellow-500' : 'bg-white/10'}`}></div>)}
-             </div>
-             
-             <div className="flex gap-1.5">
-               {[...Array(14)].map((_, i) => <div key={i} className={`w-3.5 h-6 rounded-t-md shadow-sm ${i === 9 ? 'bg-red-500' : 'bg-white/10'}`}></div>)}
-             </div>
-             <div className="text-[9px] text-zinc-500 mt-3 font-bold uppercase tracking-widest">Lower Jaw</div>
-          </div>
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Interactive Dental Charting',
+        content: 'Visualize the patient\'s oral health with our intuitive digital odontogram. Map cavities, existing restorations, and planned treatments tooth-by-tooth, creating a clear visual history that both dentists and patients can understand.'
+      },
+      {
+        heading: 'Digital Clinical Notes',
+        content: 'Document every consultation thoroughly and legally. Use standardized templates to write detailed clinical notes, record chief complaints, diagnoses, and step-by-step procedure details directly into the patient\'s permanent record.'
+      },
+      {
+        heading: 'E-Prescriptions & Treatment Plans',
+        content: 'Generate clear, legible electronic prescriptions with integrated dosage guidelines. Create multi-visit treatment plans, estimating costs and timelines, which patients can easily review and consent to before procedures begin.'
+      }
+    ]
   },
   {
     id: '06',
@@ -331,57 +168,20 @@ const WORKFLOW_ITEMS = [
       'Manage insurance claims',
       'Send payment links'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block">
-        <div className="flex justify-between items-center mb-5 pb-3 border-b border-white/5">
-          <div className="text-sm font-bold text-white">Billing Dashboard</div>
-          <div className="bg-yellow-500 text-black px-4 py-1.5 text-[10px] font-bold rounded shadow-lg">+ New Invoice</div>
-        </div>
-        <div className="grid grid-cols-4 gap-3 mb-5">
-          {[
-            {l: 'Today\'s Collection', v: '$2,450', c: 'text-white'}, 
-            {l: 'This Month Revenue', v: '$48,240', c: 'text-white'}, 
-            {l: 'Pending Payments', v: '$6,120', c: 'text-yellow-500'}, 
-            {l: 'Overdue Amount', v: '$2,340', c: 'text-red-500'}
-          ].map((t,i) => (
-            <div key={i} className="bg-[#222] border border-white/5 p-3 rounded-lg relative overflow-hidden">
-               <div className="text-[9px] text-zinc-500 mb-1 uppercase tracking-wider font-bold">{t.l}</div>
-               <div className={`text-lg font-bold ${t.c}`}>{t.v}</div>
-            </div>
-          ))}
-        </div>
-        <div className="flex gap-5">
-          <div className="flex-1 bg-[#222] border border-white/5 rounded-lg p-3">
-            <div className="text-[10px] font-bold text-white mb-3 uppercase tracking-wider">Recent Invoices</div>
-            <div className="space-y-1.5">
-              {[
-                { id: 'INV-1001', n: 'Rahul Mehta', d: '06 May 2024', a: '$450', s: 'Paid', sc: 'text-green-500' },
-                { id: 'INV-1002', n: 'Sneha Kapoor', d: '06 May 2024', a: '$320', s: 'Paid', sc: 'text-green-500' },
-                { id: 'INV-1003', n: 'Vikram Joshi', d: '05 May 2024', a: '$780', s: 'Pending', sc: 'text-yellow-500' }
-              ].map((inv, i) => (
-                <div key={i} className="flex justify-between bg-[#181818] p-2 rounded text-[10px] border border-white/5 items-center hover:bg-[#111] transition-colors">
-                  <span className="text-zinc-500 font-mono w-16">{inv.id}</span>
-                  <span className="text-white w-24 font-bold">{inv.n}</span>
-                  <span className="text-zinc-500 w-20">{inv.d}</span>
-                  <span className="text-white w-12 text-right">{inv.a}</span>
-                  <span className={`${inv.sc} w-16 text-right font-bold`}>{inv.s}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="w-48 bg-[#222] border border-white/5 p-3 rounded-lg flex flex-col">
-             <div className="text-[10px] font-bold text-white mb-4 uppercase tracking-wider">Payment Methods</div>
-             <div className="flex-1 flex items-center justify-center relative">
-               <div className="w-24 h-24 rounded-full border-[8px] border-yellow-500 border-r-green-500 border-b-blue-500"></div>
-               <div className="absolute inset-0 flex items-center justify-center flex-col">
-                  <div className="text-[8px] text-zinc-500">Total</div>
-                  <div className="text-xs font-bold text-white">$2,775</div>
-               </div>
-             </div>
-          </div>
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Transparent Invoicing',
+        content: 'Generate professional, itemized invoices instantly after a treatment. Automatically pull costs from your predefined treatment catalog, apply applicable taxes, and provide patients with a clear breakdown of their financial responsibilities.'
+      },
+      {
+        heading: 'Flexible Payment Processing',
+        content: 'Accommodate patient preferences by accepting various payment methods including cash, credit cards, UPI, and digital wallets. Track partial payments, manage outstanding balances, and send automated payment links for overdue accounts.'
+      },
+      {
+        heading: 'Insurance & Claims Management',
+        content: 'Simplify the complex world of dental insurance. Record patient insurance details, track pre-authorizations, and monitor the status of submitted claims directly from the billing dashboard to ensure your clinic gets paid faster.'
+      }
+    ]
   },
   {
     id: '07',
@@ -397,56 +197,20 @@ const WORKFLOW_ITEMS = [
       'Clinic expense tracking',
       'Exportable custom reports'
     ],
-    mockup: (
-      <div className="bg-[#181818] border border-white/5 rounded-xl p-5 mb-8 shadow-inner hidden md:block">
-        <div className="flex justify-between items-center mb-5 pb-3 border-b border-white/5">
-          <div className="text-sm font-bold text-white">Analytics Dashboard</div>
-          <div className="text-xs text-zinc-500 bg-[#222] px-3 py-1.5 rounded">1 May 2024 - 31 May 2024</div>
-        </div>
-        <div className="grid grid-cols-4 gap-3 mb-5">
-          {[
-            { l: 'Total Revenue', v: '$48,240', c: '+18%' },
-            { l: 'Total Appointments', v: '1,284', c: '+8%' },
-            { l: 'New Patients', v: '248', c: '+12%' },
-            { l: 'Patient Retention', v: '94%', c: '+2%' }
-          ].map((m, i) => (
-            <div key={i} className="bg-[#222] p-3 rounded-lg border border-white/5">
-              <div className="text-[9px] text-zinc-500 mb-1 uppercase tracking-wider font-bold">{m.l}</div>
-              <div className="flex items-end justify-between">
-                <div className="text-xl font-bold text-white">{m.v}</div>
-                <div className="text-[10px] text-green-500 font-bold mb-1">{m.c}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex gap-4">
-          <div className="flex-1 bg-[#222] p-4 rounded-lg border border-white/5 h-36 relative flex flex-col">
-            <div className="text-[10px] text-zinc-500 mb-2 uppercase tracking-wider font-bold">Revenue Overview</div>
-            <div className="flex-1 relative mt-2">
-              <svg className="w-full h-full absolute bottom-0 left-0" preserveAspectRatio="none">
-                <path d="M0,80 Q20,60 40,70 T80,50 T120,65 T160,30 T200,45 T240,15 T280,35 T320,5 L320,90 L0,90 Z" fill="rgba(234,179,8,0.1)" stroke="rgba(234,179,8,1)" strokeWidth="3" />
-              </svg>
-            </div>
-            <div className="flex justify-between text-[8px] text-zinc-600 mt-2">
-              <span>1 May</span><span>8 May</span><span>15 May</span><span>22 May</span><span>31 May</span>
-            </div>
-          </div>
-          <div className="w-48 bg-[#222] p-4 rounded-lg border border-white/5 h-36 flex flex-col">
-             <div className="text-[10px] text-zinc-500 mb-2 uppercase tracking-wider font-bold">Appts by Status</div>
-             <div className="flex-1 flex items-center justify-between">
-               <div className="w-16 h-16 rounded-full border-4 border-green-500 border-l-yellow-500 border-t-zinc-600 relative">
-                 <div className="absolute inset-0 flex items-center justify-center text-[8px] font-bold text-white">1,284</div>
-               </div>
-               <div className="space-y-1">
-                 <div className="flex items-center gap-1.5 text-[8px] text-zinc-400"><div className="w-2 h-2 bg-green-500 rounded-sm"></div> Completed</div>
-                 <div className="flex items-center gap-1.5 text-[8px] text-zinc-400"><div className="w-2 h-2 bg-yellow-500 rounded-sm"></div> Pending</div>
-                 <div className="flex items-center gap-1.5 text-[8px] text-zinc-400"><div className="w-2 h-2 bg-zinc-600 rounded-sm"></div> No Show</div>
-               </div>
-             </div>
-          </div>
-        </div>
-      </div>
-    )
+    sections: [
+      {
+        heading: 'Real-Time Financial Dashboard',
+        content: 'Gain instant visibility into your clinic\'s financial health. Track daily revenue, outstanding dues, and month-over-month growth trends. Understand your cash flow without waiting for end-of-month accounting reports.'
+      },
+      {
+        heading: 'Performance Metrics',
+        content: 'Evaluate the productivity of your practice. Monitor metrics such as doctor utilization rates, treatment success, patient acquisition costs, and appointment conversion rates to identify areas for operational improvement.'
+      },
+      {
+        heading: 'Patient Demographics & Trends',
+        content: 'Understand who your patients are. Analyze demographic data, identify the most requested treatments, and track patient retention rates. Use these insights to tailor your marketing efforts and expand your clinic\'s services effectively.'
+      }
+    ]
   }
 ];
 
@@ -454,18 +218,40 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
   const [activeItem, setActiveItem] = useState(WORKFLOW_ITEMS[0]);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
-  
+
   // Buy Now Flow State
   const [buyStep, setBuyStep] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedPlan, setSelectedPlan] = useState('');
 
+  const [isCustomerFormOpen, setIsCustomerFormOpen] = useState(false);
+  const [customerForm, setCustomerForm] = useState({ fullName: '', email: '', whatsapp: '' });
+
+  const handleChoosePlan = (plan: string) => {
+    setSelectedPlan(plan);
+    setIsBuyModalOpen(false);
+    setIsCustomerFormOpen(true);
+  };
+
+  const isCustomerFormValid = customerForm.fullName.trim() !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerForm.email) &&
+    /^[0-9]{10,}$/.test(customerForm.whatsapp);
+
+  const handleContinueToPayment = () => {
+    if (isCustomerFormValid) {
+      console.log("Proceeding to payment:", { ...customerForm, plan: selectedPlan });
+      // Redirect to Razorpay (mock or actual)
+      window.location.href = `https://razorpay.com/pay/?plan=${encodeURIComponent(selectedPlan)}`;
+      setIsCustomerFormOpen(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#080808] text-white font-sans selection:bg-yellow-500/30">
-      
+
       {/* Container max-w-1400px centered */}
       <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16">
-        
+
         {/* SECTION 1 — PRODUCT DESCRIPTION */}
         <div className="w-full mb-16">
           <h1 className="text-4xl lg:text-5xl font-display font-bold mb-6 tracking-tight">
@@ -487,7 +273,7 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
-          
+
           {/* LEFT SIDE: Workflow Cards */}
           <div className="w-full lg:w-[420px] xl:w-[480px] shrink-0 flex flex-col gap-3">
             {WORKFLOW_ITEMS.map((item) => {
@@ -496,11 +282,10 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                 <div
                   key={item.id}
                   onMouseEnter={() => setActiveItem(item)}
-                  className={`cursor-pointer rounded-xl border transition-all duration-300 flex items-center p-4 group ${
-                    isActive 
-                      ? 'bg-yellow-500/5 border-yellow-500' 
+                  className={`cursor-pointer rounded-xl border transition-all duration-300 flex items-center p-4 group ${isActive
+                      ? 'bg-yellow-500/5 border-yellow-500'
                       : 'bg-[#111] border-white/5 hover:bg-[#151515] hover:border-white/10'
-                  }`}
+                    }`}
                 >
                   <div className={`text-xl font-bold mr-5 transition-colors ${isActive ? 'text-yellow-500' : 'text-zinc-500'}`}>
                     {item.id}
@@ -523,14 +308,14 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
 
             {/* BOTTOM BUTTONS */}
             <div className="flex gap-4 mt-6">
-              <button 
+              <button
                 onClick={() => setIsDemoModalOpen(true)}
                 className="flex-1 bg-yellow-500 text-black py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all flex items-center justify-center gap-2"
               >
                 <Rocket size={18} />
                 Request Demo Account
               </button>
-              <button 
+              <button
                 onClick={() => setIsBuyModalOpen(true)}
                 className="flex-1 bg-transparent border border-yellow-500 text-yellow-500 py-3.5 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-500/10 transition-all flex items-center justify-center gap-2"
               >
@@ -564,40 +349,58 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-zinc-400 text-sm leading-relaxed mb-8">
+                <p className="text-zinc-400 text-[15px] leading-relaxed mb-8">
                   {activeItem.description}
                 </p>
 
-                {/* Dynamic Mockup UI */}
-                {activeItem.mockup}
+                {/* Dynamic Documentation Sections */}
+                <div className="space-y-6 mb-10">
+                  {activeItem.sections?.map((section, idx) => (
+                    <div key={idx} className="bg-[#181818] border border-white/5 p-6 rounded-2xl relative overflow-hidden group hover:border-white/10 transition-colors">
+                      {/* Decorative accent */}
+                      <div className="absolute top-0 left-0 w-1 h-full bg-yellow-500/20 group-hover:bg-yellow-500 transition-colors"></div>
 
-                {/* Features List */}
-                <h3 className="text-yellow-500 font-bold text-sm mb-4">What you can do:</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
-                  {activeItem.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3 text-zinc-300 text-sm">
-                      <div className="w-4 h-4 rounded-full border border-yellow-500 flex items-center justify-center text-yellow-500 shrink-0">
-                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      {feature}
+                      <h4 className="text-lg font-bold text-white mb-3">
+                        {section.heading}
+                      </h4>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        {section.content}
+                      </p>
                     </div>
                   ))}
+                </div>
+
+                {/* Features List */}
+                <div className="bg-[#111] border border-white/10 p-6 rounded-2xl">
+                  <h3 className="text-white font-bold text-base mb-5 flex items-center gap-2">
+                    <CheckCircle2 className="text-yellow-500 w-5 h-5" /> Key Capabilities
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
+                    {activeItem.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3 text-zinc-300 text-sm">
+                        <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center text-yellow-500 shrink-0 mt-0.5">
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="leading-snug">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
               </motion.div>
             </AnimatePresence>
           </div>
-          
+
         </div>
 
         {/* Footer Features */}
         <div className="flex flex-wrap justify-between items-center mt-16 pt-8 border-t border-white/5 text-xs text-zinc-500 font-medium max-w-4xl">
-           <div className="flex items-center gap-2"><ShieldCheck className="text-yellow-500" size={16} /> Secure & Reliable</div>
-           <div className="flex items-center gap-2"><Cloud className="text-yellow-500" size={16} /> Cloud Based</div>
-           <div className="flex items-center gap-2"><Clock className="text-yellow-500" size={16} /> 99.9% Uptime</div>
-           <div className="flex items-center gap-2"><Headphones className="text-yellow-500" size={16} /> 24/7 Support</div>
+          <div className="flex items-center gap-2"><ShieldCheck className="text-yellow-500" size={16} /> Secure & Reliable</div>
+          <div className="flex items-center gap-2"><Cloud className="text-yellow-500" size={16} /> Cloud Based</div>
+          <div className="flex items-center gap-2"><Clock className="text-yellow-500" size={16} /> 99.9% Uptime</div>
+          <div className="flex items-center gap-2"><Headphones className="text-yellow-500" size={16} /> 24/7 Support</div>
         </div>
 
       </div>
@@ -606,19 +409,19 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
       <AnimatePresence>
         {isDemoModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
               onClick={() => setIsDemoModalOpen(false)}
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
               className="bg-[#111] border border-white/10 rounded-2xl p-6 md:p-8 w-full max-w-md relative z-10 shadow-2xl"
             >
               <button onClick={() => setIsDemoModalOpen(false)} className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10">
                 <X size={16} />
               </button>
-              
+
               <div className="mb-8">
                 <h3 className="text-2xl font-display font-bold text-white mb-2">Request Demo</h3>
                 <p className="text-zinc-400 text-sm">Enter your details and our team will set up your personalized demo account.</p>
@@ -663,148 +466,236 @@ export const KiaanDentalCoreLandingPage: React.FC = () => {
       {/* Buy Now Modal */}
       <AnimatePresence>
         {isBuyModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div 
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-              onClick={() => { setIsBuyModalOpen(false); setBuyStep(1); setSelectedProduct(''); setSelectedPlan(''); }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              onClick={() => setIsBuyModalOpen(false)}
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#111] border border-white/10 rounded-2xl p-6 md:p-8 w-full max-w-xl relative z-10 shadow-2xl overflow-hidden"
+              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-5 w-full max-w-4xl relative z-10 shadow-2xl overflow-hidden"
             >
-              <button 
-                onClick={() => { setIsBuyModalOpen(false); setBuyStep(1); setSelectedProduct(''); setSelectedPlan(''); }} 
-                className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10"
+              <button
+                onClick={() => setIsBuyModalOpen(false)}
+                className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
-              
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-3 text-[10px] font-bold text-zinc-600 uppercase tracking-widest bg-black/50 inline-flex px-3 py-1.5 rounded-full border border-white/5">
-                  <span className={buyStep >= 1 ? 'text-yellow-500' : ''}>1. Product</span>
-                  <ChevronRight size={12} className="text-zinc-700" />
-                  <span className={buyStep >= 2 ? 'text-yellow-500' : ''}>2. Plan</span>
-                  <ChevronRight size={12} className="text-zinc-700" />
-                  <span className={buyStep >= 3 ? 'text-yellow-500' : ''}>3. Details</span>
-                </div>
-                <h3 className="text-2xl font-display font-bold text-white">Purchase Subscription</h3>
+
+              <div className="mb-4 text-center">
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-1 uppercase tracking-wide">
+                  SELECT <span className="text-yellow-500">SUBSCRIPTION PLAN</span>
+                </h3>
+                <p className="text-zinc-400 text-[10px] md:text-[11px]">
+                  Choose the perfect fit for your dental clinic operations
+                </p>
               </div>
 
-              {/* Step 1: Product Selection */}
-              {buyStep === 1 && (
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <p className="text-zinc-400 text-sm mb-6">Select the relevant Hospital Management product:</p>
-                  <div className="space-y-3">
-                    {['Kiaan Hospital Management', 'Kiaan Dental Core', 'Kiaan Clinic'].map((prod, i) => (
-                      <button 
-                        key={i}
-                        onClick={() => setSelectedProduct(prod)}
-                        className={`w-full text-left px-5 py-5 rounded-xl border transition-all ${
-                          selectedProduct === prod 
-                            ? 'bg-yellow-500/10 border-yellow-500 text-white shadow-[0_0_15px_rgba(234,179,8,0.1)]' 
-                            : 'bg-[#181818] border-white/10 text-zinc-400 hover:border-white/30 hover:bg-[#222]'
-                        }`}
-                      >
-                        <div className="font-bold text-sm">{prod}</div>
-                      </button>
-                    ))}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                {/* Starter Plan */}
+                <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
+                  <h4 className="text-base font-bold text-white mb-0.5">Starter</h4>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Ideal for small clinics</p>
+                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
+                    <span className="text-2xl md:text-3xl font-bold text-white">$9</span>
+                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
                   </div>
-                  <div className="mt-8 flex justify-end">
-                    <button 
-                      disabled={!selectedProduct}
-                      onClick={() => setBuyStep(2)}
-                      className="bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-black px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] disabled:shadow-none"
-                    >
-                      Next Step
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 2: Plan Selection */}
-              {buyStep === 2 && (
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <p className="text-zinc-400 text-sm mb-6">Select a plan for <span className="text-white font-bold">{selectedProduct}</span>:</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <ul className="space-y-1.5 mb-4 flex-1">
                     {[
-                      { name: 'Starter', price: '$49', period: '/mo', desc: 'For small clinics & independent dentists' },
-                      { name: 'Professional', price: '$129', period: '/mo', desc: 'For growing practices & multiple doctors' },
-                    ].map((plan, i) => (
-                      <button 
-                        key={i}
-                        onClick={() => setSelectedPlan(plan.name)}
-                        className={`text-left p-6 rounded-xl border transition-all ${
-                          selectedPlan === plan.name 
-                            ? 'bg-yellow-500/10 border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.1)]' 
-                            : 'bg-[#181818] border-white/10 hover:border-white/30 hover:bg-[#222]'
-                        }`}
-                      >
-                        <div className={`font-bold text-sm uppercase tracking-wider mb-2 ${selectedPlan === plan.name ? 'text-yellow-500' : 'text-zinc-400'}`}>{plan.name}</div>
-                        <div className="text-3xl font-bold text-white mb-3">{plan.price}<span className="text-sm text-zinc-500 font-normal">{plan.period}</span></div>
-                        <div className="text-xs text-zinc-500 leading-relaxed">{plan.desc}</div>
-                      </button>
+                      'Up to 1 Doctor',
+                      'Up to 500 Patients',
+                      'Appointment Management',
+                      'Patient Record Management',
+                      'Billing & Invoicing',
+                      'Basic Reports',
+                      'Email Support'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
+                      </li>
                     ))}
-                  </div>
-                  <div className="mt-8 flex justify-between">
-                    <button 
-                      onClick={() => setBuyStep(1)}
-                      className="bg-[#181818] text-white border border-white/10 px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#222] transition-colors"
-                    >
-                      Back
-                    </button>
-                    <button 
-                      disabled={!selectedPlan}
-                      onClick={() => setBuyStep(3)}
-                      className="bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-black px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] disabled:shadow-none"
-                    >
-                      Next Step
-                    </button>
-                  </div>
-                </motion.div>
-              )}
+                  </ul>
+                  <button onClick={() => handleChoosePlan('Starter - $9/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                    CHOOSE PLAN
+                  </button>
+                </div>
 
-              {/* Step 3: Details */}
-              {buyStep === 3 && (
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <p className="text-zinc-400 text-sm mb-6">Finalize your purchase details:</p>
-                  <div className="bg-[#181818] border border-white/10 rounded-xl p-5 mb-8">
-                    <div className="flex justify-between text-sm mb-3">
-                      <span className="text-zinc-400">Product:</span>
-                      <span className="text-white font-bold">{selectedProduct}</span>
-                    </div>
-                    <div className="flex justify-between text-sm border-t border-white/5 pt-3">
-                      <span className="text-zinc-400">Selected Plan:</span>
-                      <span className="text-yellow-500 font-bold">{selectedPlan}</span>
-                    </div>
+                {/* Professional Plan */}
+                <div className="bg-[#1a1a1a] border border-yellow-500 rounded-2xl p-4 flex flex-col relative shadow-[0_0_30px_rgba(234,179,8,0.1)] -mt-1 mb-1 z-10">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-yellow-500 text-black text-[8px] md:text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg whitespace-nowrap">
+                    Most Popular
                   </div>
-                  
-                  <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Proceeding to payment gateway..."); setIsBuyModalOpen(false); setBuyStep(1); }}>
-                    <div className="grid grid-cols-2 gap-4">
-                      <input required type="text" placeholder="First Name" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                      <input required type="text" placeholder="Last Name" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                    </div>
-                    <input required type="email" placeholder="Billing Email" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                    <input required type="text" placeholder="Company / Clinic Name" className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                    
-                    <div className="mt-8 flex justify-between pt-4 border-t border-white/5">
-                      <button 
-                        type="button"
-                        onClick={() => setBuyStep(2)}
-                        className="bg-[#181818] text-white border border-white/10 px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#222] transition-colors"
-                      >
-                        Back
-                      </button>
-                      <button 
-                        type="submit"
-                        className="bg-yellow-500 text-black px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)]"
-                      >
-                        Continue to Payment
-                      </button>
-                    </div>
-                  </form>
-                </motion.div>
-              )}
+                  <h4 className="text-base font-bold text-white mb-0.5">Professional</h4>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">Perfect for growing practices</p>
+                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
+                    <span className="text-2xl md:text-3xl font-bold text-white">$19</span>
+                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+                  </div>
+                  <ul className="space-y-1.5 mb-4 flex-1">
+                    {[
+                      'Up to 5 Doctors',
+                      'Up to 2,000 Patients',
+                      'Everything in Starter',
+                      'Treatment Management',
+                      'SMS & Email Reminders',
+                      'Advanced Reports',
+                      'Priority Support',
+                      'Data Backup'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-white font-medium">
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={() => handleChoosePlan('Professional - $19/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-yellow-500 text-black font-bold text-[9px] md:text-[10px] hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.2)] uppercase tracking-widest">
+                    CHOOSE PLAN
+                  </button>
+                </div>
+
+                {/* Enterprise Plan */}
+                <div className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-4 flex flex-col hover:border-white/10 transition-colors">
+                  <h4 className="text-base font-bold text-white mb-0.5">Enterprise</h4>
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 mb-2">For multi-location clinics</p>
+                  <div className="flex items-end gap-1 mb-3 pb-3 border-b border-white/5">
+                    <span className="text-2xl md:text-3xl font-bold text-white">$29</span>
+                    <span className="text-[9px] md:text-[10px] text-zinc-500 pb-1">/month</span>
+                  </div>
+                  <ul className="space-y-1.5 mb-4 flex-1">
+                    {[
+                      'Unlimited Doctors',
+                      'Unlimited Patients',
+                      'Everything in Professional',
+                      'Multi-Branch Management',
+                      'Inventory Management',
+                      'Advanced Analytics',
+                      'Role-Based Access',
+                      '24/7 Priority Support'
+                    ].map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] text-zinc-300 font-medium">
+                        <Check size={12} className="text-yellow-500 shrink-0" strokeWidth={3} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={() => handleChoosePlan('Enterprise - $29/month')} className="w-full py-1.5 md:py-2 rounded-lg bg-white/10 text-white font-bold text-[9px] md:text-[10px] hover:bg-white/20 transition-colors uppercase tracking-widest">
+                    CHOOSE PLAN
+                  </button>
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Customer Information Form Modal */}
+      <AnimatePresence>
+        {isCustomerFormOpen && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              onClick={() => setIsCustomerFormOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-6 w-full max-w-md relative z-10 shadow-2xl overflow-hidden"
+            >
+              <div className="mb-6 text-center">
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2 tracking-wide">
+                  Complete Your Purchase
+                </h3>
+                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
+                  Enter your details below to continue with your subscription and proceed to secure payment.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                <div className="relative group">
+                  <label className="sr-only">Full Name</label>
+                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input
+                    required
+                    type="text"
+                    value={customerForm.fullName}
+                    onChange={(e) => setCustomerForm({ ...customerForm, fullName: e.target.value })}
+                    placeholder="Full Name"
+                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                  />
+                </div>
+
+                <div className="relative group">
+                  <label className="sr-only">Email Address</label>
+                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                  <input
+                    required
+                    type="email"
+                    value={customerForm.email}
+                    onChange={(e) => setCustomerForm({ ...customerForm, email: e.target.value })}
+                    placeholder="Email Address"
+                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-12 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                  />
+                </div>
+
+                <div className="flex">
+                  <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-4 py-3 text-sm text-zinc-400 flex items-center justify-center font-bold">
+                    +91
+                  </div>
+                  <div className="relative group flex-1">
+                    <label className="sr-only">WhatsApp Number</label>
+                    <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
+                    <input
+                      required
+                      type="tel"
+                      value={customerForm.whatsapp}
+                      onChange={(e) => setCustomerForm({ ...customerForm, whatsapp: e.target.value.replace(/\D/g, '') })}
+                      placeholder="WhatsApp Number"
+                      maxLength={10}
+                      className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-12 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <label className="sr-only">Selected Plan</label>
+                  <Crown size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-500" />
+                  <input
+                    type="text"
+                    readOnly
+                    value={selectedPlan}
+                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-12 pr-4 py-3 text-sm text-yellow-500 font-bold outline-none cursor-not-allowed"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-6 text-center">
+                <p className="text-[10px] md:text-xs text-zinc-500 flex items-center justify-center gap-1.5">
+                  <Lock size={12} className="text-zinc-400" />
+                  Your information is secure and will only be used for your subscription and account setup.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={handleContinueToPayment}
+                  disabled={!isCustomerFormValid}
+                  className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all ${isCustomerFormValid
+                      ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
+                      : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
+                    }`}
+                >
+                  Continue to Secure Payment
+                </button>
+                <button
+                  onClick={() => setIsCustomerFormOpen(false)}
+                  className="w-full py-2 text-zinc-500 font-bold text-xs hover:text-white transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
 
             </motion.div>
           </div>
