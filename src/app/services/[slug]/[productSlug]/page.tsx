@@ -5,34 +5,21 @@ import { serviceEcosystems } from '@/data/servicesData';
 // Import all 23 landing pages to render them directly
 import { KiaanDentalCoreLandingPage } from '@/components/ServiceCategory/Services/HospitalManagementSystem/KiaanDentalCore/KiaanDentalCoreLandingPage';
 import { KiaanHospitalManagementLandingPage } from '@/components/ServiceCategory/Services/HospitalManagementSystem/KiaanHospitalManagement/KiaanHospitalManagementLandingPage';
-import { KiaanLaboratoryManagementLandingPage } from '@/components/ServiceCategory/Services/HospitalManagementSystem/KiaanLaboratoryManagement/KiaanLaboratoryManagementLandingPage';
-import { KiaanPharmacyManagementLandingPage } from '@/components/ServiceCategory/Services/HospitalManagementSystem/KiaanPharmacyManagement/KiaanPharmacyManagementLandingPage';
+import { KiaanClinicLandingPage } from '@/components/ServiceCategory/Services/HospitalManagementSystem/KiaanClinic/KiaanClinicLandingPage';
 
 import { KiaanEmployeeManagementLandingPage } from '@/components/ServiceCategory/Services/HRMSystem/KiaanEmployeeManagement/KiaanEmployeeManagementLandingPage';
-import { KiaanPayrollManagementLandingPage } from '@/components/ServiceCategory/Services/HRMSystem/KiaanPayrollManagement/KiaanPayrollManagementLandingPage';
 import { KiaanAttendanceSystemLandingPage } from '@/components/ServiceCategory/Services/HRMSystem/KiaanAttendanceSystem/KiaanAttendanceSystemLandingPage';
 import { KiaanRecruitmentManagementLandingPage } from '@/components/ServiceCategory/Services/HRMSystem/KiaanRecruitmentManagement/KiaanRecruitmentManagementLandingPage';
 
-import { KiaanSalesCRMLandingPage } from '@/components/ServiceCategory/Services/CRMSystem/KiaanSalesCRM/KiaanSalesCRMLandingPage';
 import { KiaanCustomerCRMLandingPage } from '@/components/ServiceCategory/Services/CRMSystem/KiaanCustomerCRM/KiaanCustomerCRMLandingPage';
-import { KiaanLeadManagementLandingPage } from '@/components/ServiceCategory/Services/CRMSystem/KiaanLeadManagement/KiaanLeadManagementLandingPage';
-import { KiaanMarketingCRMLandingPage } from '@/components/ServiceCategory/Services/CRMSystem/KiaanMarketingCRM/KiaanMarketingCRMLandingPage';
 
 import { KiaanRetailPOSLandingPage } from '@/components/ServiceCategory/Services/POSSystem/KiaanRetailPOS/KiaanRetailPOSLandingPage';
-import { KiaanRestaurantPOSLandingPage } from '@/components/ServiceCategory/Services/POSSystem/KiaanRestaurantPOS/KiaanRestaurantPOSLandingPage';
-import { KiaanBillingPOSLandingPage } from '@/components/ServiceCategory/Services/POSSystem/KiaanBillingPOS/KiaanBillingPOSLandingPage';
-import { KiaanMultiStorePOSLandingPage } from '@/components/ServiceCategory/Services/POSSystem/KiaanMultiStorePOS/KiaanMultiStorePOSLandingPage';
 
 import { KiaanRestaurantCoreLandingPage } from '@/components/ServiceCategory/Services/Others/RestaurantManagement/KiaanRestaurantCore/KiaanRestaurantCoreLandingPage';
-import { KiaanRestaurantPOSProductLandingPage } from '@/components/ServiceCategory/Services/Others/RestaurantManagement/KiaanRestaurantPOSProduct/KiaanRestaurantPOSProductLandingPage';
-import { KiaanKitchenManagementLandingPage } from '@/components/ServiceCategory/Services/Others/RestaurantManagement/KiaanKitchenManagement/KiaanKitchenManagementLandingPage';
-import { KiaanOnlineOrderingSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RestaurantManagement/KiaanOnlineOrderingSystem/KiaanOnlineOrderingSystemLandingPage';
 
-import { KiaanRentalCoreLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanRentalCore/KiaanRentalCoreLandingPage';
-import { KiaanVehicleRentalSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanVehicleRentalSystem/KiaanVehicleRentalSystemLandingPage';
 import { KiaanCarRentalLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanCarRental/KiaanCarRentalLandingPage';
-import { KiaanPropertyRentalSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanPropertyRentalSystem/KiaanPropertyRentalSystemLandingPage';
 import { KiaanAssetTrackingSystemLandingPage } from '@/components/ServiceCategory/Services/Others/RentalManagement/KiaanAssetTrackingSystem/KiaanAssetTrackingSystemLandingPage';
+import { KiaanGymLandingPage } from '@/components/ServiceCategory/Services/Others/GymManagement/KiaanGym/KiaanGymLandingPage';
 
 interface PageProps {
   params: Promise<{
@@ -71,38 +58,26 @@ export default async function ProductInformationPage({ params }: PageProps) {
     // Healthcare Service Platform
     "kiaan-dental-core": KiaanDentalCoreLandingPage,
     "kiaan-hospital-management": KiaanHospitalManagementLandingPage,
-    "kiaan-laboratory-management": KiaanLaboratoryManagementLandingPage,
-    "kiaan-pharmacy-management": KiaanPharmacyManagementLandingPage,
+    "kiaan-clinic": KiaanClinicLandingPage,
     
     // HRM
     "kiaan-employee-management": KiaanEmployeeManagementLandingPage,
-    "kiaan-payroll-management": KiaanPayrollManagementLandingPage,
     "kiaan-attendance-system": KiaanAttendanceSystemLandingPage,
     "kiaan-recruitment-management": KiaanRecruitmentManagementLandingPage,
     
     // CRM
-    "kiaan-sales-crm": KiaanSalesCRMLandingPage,
     "kiaan-customer-crm": KiaanCustomerCRMLandingPage,
-    "kiaan-lead-management": KiaanLeadManagementLandingPage,
-    "kiaan-marketing-crm": KiaanMarketingCRMLandingPage,
     
     // POS
     "kiaan-retail-pos": KiaanRetailPOSLandingPage,
-    "kiaan-restaurant-pos": slug === 'restaurant-management' ? KiaanRestaurantPOSProductLandingPage : KiaanRestaurantPOSLandingPage,
-    "kiaan-billing-pos": KiaanBillingPOSLandingPage,
-    "kiaan-multi-store-pos": KiaanMultiStorePOSLandingPage,
     
     // Others - Restaurant Management
     "kiaan-restaurant-core": KiaanRestaurantCoreLandingPage,
-    "kiaan-kitchen-management": KiaanKitchenManagementLandingPage,
-    "kiaan-online-ordering": KiaanOnlineOrderingSystemLandingPage,
     
     // Others - Rental Management
-    "kiaan-rental-core": KiaanRentalCoreLandingPage,
-    "kiaan-vehicle-rental": KiaanVehicleRentalSystemLandingPage,
     "kiaan-car-rental": KiaanCarRentalLandingPage,
-    "kiaan-property-rental": KiaanPropertyRentalSystemLandingPage,
-    "kiaan-asset-tracking": KiaanAssetTrackingSystemLandingPage
+    "kiaan-asset-tracking": KiaanAssetTrackingSystemLandingPage,
+    "kiaan-gym": KiaanGymLandingPage
   };
 
   const SpecificLandingPage = productComponents[productSlug];
