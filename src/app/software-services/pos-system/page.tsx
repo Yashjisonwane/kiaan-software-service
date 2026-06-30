@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { POSTemplate } from './components/POSTemplate';
-import { Store, ShoppingCart, Smartphone, Terminal } from 'lucide-react';
+import { Store, Smartphone, Terminal } from 'lucide-react';
 
 const posFeatures = [
   {
@@ -9,12 +9,6 @@ const posFeatures = [
     shortDesc: "Complete checkout and inventory management for retail stores.",
     fullDesc: "Handle barcode scanning, multi-register checkout, receipt printing, and real-time stock deductions seamlessly.",
     icon: <Store size={24} />
-  },
-  {
-    title: "Kiaan Restaurant POS",
-    shortDesc: "Optimized for quick-service and dine-in restaurants.",
-    fullDesc: "Features table management, kitchen display system (KDS) integration, split billing, and specialized tipping options.",
-    icon: <ShoppingCart size={24} />
   },
   {
     title: "Kiaan Mobile POS",

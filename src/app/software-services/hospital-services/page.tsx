@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { HospitalTemplate } from './components/HospitalTemplate';
-import { Activity, ShieldPlus, HeartPulse, Stethoscope } from 'lucide-react';
+import { Activity, ShieldPlus, Stethoscope } from 'lucide-react';
 
 const hospitalFeatures = [
   {
@@ -17,13 +17,7 @@ const hospitalFeatures = [
     icon: <ShieldPlus size={24} />
   },
   {
-    title: "Kiaan Pharmacy Sync",
-    shortDesc: "Integrated pharmacy management and inventory tracking system.",
-    fullDesc: "Connect your in-house pharmacy directly to doctor prescriptions. Automatically track drug inventory, alert on expirations, and process pharmacy billing seamlessly with the main hospital invoice.",
-    icon: <HeartPulse size={24} />
-  },
-  {
-    title: "Kiaan Clinic Hub",
+    title: "Kiaan Clinic",
     shortDesc: "Lightweight management tool for independent clinics and specialists.",
     fullDesc: "Designed for smaller setups and single practitioners. Offers easy appointment booking, basic electronic health records (EHR), and simple invoicing without the complexity of a full hospital ERP.",
     icon: <Stethoscope size={24} />
