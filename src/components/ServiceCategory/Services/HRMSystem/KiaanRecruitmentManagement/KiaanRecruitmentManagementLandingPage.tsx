@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Building2, Users, UserPlus, Calendar, CreditCard, BarChart3,
   ChevronRight, Rocket, ShoppingCart, ShieldCheck, Cloud, Clock, Headphones, X,
-  User, Mail, Phone, Building, MapPin, Crown, CheckCircle2, Lock, Check,
+  User, Mail, Phone, Building, MapPin, Crown, CheckCircle2, Lock, Check, Copy,
   Database, Sliders, ClipboardSignature, MessageSquare, Activity, DollarSign, ShieldAlert,
   ArrowRight, Sparkles, LayoutDashboard, ShieldCheck as ShieldIcon
 } from 'lucide-react';
@@ -358,6 +358,16 @@ export const KiaanRecruitmentManagementLandingPage: React.FC = () => {
   const [isCustomerFormOpen, setIsCustomerFormOpen] = useState(false);
   const [customerForm, setCustomerForm] = useState({ fullName: '', email: '', whatsapp: '' });
 
+  // Demo Flow State
+  const [demoForm, setDemoForm] = useState({ fullName: '', email: '', whatsapp: '' });
+  const [isDemoSubmitting, setIsDemoSubmitting] = useState(false);
+  const [demoSuccessLicense, setDemoSuccessLicense] = useState<any>(null);
+
+  // Buy Success State
+  const [buySuccessLicense, setBuySuccessLicense] = useState<any>(null);
+  const [isBuySubmitting, setIsBuySubmitting] = useState(false);
+  const [copiedText, setCopiedText] = useState(false);
+
   const handleChoosePlan = (plan: string) => {
     setSelectedPlan(plan);
     setIsBuyModalOpen(false);
@@ -368,10 +378,66 @@ export const KiaanRecruitmentManagementLandingPage: React.FC = () => {
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerForm.email) &&
     /^[0-9]{10,}$/.test(customerForm.whatsapp);
 
-  const handleContinueToPayment = () => {
-    if (isCustomerFormValid) {
-      window.location.href = `https://razorpay.com/pay/?plan=${encodeURIComponent(selectedPlan)}`;
-      setIsCustomerFormOpen(false);
+  const handleCopyKey = (key: string) => {
+    navigator.clipboard.writeText(key);
+    setCopiedText(true);
+    setTimeout(() => setCopiedText(false), 2000);
+  };
+
+  const handleRequestDemo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsDemoSubmitting(true);
+    try {
+      const response = await fetch('/api/license/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          softwareId: 'kiaan-recruitment-management',
+          fullName: demoForm.fullName,
+          email: demoForm.email,
+          whatsapp: demoForm.whatsapp,
+          type: 'demo'
+        })
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setDemoSuccessLicense(data.license);
+      } else {
+        alert(data.error || 'Failed to request demo');
+      }
+    } catch (err) {
+      alert('Error connecting to licensing server');
+    } finally {
+      setIsDemoSubmitting(false);
+    }
+  };
+
+  const handleContinueToPayment = async () => {
+    if (!isCustomerFormValid) return;
+    setIsBuySubmitting(true);
+    try {
+      const response = await fetch('/api/license/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          softwareId: 'kiaan-recruitment-management',
+          fullName: customerForm.fullName,
+          email: customerForm.email,
+          whatsapp: customerForm.whatsapp,
+          type: 'buy',
+          plan: selectedPlan
+        })
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setBuySuccessLicense(data.license);
+      } else {
+        alert(data.error || 'Failed to register license');
+      }
+    } catch (err) {
+      alert('Error connecting to licensing server');
+    } finally {
+      setIsBuySubmitting(false);
     }
   };
 
@@ -537,40 +603,137 @@ export const KiaanRecruitmentManagementLandingPage: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-              onClick={() => setIsDemoModalOpen(false)}
+              onClick={() => {
+                setIsDemoModalOpen(false);
+                setDemoSuccessLicense(null);
+                setDemoForm({ fullName: '', email: '', whatsapp: '' });
+              }}
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
               className="bg-[#111] border border-white/10 rounded-2xl p-5 md:p-6 w-full max-w-md relative z-10 shadow-2xl max-h-[85vh] overflow-y-auto"
             >
-              <button onClick={() => setIsDemoModalOpen(false)} className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10">
+              <button 
+                onClick={() => {
+                  setIsDemoModalOpen(false);
+                  setDemoSuccessLicense(null);
+                  setDemoForm({ fullName: '', email: '', whatsapp: '' });
+                }} 
+                className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10"
+              >
                 <X size={14} />
               </button>
 
-              <div className="mb-5">
-                <h3 className="text-xl font-display font-bold text-white mb-1.5">Request Demo</h3>
-                <p className="text-zinc-400 text-xs">Enter your details and our team will set up your personalized demo account.</p>
-              </div>
-
-              <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert("Demo Requested!"); setIsDemoModalOpen(false); }}>
-                <div className="relative group">
-                  <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="text" placeholder="Full Name" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
+              {demoSuccessLicense ? (
+                <div className="text-center py-4 space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-display font-bold text-white mb-1">Demo Key Generated!</h3>
+                    <p className="text-zinc-400 text-xs px-2">Your 10-day trial license has been successfully generated. Copy it below to activate your software.</p>
+                  </div>
+                  <div className="bg-[#181818] border border-white/5 p-4 rounded-xl space-y-3">
+                    <div className="space-y-1">
+                      <span className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider text-zinc-400">Your License Key</span>
+                      <div className="flex items-center justify-center gap-2">
+                        <code className="bg-black/40 px-3 py-1.5 rounded text-yellow-500 font-mono text-sm font-bold border border-white/5">
+                          {demoSuccessLicense.licenseKey}
+                        </code>
+                        <button
+                          onClick={() => handleCopyKey(demoSuccessLicense.licenseKey)}
+                          className="p-1.5 rounded bg-[#222] hover:bg-[#333] text-zinc-400 hover:text-white transition-colors"
+                        >
+                          {copiedText ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-[10px] text-zinc-400 pt-2 border-t border-white/5">
+                      <div>
+                        <span className="text-zinc-500 block">Valid For</span>
+                        <span className="font-bold text-white">10 Days Trial</span>
+                      </div>
+                      <div>
+                        <span className="text-zinc-500 block">Expires On</span>
+                        <span className="font-bold text-white">
+                          {new Date(demoSuccessLicense.expiryDate).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setIsDemoModalOpen(false);
+                      setDemoSuccessLicense(null);
+                      setDemoForm({ fullName: '', email: '', whatsapp: '' });
+                    }}
+                    className="w-full bg-yellow-500 text-black py-2.5 rounded-xl font-bold text-xs tracking-wider uppercase hover:bg-yellow-400 transition-colors"
+                  >
+                    Done & Close
+                  </button>
                 </div>
-                <div className="relative group">
-                  <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="email" placeholder="Email Address" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
-                <div className="relative group">
-                  <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input required type="tel" placeholder="Mobile Number" className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" />
-                </div>
+              ) : (
+                <>
+                  <div className="mb-5">
+                    <h3 className="text-xl font-display font-bold text-white mb-1.5">Request Demo</h3>
+                    <p className="text-zinc-400 text-xs">Enter your details to generate your 10-day demo license key instantly.</p>
+                  </div>
 
+                  <form className="space-y-3" onSubmit={handleRequestDemo}>
+                    <div className="relative group">
+                      <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                      <input 
+                        required 
+                        type="text" 
+                        placeholder="Full Name" 
+                        value={demoForm.fullName}
+                        onChange={(e) => setDemoForm({ ...demoForm, fullName: e.target.value })}
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" 
+                      />
+                    </div>
+                    <div className="relative group">
+                      <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                      <input 
+                        required 
+                        type="email" 
+                        placeholder="Email Address" 
+                        value={demoForm.email}
+                        onChange={(e) => setDemoForm({ ...demoForm, email: e.target.value })}
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" 
+                      />
+                    </div>
+                    <div className="relative group flex">
+                      <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-3 py-2.5 text-xs text-zinc-400 flex items-center justify-center font-bold">
+                        +91
+                      </div>
+                      <div className="relative group flex-1">
+                        <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
+                        <input 
+                          required 
+                          type="tel" 
+                          placeholder="WhatsApp Number" 
+                          maxLength={10}
+                          value={demoForm.whatsapp}
+                          onChange={(e) => setDemoForm({ ...demoForm, whatsapp: e.target.value.replace(/\D/g, '') })}
+                          className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all" 
+                        />
+                      </div>
+                    </div>
 
-                <button type="submit" className="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-2">
-                  Request Demo
-                </button>
-              </form>
+                    <button 
+                      type="submit" 
+                      disabled={isDemoSubmitting}
+                      className="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-yellow-400 transition-colors mt-2 flex items-center justify-center gap-2"
+                    >
+                      {isDemoSubmitting ? (
+                        <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      ) : (
+                        "Generate Demo Key"
+                      )}
+                    </button>
+                  </form>
+                </>
+              )}
             </motion.div>
           </div>
         )}
@@ -708,110 +871,194 @@ export const KiaanRecruitmentManagementLandingPage: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/80 backdrop-blur-md"
-              onClick={() => setIsCustomerFormOpen(false)}
+              onClick={() => {
+                setIsCustomerFormOpen(false);
+                setBuySuccessLicense(null);
+                setCustomerForm({ fullName: '', email: '', whatsapp: '' });
+              }}
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
               className="bg-[#111] border border-white/5 rounded-2xl p-4 md:p-5 w-full max-w-md relative z-10 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
             >
-              <div className="mb-5 text-center">
-                <h3 className="text-xl font-display font-bold text-white mb-1.5 tracking-wide">
-                  Complete Your Purchase
-                </h3>
-                <p className="text-zinc-400 text-xs leading-relaxed">
-                  Enter your details below to continue with your subscription and proceed to secure payment.
-                </p>
-              </div>
+              <button
+                onClick={() => {
+                  setIsCustomerFormOpen(false);
+                  setBuySuccessLicense(null);
+                  setCustomerForm({ fullName: '', email: '', whatsapp: '' });
+                }}
+                className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full hover:bg-white/10"
+              >
+                <X size={14} />
+              </button>
 
-              <div className="space-y-3 mb-5">
-                <div className="relative group">
-                  <label className="sr-only">Full Name</label>
-                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input
-                    required
-                    type="text"
-                    value={customerForm.fullName}
-                    onChange={(e) => setCustomerForm({ ...customerForm, fullName: e.target.value })}
-                    placeholder="Full Name"
-                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
-                  />
-                </div>
-
-                <div className="relative group">
-                  <label className="sr-only">Email Address</label>
-                  <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
-                  <input
-                    required
-                    type="email"
-                    value={customerForm.email}
-                    onChange={(e) => setCustomerForm({ ...customerForm, email: e.target.value })}
-                    placeholder="Email Address"
-                    className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
-                  />
-                </div>
-
-                <div className="flex">
-                  <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-3 py-2.5 text-xs text-zinc-400 flex items-center justify-center font-bold">
-                    +91
+              {buySuccessLicense ? (
+                <div className="text-center py-4 space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-yellow-500/10 text-yellow-500 flex items-center justify-center mx-auto">
+                    <Crown className="w-6 h-6" />
                   </div>
-                  <div className="relative group flex-1">
-                    <label className="sr-only">WhatsApp Number</label>
-                    <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
-                    <input
-                      required
-                      type="tel"
-                      value={customerForm.whatsapp}
-                      onChange={(e) => setCustomerForm({ ...customerForm, whatsapp: e.target.value.replace(/\D/g, '') })}
-                      placeholder="WhatsApp Number"
-                      maxLength={10}
-                      className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
-                    />
+                  <div>
+                    <h3 className="text-xl font-display font-bold text-white mb-1">License Pre-Generated!</h3>
+                    <p className="text-zinc-400 text-xs px-2">Your 1-month Premium license key has been pre-created. Complete your payment to activate it.</p>
+                  </div>
+                  <div className="bg-[#181818] border border-white/5 p-4 rounded-xl space-y-3">
+                    <div className="space-y-1">
+                      <span className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider text-zinc-400">Your License Key</span>
+                      <div className="flex items-center justify-center gap-2">
+                        <code className="bg-black/40 px-3 py-1.5 rounded text-yellow-500 font-mono text-sm font-bold border border-white/5">
+                          {buySuccessLicense.licenseKey}
+                        </code>
+                        <button
+                          onClick={() => handleCopyKey(buySuccessLicense.licenseKey)}
+                          className="p-1.5 rounded bg-[#222] hover:bg-[#333] text-zinc-400 hover:text-white transition-colors"
+                        >
+                          {copiedText ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-[10px] text-zinc-400 pt-2 border-t border-white/5">
+                      <div>
+                        <span className="text-zinc-500 block">Subscription Plan</span>
+                        <span className="font-bold text-white">{selectedPlan}</span>
+                      </div>
+                      <div>
+                        <span className="text-zinc-500 block">License Duration</span>
+                        <span className="font-bold text-white">30 Days (1 Month)</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col gap-2">
+                    <button
+                      onClick={() => {
+                        window.location.href = `https://razorpay.com/pay/?plan=${encodeURIComponent(selectedPlan)}&key=${buySuccessLicense.licenseKey}`;
+                        setIsCustomerFormOpen(false);
+                        setBuySuccessLicense(null);
+                      }}
+                      className="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold text-xs tracking-wider uppercase hover:bg-yellow-400 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.2)]"
+                    >
+                      Proceed to Secure Payment
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsCustomerFormOpen(false);
+                        setBuySuccessLicense(null);
+                        setCustomerForm({ fullName: '', email: '', whatsapp: '' });
+                      }}
+                      className="w-full py-1.5 text-zinc-500 font-bold text-[10px] uppercase hover:text-white transition-colors"
+                    >
+                      Close
+                    </button>
                   </div>
                 </div>
-
-                <div className="relative group">
-                  <label className="sr-only">Selected Plan</label>
-                  <Crown size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-yellow-500 z-10" />
-                  <select
-                    value={selectedPlan}
-                    onChange={(e) => setSelectedPlan(e.target.value)}
-                    className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-10 pr-8 py-2.5 text-xs text-yellow-500 font-bold outline-none focus:border-yellow-500 cursor-pointer appearance-none"
-                  >
-                    <option value="Silver - $9/month">Silver - $9/month</option>
-                    <option value="Gold (Pro) - $19/month">Gold (Pro) - $19/month</option>
-                    <option value="Diamond - $29/month">Diamond - $29/month</option>
-                  </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              ) : (
+                <>
+                  <div className="mb-5 text-center">
+                    <h3 className="text-xl font-display font-bold text-white mb-1.5 tracking-wide">
+                      Complete Your Purchase
+                    </h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed">
+                      Enter your details below to continue with your subscription and proceed to secure payment.
+                    </p>
                   </div>
-                </div>
-              </div>
 
-              <div className="mb-5 text-center">
-                <p className="text-[10px] md:text-xs text-zinc-500 flex items-center justify-center gap-1.5">
-                  <Lock size={12} className="text-zinc-400" />
-                  Your information is secure and will only be used for your subscription and account setup.
-                </p>
-              </div>
+                  <div className="space-y-3 mb-5">
+                    <div className="relative group">
+                      <label className="sr-only">Full Name</label>
+                      <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                      <input
+                        required
+                        type="text"
+                        value={customerForm.fullName}
+                        onChange={(e) => setCustomerForm({ ...customerForm, fullName: e.target.value })}
+                        placeholder="Full Name"
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                      />
+                    </div>
 
-              <div className="flex flex-col gap-3">
-                <button
-                  onClick={handleContinueToPayment}
-                  disabled={!isCustomerFormValid}
-                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all ${isCustomerFormValid
-                      ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
-                      : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
-                    }`}
-                >
-                  Continue to Secure Payment
-                </button>
-                <button
-                  onClick={() => setIsCustomerFormOpen(false)}
-                  className="w-full py-1.5 text-zinc-500 font-bold text-[10px] uppercase hover:text-white transition-colors"
-                >
-                  Cancel
-                </button>
-              </div>
+                    <div className="relative group">
+                      <label className="sr-only">Email Address</label>
+                      <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+                      <input
+                        required
+                        type="email"
+                        value={customerForm.email}
+                        onChange={(e) => setCustomerForm({ ...customerForm, email: e.target.value })}
+                        placeholder="Email Address"
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <div className="bg-[#222] border border-white/10 border-r-0 rounded-l-xl px-3 py-2.5 text-xs text-zinc-400 flex items-center justify-center font-bold">
+                        +91
+                      </div>
+                      <div className="relative group flex-1">
+                        <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-yellow-500 transition-colors z-10" />
+                        <input
+                          required
+                          type="tel"
+                          value={customerForm.whatsapp}
+                          onChange={(e) => setCustomerForm({ ...customerForm, whatsapp: e.target.value.replace(/\D/g, '') })}
+                          placeholder="WhatsApp Number"
+                          maxLength={10}
+                          className="w-full bg-[#181818] border border-white/10 rounded-r-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-yellow-500/50 focus:bg-[#222] outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="relative group">
+                      <label className="sr-only">Selected Plan</label>
+                      <Crown size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-yellow-500 z-10" />
+                      <select
+                        value={selectedPlan}
+                        onChange={(e) => setSelectedPlan(e.target.value)}
+                        className="w-full bg-[#1a1a1a] border border-yellow-500/30 rounded-xl pl-10 pr-8 py-2.5 text-xs text-yellow-500 font-bold outline-none focus:border-yellow-500 cursor-pointer appearance-none"
+                      >
+                        <option value="Silver - $9/month">Silver - $9/month</option>
+                        <option value="Gold (Pro) - $19/month">Gold (Pro) - $19/month</option>
+                        <option value="Diamond - $29/month">Diamond - $29/month</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-yellow-500">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-5 text-center">
+                    <p className="text-[10px] md:text-xs text-zinc-500 flex items-center justify-center gap-1.5">
+                      <Lock size={12} className="text-zinc-400" />
+                      Your information is secure and will only be used for your subscription and account setup.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <button
+                      onClick={handleContinueToPayment}
+                      disabled={!isCustomerFormValid || isBuySubmitting}
+                      className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center justify-center gap-2 ${isCustomerFormValid && !isBuySubmitting
+                          ? 'bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
+                          : 'bg-yellow-500/30 text-black/50 cursor-not-allowed'
+                        }`}
+                    >
+                      {isBuySubmitting ? (
+                        <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      ) : (
+                        "Generate Key & Continue"
+                      )}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsCustomerFormOpen(false);
+                        setCustomerForm({ fullName: '', email: '', whatsapp: '' });
+                      }}
+                      className="w-full py-1.5 text-zinc-500 font-bold text-[10px] uppercase hover:text-white transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </>
+              )}
 
             </motion.div>
           </div>

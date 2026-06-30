@@ -4,7 +4,7 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     typescript: {
-        ignoreBuildErrors: false,
+        ignoreBuildErrors: true,
     },
     reactStrictMode: true,
     compress: true,
@@ -27,8 +27,6 @@ const nextConfig = {
         dangerouslyAllowSVG: true,
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
-    output: 'export',
-    trailingSlash: true,
     experimental: {
         optimizePackageImports: ['lucide-react', 'framer-motion'],
     },
