@@ -12,5 +12,18 @@
     "createdAt": "2026-06-30T11:27:50.972Z",
     "activatedAt": "2026-06-30T11:27:50.972Z",
     "expiryDate": "2026-07-10T11:27:50.972Z"
+  },
+  {
+    "id": "1782974417646rnhzw",
+    "softwareId": "kiaan-clinic",
+    "fullName": "Sonali Ji",
+    "email": "jisonali39@gmail.com",
+    "whatsapp": "4455487889988",
+    "type": "demo",
+    "plan": "Trial",
+    "licenseKey": "KLS-DEMO-4SIE-U13A-CN42",
+    "status": "active",
+    "createdAt": "2026-07-02T06:40:17.646Z",
+    "expiryDate": "2026-07-12T06:40:17.646Z"
   }
 ]

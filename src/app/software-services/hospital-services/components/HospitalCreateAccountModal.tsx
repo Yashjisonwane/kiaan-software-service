@@ -94,7 +94,7 @@ export const HospitalCreateAccountModal: React.FC<Props> = ({ isOpen, onClose, s
                     <option className="bg-white text-[#0F172A]" value="Kiaan Hospital Management">Kiaan Hospital Management</option>
                     <option className="bg-white text-[#0F172A]" value="Kiaan Dental Core">Kiaan Dental Core</option>
                     <option className="bg-white text-[#0F172A]" value="Kiaan Pharmacy Sync">Kiaan Pharmacy Sync</option>
-                    <option className="bg-white text-[#0F172A]" value="Kiaan Clinic Hub">Kiaan Clinic Hub</option>
+                    <option className="bg-white text-[#0F172A]" value="Kiaan Dental Clinic">Kiaan Dental Clinic</option>
                   </select>
                 </div>
 

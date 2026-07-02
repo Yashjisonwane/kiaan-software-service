@@ -190,7 +190,7 @@ export const softwareServicesCategories = [
         items: [
             { name: "Kiaan Dental Core", href: "/services/hospital-management-system/kiaan-dental-core" },
             { name: "Kiaan Hospital Management", href: "/software-services/healthcare/kiaan-hospital-management" },
-            { name: "Kiaan Clinic", href: "/services/hospital-management-system/kiaan-clinic" }
+            { name: "Kiaan Dental Clinic", href: "/services/hospital-management-system/kiaan-clinic" }
         ]
     },
     {

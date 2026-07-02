@@ -50,7 +50,7 @@ export const serviceEcosystems: Record<string, ServiceEcosystem> = {
     products: [
       { id: "kiaan-dental-core", name: "Kiaan Dental Core", description: "Comprehensive dental clinic management system.", features: ["Patient Records", "Appointment Scheduling", "Billing"] },
       { id: "kiaan-hospital-management", name: "Kiaan Hospital Management", description: "Full-scale enterprise hospital operations.", features: ["Inpatient Management", "Outpatient Care", "Insurance Claims"] },
-      { id: "kiaan-clinic", name: "Kiaan Clinic", description: "Advanced clinic management and patient records system.", features: ["Patient Records", "Prescriptions", "Billing"] },
+      { id: "kiaan-clinic", name: "Kiaan Dental Clinic", description: "Advanced clinic management and patient records system.", features: ["Patient Records", "Prescriptions", "Billing"] },
     ]
   },
   "crm-system": {

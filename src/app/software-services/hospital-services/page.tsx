@@ -17,7 +17,7 @@ const hospitalFeatures = [
     icon: <ShieldPlus size={24} />
   },
   {
-    title: "Kiaan Clinic",
+    title: "Kiaan Dental Clinic",
     shortDesc: "Lightweight management tool for independent clinics and specialists.",
     fullDesc: "Designed for smaller setups and single practitioners. Offers easy appointment booking, basic electronic health records (EHR), and simple invoicing without the complexity of a full hospital ERP.",
     icon: <Stethoscope size={24} />
